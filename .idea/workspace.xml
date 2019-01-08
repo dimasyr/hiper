@@ -2,31 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30bc8e63-cec5-4e59-b8d5-8dda1e824662" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/382199c3-9508-4972-b0b9-cd4954296dbf.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/JenisKendaraan.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/JenisOnderdil.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Kendaraan.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Onderdil.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Permintaan.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Role.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2013_01_05_153926_create_role_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_03_150814_create_jenis_kendaraan_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_04_075814_create_kendaraan_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_04_082807_create_permintaan_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_04_083220_create_jenis_onderdil_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2019_01_04_083601_create_onderdil_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/JenisKendaraanSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/JenisOnderdilSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/KendaraanSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/RoleSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db_rosan_permai@localhost.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/382199c3-9508-4972-b0b9-cd4954296dbf.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/382199c3-9508-4972-b0b9-cd4954296dbf.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/JenisKendaraan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/JenisKendaraan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/JenisOnderdil.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/JenisOnderdil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Kendaraan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Kendaraan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Onderdil.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Onderdil.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Permintaan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Permintaan.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Role.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_01_04_075814_create_kendaraan_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_01_04_075814_create_kendaraan_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,37 +56,115 @@
         <item name="db_rosan_permai: schema" type="76f4a085:MysqlImplModel$Schema" />
         <item name="kendaraan: table" type="285a2a93:MysqlImplModel$Table" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db_rosan_permai@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="db_rosan_permai: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="users: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/seeds/KendaraanSeeder.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="uml://DATABASE/382199c3-9508-4972-b0b9-cd4954296dbf">
+          <provider selected="true" editor-type-id="UmlEditorProvider">
+            <state>
+              <ID>DATABASE</ID>
+              <OriginalElement>382199c3-9508-4972-b0b9-cd4954296dbf</OriginalElement>
+              <nodes>
+                <node x="577.0" y="348.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan</node>
+                <node x="872.5" y="701.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.jenis_onderdil</node>
+                <node x="-7.5" y="992.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.migrations</node>
+                <node x="250.5" y="-12.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users</node>
+                <node x="274.0" y="992.5">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.password_resets</node>
+                <node x="561.0" y="635.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.onderdil</node>
+                <node x="237.5" y="315.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan</node>
+                <node x="272.5" y="661.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.jenis_kendaraan</node>
+                <node x="-7.5" y="21.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.role</node>
+              </nodes>
+              <notes />
+              <edges>
+                <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.onderdil" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan">
+                  <point x="0.0" y="-125.0" />
+                  <point x="0.0" y="92.0" />
+                </edge>
+                <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.role">
+                  <point x="-109.5" y="-0.0" />
+                  <point x="87.5" y="-0.0" />
+                </edge>
+                <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users">
+                  <point x="-40.0" y="-92.0" />
+                  <point x="640.0" y="240.0" />
+                  <point x="400.0" y="240.0" />
+                  <point x="40.0" y="92.0" />
+                </edge>
+                <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan">
+                  <point x="-103.0" y="-0.0" />
+                  <point x="122.5" y="-0.0" />
+                </edge>
+                <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.onderdil" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.jenis_onderdil">
+                  <point x="119.0" y="-0.0" />
+                  <point x="-87.5" y="-0.0" />
+                </edge>
+                <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users">
+                  <point x="0.0" y="-125.0" />
+                  <point x="0.0" y="92.0" />
+                </edge>
+                <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.jenis_kendaraan">
+                  <point x="0.0" y="125.0" />
+                  <point x="0.0" y="-59.0" />
+                </edge>
+              </edges>
+              <settings layout="Hierarchic Group" zoom="0.9980099502487558" x="415.47856430707884" y="737.4785643070788" />
+              <SelectedNodes>
+                <node>382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.role</node>
+              </SelectedNodes>
+              <Categories>
+                <Category>Key columns</Category>
+                <Category>Columns</Category>
+              </Categories>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="24" column="93" lean-forward="true" selection-start-line="24" selection-start-column="93" selection-end-line="24" selection-end-column="93" />
+            <state relative-caret-position="316">
+              <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
               <folding>
-                <element signature="e#7#38#0#PHP" expanded="true" />
+                <element signature="e#23#63#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_04_075814_create_kendaraan_table.php">
+        <entry file="file://$PROJECT_DIR$/app/Permintaan.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+            <state relative-caret-position="265">
+              <caret line="36" column="6" lean-forward="true" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/JenisOnderdil.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://382199c3-9508-4972-b0b9-cd4954296dbf/schema/db_rosan_permai/table/kendaraan">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+        <entry file="file://$PROJECT_DIR$/app/Onderdil.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="384">
+              <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
             </state>
           </provider>
         </entry>
@@ -116,26 +179,28 @@
       <list>
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/database/migrations/2019_01_04_083220_create_jenis_onderdil_table.php" />
-        <option value="$PROJECT_DIR$/app/JenisOnderdil.php" />
         <option value="$PROJECT_DIR$/database/seeds/JenisOnderdilSeeder.php" />
-        <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_01_04_083807_create_permintaan_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_01_04_082807_create_permintaan_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/UsersSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2013_01_05_153153_create_jenis_user_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2013_01_05_153926_create_role_table.php" />
-        <option value="$PROJECT_DIR$/app/Role.php" />
         <option value="$PROJECT_DIR$/database/seeds/RoleSeeder.php" />
-        <option value="$PROJECT_DIR$/app/JenisKendaraan.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_01_03_150814_create_jenis_kendaraan_table.php" />
-        <option value="$PROJECT_DIR$/app/Kendaraan.php" />
         <option value="$PROJECT_DIR$/database/seeds/JenisKendaraanSeeder.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_01_04_083601_create_onderdil_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/UserSeeder.php" />
         <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_01_04_075814_create_kendaraan_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/KendaraanSeeder.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_01_04_075814_create_kendaraan_table.php" />
+        <option value="$PROJECT_DIR$/app/Role.php" />
+        <option value="$PROJECT_DIR$/app/Kendaraan.php" />
+        <option value="$PROJECT_DIR$/app/JenisKendaraan.php" />
+        <option value="$PROJECT_DIR$/app/Permintaan.php" />
+        <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/app/Onderdil.php" />
+        <option value="$PROJECT_DIR$/app/JenisOnderdil.php" />
       </list>
     </option>
   </component>
@@ -242,7 +307,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -287,6 +351,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -339,17 +404,19 @@
       <workItem from="1546657299610" duration="7305000" />
       <workItem from="1546696810625" duration="12263000" />
       <workItem from="1546854585775" duration="4193000" />
-      <workItem from="1546914758899" duration="8032000" />
+      <workItem from="1546914758899" duration="9623000" />
+      <workItem from="1546929164821" duration="8527000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="41753000" />
+    <option name="totallyTimeSpent" value="51871000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15658094" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15885022" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -364,36 +431,13 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.54664487" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.23731588" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.3289689" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" visible="true" weight="0.12556732" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15658094" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="2" side_tool="true" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.40425533" />
-      <window_info anchor="bottom" id="Database Console" order="12" weight="0.3289689" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.12556732" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -420,117 +464,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_04_083220_create_jenis_onderdil_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="uml://DATABASE/382199c3-9508-4972-b0b9-cd4954296dbf">
-      <provider selected="true" editor-type-id="UmlEditorProvider">
-        <state>
-          <ID>DATABASE</ID>
-          <OriginalElement>382199c3-9508-4972-b0b9-cd4954296dbf</OriginalElement>
-          <nodes>
-            <node x="77.125" y="402.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan</node>
-            <node x="288.125" y="435.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.jenis_onderdil</node>
-            <node x="508.125" y="0.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.migrations</node>
-            <node x="63.5" y="0.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users</node>
-            <node x="167.5" y="636.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.onderdil</node>
-            <node x="0.0" y="234.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan</node>
-            <node x="728.125" y="0.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.password_resets</node>
-          </nodes>
-          <notes />
-          <edges>
-            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.onderdil" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan">
-              <point x="-56.25" y="-125.0" />
-              <point x="223.75" y="611.0" />
-              <point x="172.625" y="611.0" />
-              <point x="0.0" y="92.0" />
-            </edge>
-            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan">
-              <point x="-71.625" y="-92.0" />
-              <point x="101.0" y="382.0" />
-              <point x="92.0" y="382.0" />
-              <point x="0.0" y="59.0" />
-            </edge>
-            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users">
-              <point x="71.625" y="-92.0" />
-              <point x="244.25" y="382.0" />
-              <point x="216.5" y="382.0" />
-              <point x="216.5" y="209.0" />
-              <point x="255.125" y="209.0" />
-              <point x="82.125" y="92.0" />
-            </edge>
-            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.onderdil" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.jenis_onderdil">
-              <point x="56.25" y="-125.0" />
-              <point x="336.25" y="611.0" />
-              <point x="375.625" y="611.0" />
-              <point x="0.0" y="59.0" />
-            </edge>
-            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users">
-              <point x="0.0" y="-59.0" />
-              <point x="92.0" y="209.0" />
-              <point x="90.875" y="209.0" />
-              <point x="-82.125" y="92.0" />
-            </edge>
-          </edges>
-          <settings layout="Hierarchic Group" zoom="0.5298013245033113" x="419.0" y="443.0" />
-          <SelectedNodes>
-            <node>382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan</node>
-          </SelectedNodes>
-          <Categories>
-            <Category>Key columns</Category>
-            <Category>Columns</Category>
-          </Categories>
-          <SCOPE>All</SCOPE>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/UsersSeeder.php" />
     <entry file="file://$PROJECT_DIR$/database/migrations/2013_01_05_153153_create_jenis_user_table.php" />
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
-          <folding>
-            <element signature="e#23#63#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Role.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/JenisOnderdilSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="26" column="22" lean-forward="true" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-          <folding>
-            <element signature="e#7#38#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/JenisOnderdil.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="40" lean-forward="true" selection-start-line="8" selection-start-column="40" selection-end-line="8" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/JenisKendaraan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_03_150814_create_jenis_kendaraan_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -542,16 +477,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="17" column="30" lean-forward="true" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-          <folding>
-            <element signature="e#7#38#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/JenisKendaraanSeeder.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="12" column="25" lean-forward="true" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding>
             <element signature="e#7#38#0#PHP" expanded="true" />
           </folding>
@@ -572,13 +497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_04_082807_create_permintaan_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/UserSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
@@ -596,24 +514,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_04_083601_create_onderdil_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Kendaraan.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="58" selection-start-line="11" selection-start-column="58" selection-end-line="11" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/storage/app/data_kendaraan.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="28" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/JenisOnderdilSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/JenisKendaraanSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="30" lean-forward="true" selection-start-line="8" selection-start-column="30" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_04_075814_create_kendaraan_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="31" column="7" lean-forward="true" selection-start-line="31" selection-start-column="7" selection-end-line="31" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/seeds/KendaraanSeeder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="21" column="53" selection-start-line="21" selection-start-column="53" selection-end-line="21" selection-end-column="53" />
+          <folding>
+            <element signature="e#7#38#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -624,20 +559,136 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_04_075814_create_kendaraan_table.php">
+    <entry file="file://$PROJECT_DIR$/app/Role.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="23" column="33" lean-forward="true" selection-start-line="23" selection-start-column="33" selection-end-line="23" selection-end-column="33" />
+        <state relative-caret-position="289">
+          <caret line="17" column="5" selection-start-line="14" selection-start-column="4" selection-end-line="17" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/seeds/KendaraanSeeder.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_04_082807_create_permintaan_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="24" column="93" lean-forward="true" selection-start-line="24" selection-start-column="93" selection-end-line="24" selection-end-column="93" />
+        <state relative-caret-position="85">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/JenisKendaraan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="51" lean-forward="true" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Kendaraan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="85" lean-forward="true" selection-start-line="85" selection-end-line="85" />
           <folding>
-            <element signature="e#7#38#0#PHP" expanded="true" />
+            <element signature="e#23#63#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://DATABASE/382199c3-9508-4972-b0b9-cd4954296dbf">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>DATABASE</ID>
+          <OriginalElement>382199c3-9508-4972-b0b9-cd4954296dbf</OriginalElement>
+          <nodes>
+            <node x="577.0" y="348.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan</node>
+            <node x="872.5" y="701.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.jenis_onderdil</node>
+            <node x="-7.5" y="992.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.migrations</node>
+            <node x="250.5" y="-12.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users</node>
+            <node x="274.0" y="992.5">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.password_resets</node>
+            <node x="561.0" y="635.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.onderdil</node>
+            <node x="237.5" y="315.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan</node>
+            <node x="272.5" y="661.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.jenis_kendaraan</node>
+            <node x="-7.5" y="21.0">382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.role</node>
+          </nodes>
+          <notes />
+          <edges>
+            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.onderdil" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan">
+              <point x="0.0" y="-125.0" />
+              <point x="0.0" y="92.0" />
+            </edge>
+            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.role">
+              <point x="-109.5" y="-0.0" />
+              <point x="87.5" y="-0.0" />
+            </edge>
+            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users">
+              <point x="-40.0" y="-92.0" />
+              <point x="640.0" y="240.0" />
+              <point x="400.0" y="240.0" />
+              <point x="40.0" y="92.0" />
+            </edge>
+            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.permintaan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan">
+              <point x="-103.0" y="-0.0" />
+              <point x="122.5" y="-0.0" />
+            </edge>
+            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.onderdil" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.jenis_onderdil">
+              <point x="119.0" y="-0.0" />
+              <point x="-87.5" y="-0.0" />
+            </edge>
+            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.users">
+              <point x="0.0" y="-125.0" />
+              <point x="0.0" y="92.0" />
+            </edge>
+            <edge source="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.kendaraan" target="382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.jenis_kendaraan">
+              <point x="0.0" y="125.0" />
+              <point x="0.0" y="-59.0" />
+            </edge>
+          </edges>
+          <settings layout="Hierarchic Group" zoom="0.9980099502487558" x="415.47856430707884" y="737.4785643070788" />
+          <SelectedNodes>
+            <node>382199c3-9508-4972-b0b9-cd4954296dbf.TABLE:db_rosan_permai.role</node>
+          </SelectedNodes>
+          <Categories>
+            <Category>Key columns</Category>
+            <Category>Columns</Category>
+          </Categories>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_04_083601_create_onderdil_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="33" column="6" lean-forward="true" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_04_083220_create_jenis_onderdil_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Permintaan.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="36" column="6" lean-forward="true" selection-start-line="36" selection-start-column="6" selection-end-line="36" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Onderdil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/JenisOnderdil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>

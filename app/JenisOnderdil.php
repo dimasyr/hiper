@@ -14,5 +14,8 @@ class JenisOnderdil extends Model
       'nama'
     ];
 
-
+    public function getOnderdil($queryReturn = true){
+        $data = $this->hasMany(Onderdil::class,'jenis_id');
+        return $queryReturn ? $data : $data->get();
+    }
 }

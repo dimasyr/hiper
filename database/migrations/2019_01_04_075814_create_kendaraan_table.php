@@ -14,8 +14,7 @@ class CreateKendaraanTable extends Migration
     public function up()
     {
         Schema::create('kendaraan', function (Blueprint $table) {
-            $table->string('plat_nomor',15);
-            $table->primary('plat_nomor');
+            $table->string('plat_nomor',15)->primary();
             $table->string('nomor_rangka',30)->nullable();
             $table->string('nomor_mesin',30)->nullable();
             $table->date('stnk')->nullable();
