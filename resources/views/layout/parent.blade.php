@@ -19,8 +19,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
-    <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="{{asset('css/assets/css/cs-skin-elastic.css')}}">
+    <link rel="stylesheet" href="{{asset('css/assets/css/style.css')}}">
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
@@ -109,22 +109,14 @@ input[type=text]:focus {
         <header id="header" class="header">
             <div class="top-left">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="./"><img src="images/logo.png" alt="Logo"></a>
-                    <a class="navbar-brand hidden" href="./"><img src="images/logo2.png" alt="Logo"></a>
+                    <a class="navbar-brand" href="./"><img src="{{asset('images/logo.png')}}" alt="Logo"></a>
+                    <a class="navbar-brand hidden" href="./"><img src="{{asset('images/logo.png')}}" alt="Logo"></a>
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
             <div class="top-right">
                 <div class="header-menu">
                     <div class="header-left">
-                        <!-- <button class="search-trigger"><i class="fa fa-search"></i></button>
-                        <div class="form-inline">
-                            <form class="search-form">
-                                <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
-                                <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
-                            </form>
-                        </div> -->
-
                         <div class="dropdown for-notification">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-bell"></i>
@@ -146,50 +138,6 @@ input[type=text]:focus {
                                 </a>
                             </div>
                         </div>
-
-                        <!-- <div class="dropdown for-message">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fa fa-envelope"></i>
-                                <span class="count bg-primary">4</span>
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="message">
-                                <p class="red">You have 4 Mails</p>
-                                <a class="dropdown-item media" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/1.jpg"></span>
-                                    <div class="message media-body">
-                                        <span class="name float-left">Jonathan Smith</span>
-                                        <span class="time float-right">Just now</span>
-                                        <p>Hello, this is an example msg</p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/2.jpg"></span>
-                                    <div class="message media-body">
-                                        <span class="name float-left">Jack Sanders</span>
-                                        <span class="time float-right">5 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/3.jpg"></span>
-                                    <div class="message media-body">
-                                        <span class="name float-left">Cheryl Wheeler</span>
-                                        <span class="time float-right">10 minutes ago</span>
-                                        <p>Hello, this is an example msg</p>
-                                    </div>
-                                </a>
-                                <a class="dropdown-item media" href="#">
-                                    <span class="photo media-left"><img alt="avatar" src="images/avatar/4.jpg"></span>
-                                    <div class="message media-body">
-                                        <span class="name float-left">Rachel Santos</span>
-                                        <span class="time float-right">15 minutes ago</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div> -->
-
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <img class="user-avatar rounded-circle" src="images/admin.jpg" alt="User Avatar">
@@ -211,75 +159,9 @@ input[type=text]:focus {
         </header>
         <!-- /#header -->
 
-        <!-- Content -->
-        <div class="breadcrumbs">
-                <div class="breadcrumbs-inner">
-                    <div class="row m-0">
-                        <div class="col-sm-4">
-                            <div class="page-header float-left">
-                                <div class="page-title">
-                                    <h1>Dashboard</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <div class="content">
-            <!-- Animated -->
-            <div class="animated fadeIn">
-                <!-- Search  -->
-                <div class="search-form col-lg-12">
-                    <div class="form-group">
-                         <label>Cari Plat Nomor</label>
-                            <input type="text" name="search" placeholder="Masukkan Plat Nomor ...">
-                    </div>
-                 </div>
-                <!-- /Search -->
-
-                <!-- Table -->
-                <div class="content">
-                        <div class="animated fadeIn">
-                            <div class="row">
-                                <div class="col-lg-11">
-                                    <div class="card">
-                                        <div class="card-header">
-                                            <strong class="card-title">Daftar Truk</strong>
-                                        </div>
-                                        <div class="table-stats order-table ov-h">
-                                            <table class="table ">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="serial">No</th>
-                                                        <th>ID</th>
-                                                        <th>Nama Supir</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="serial">1.</td>
-                                                        <td> L 1234 A </td>
-                                                        <td>  <span class="name">Nurhadi</span> </td>
-                                                        <td>
-                                                            <a href="info.html"><button type="button" class="btn btn-secondary btn-sm">Detail Truk</button></a>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div> <!-- /.table-stats -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-            
-                    </div>      
-                <!-- /Table -->
-            </div>
-            <!-- .animated -->
-        </div>
-        <!-- /.content -->
-        <div class="clearfix"></div>
+        @yield('home')
+        @yield('info')
+        @yield('form')
         <!-- Footer -->
         <footer class="site-footer">
             <div class="footer-inner bg-white">
