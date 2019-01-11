@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Kendaraan;
+use App\JenisOnderdil;
 
 class PageController extends Controller
 {
@@ -17,9 +18,11 @@ class PageController extends Controller
 
     public function detailTruck($plat_nomor){
         $kendaraan = Kendaraan::where('plat_nomor', $plat_nomor)->first();
-//        dd($kendaraan);
+        $jenis_onderdil = JenisOnderdil::all();
+
         return view('info', [
-            'kendaraan' => $kendaraan
+            'kendaraan' => $kendaraan,
+            'jenis_onderdil' => $jenis_onderdil
         ]);
     }
 

@@ -51,14 +51,14 @@
                                         </thead>
                                         <tbody>
 
-                                        @foreach($kendaraan as $k)
+                                        @foreach($kendaraan as $data)
                                         <tr>
                                             <td class="serial">{{ $loop->iteration }}</td>
-                                            <td>{{ $k->plat_nomor }}</td>
-                                            <td><span class="name">{{ $k->getSupir(false)->nama ?? '(Belum ada supir)' }}</span></td>
+                                            <td>{{ $data->plat_nomor }}</td>
+                                            <td><span class="name">{{ $data->getSupir(false)->nama ?? '(Belum ada supir)' }}</span></td>
                                             <td>
                                                 <a href="{{ route('detailTruck', [
-                                                'plat_nomor' => $k->plat_nomor
+                                                'plat_nomor' => $data->plat_nomor
                                                 ]) }}">
                                                     <button type="button" class="btn btn-secondary btn-sm">Detail Truk
                                                     </button>

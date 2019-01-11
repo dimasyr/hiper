@@ -92,6 +92,7 @@
                                                 </div>
                                             </div>
                                          </div>
+
                                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                                             <div class="col-lg-12">
                                                 <div class="card">
@@ -106,9 +107,10 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+                                                            @foreach($jenis_onderdil as $data)
                                                                 <tr>
-                                                                    <th scope="row">1</th>
-                                                                    <td>Ban</td>
+                                                                    <th scope="row">{{ $loop->iteration }}</th>
+                                                                    <td>{{ $data->nama }}</td>
                                                                     <td>
                                                                         <div class="progress mb-2">
                                                                             <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
@@ -142,7 +144,7 @@
                                                                     </div>
                                                                     </td>
                                                                 </tr>
-                                                                
+                                                            @endforeach
                                                             </tbody>
                                                         </table>
                                                     </div>
