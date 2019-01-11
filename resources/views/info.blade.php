@@ -11,25 +11,17 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                         <h1>Dashboard</h1>
-                    </div>
-                </div>
-                </div>
-                <div class="col-sm-8">
-                    <div class="page-header float-right">
-                        <div class="page-title">
-                            <ol class="breadcrumb text-right">
-                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                <li class="active">Detail truk</li>
-                            </ol>
-                        </div>
+                        <ol class="breadcrumb text-right">
+                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                            <li class="active">Detail truk</li>
+                        </ol>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-<div class="content">
+<div class="content" style="margin-top: -40px">
     <!-- Animated -->
     <div class="animated fadeIn">
         <!-- Table -->
@@ -86,14 +78,16 @@
                                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                             <div class="col-md-8">
                                                 <div class="card">
-                                                    <img class="card-img-top" src="https://i.imgur.com/ue0AB6J.png" alt="Card image cap">
+                                                    <img class="card-img-top" src="{{ asset('images/truk_gandeng.jpg') }}" alt="Card image cap">
                                                     <div class="card-body">
-                                                        <h2 class="card-title mb-3">L 1234 A</h2>
-                                                        <p class="card-text">Nama Supir :</p>
-                                                        <p class="card-text">Nomor Mesin :</p>
-                                                        <p class="card-text">Nomor Togel :</p>
-                                                        <p class="card-text">Nomor Resi :</p>
-                                                        <p class="card-text">Dan lain lain</p>
+                                                        <h2 class="card-title mb-3">{{ $kendaraan->plat_nomor }} </h2>
+                                                        <p class="card-text">Jenis kendaraan : {{ $kendaraan->getJenisKendaraan(false)->nama }} </p>
+                                                        <p class="card-text">Nama supir : {{ $kendaraan->getSupir(false)->nama }} </p>
+                                                        <p class="card-text">Nomor rangka : {{ $kendaraan->nomor_rangka }} </p>
+                                                        <p class="card-text">Nomor mesin : {{ $kendaraan->nomor_mesin }} </p>
+                                                        <p class="card-text">Tanggal STNK : {{ $kendaraan->stnk }} </p>
+                                                        <p class="card-text">Tanggal pajak : {{ $kendaraan->pajak }} </p>
+                                                        <p class="card-text">Tanggal kir : {{ $kendaraan->kir}} </p>
                                                     </div>
                                                 </div>
                                             </div>

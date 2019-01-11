@@ -57,7 +57,9 @@
                                             <td>{{ $k->plat_nomor }}</td>
                                             <td><span class="name">{{ $k->getSupir(false)->nama ?? '(Belum ada supir)' }}</span></td>
                                             <td>
-                                                <a href="{{ route('detailTruck') }}">
+                                                <a href="{{ route('detailTruck', [
+                                                'plat_nomor' => $k->plat_nomor
+                                                ]) }}">
                                                     <button type="button" class="btn btn-secondary btn-sm">Detail Truk
                                                     </button>
                                                 </a>

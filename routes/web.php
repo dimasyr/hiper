@@ -16,7 +16,7 @@ Route::get('/', [
     'as' => 'dashboard'
 ]);
 
-Route::get('/detail_truck', [
+Route::get('/detail_truck/{plat_nomor}', [
     'uses' => 'PageController@detailTruck',
     'as' => 'detailTruck'
 ]);

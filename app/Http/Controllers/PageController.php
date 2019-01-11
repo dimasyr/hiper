@@ -15,8 +15,12 @@ class PageController extends Controller
         ]);
     }
 
-    public function detailTruck(){
-        return view('info');
+    public function detailTruck($plat_nomor){
+        $kendaraan = Kendaraan::where('plat_nomor', $plat_nomor)->first();
+//        dd($kendaraan);
+        return view('info', [
+            'kendaraan' => $kendaraan
+        ]);
     }
 
     public function perbaikan(){
