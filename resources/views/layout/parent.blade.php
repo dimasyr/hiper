@@ -93,10 +93,10 @@ input[type=text]:focus {
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                        <a href="{{ route('dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
                     <li class="#">
-                        <a href="form.html"><i class="menu-icon ti-settings"></i>Perbaikan </a>
+                        <a href="{{ route('perbaikan') }}"><i class="menu-icon ti-settings"></i>Perbaikan </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -172,7 +172,7 @@ input[type=text]:focus {
                     <div class="col-sm-6 text-right">
                         Designed by <a href="https://colorlib.com">Colorlib</a>
                         <br>
-                        Edited by Lab
+                        Edited by Diaz A.A.
                     </div>
                 </div>
             </div>

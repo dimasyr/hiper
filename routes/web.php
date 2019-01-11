@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [
+    'uses' => 'PageController@dashboard',
+    'as' => 'dashboard'
+]);
+
+Route::get('/detail_truck', [
+    'uses' => 'PageController@detailTruck',
+    'as' => 'detailTruck'
+]);
+
+Route::get('/perbaikan', [
+    'uses' => 'PageController@perbaikan',
+    'as' => 'perbaikan'
+]);
