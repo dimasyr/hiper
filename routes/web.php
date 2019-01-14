@@ -25,3 +25,13 @@ Route::get('/perbaikan', [
     'uses' => 'PageController@perbaikan',
     'as' => 'perbaikan'
 ]);
+
+Route::get('/login', [
+    'uses' => 'PageController@login',
+    'as' => 'login'
+]);
+
+Route::get('/signup', [
+    'uses' => 'PageController@signup',
+    'as' => 'signup'
+]);

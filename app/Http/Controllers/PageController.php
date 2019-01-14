@@ -29,4 +29,12 @@ class PageController extends Controller
     public function perbaikan(){
         return view('form');
     }
+    
+    public function login(){
+        return view('page-login');
+    }
+
+    public function signup(){
+        return view('page-signup');
+    }
 }

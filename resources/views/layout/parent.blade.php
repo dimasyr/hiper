@@ -131,6 +131,8 @@ input[type=text]:focus {
         @yield('home')
         @yield('info')
         @yield('form')
+        @yield('login')
+
         <!-- Footer -->
         <footer class="site-footer">
             <div class="footer-inner bg-white">
