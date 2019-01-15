@@ -30,7 +30,7 @@ class PageController extends Controller
         return view('form');
     }
     
-    public function login(){
+    public function masuk(){
         return view('page-login');
     }
 

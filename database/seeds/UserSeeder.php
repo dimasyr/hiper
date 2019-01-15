@@ -43,12 +43,14 @@ class UserSeeder extends Seeder
             ['Tajib',4], //21
             ['Udin',4] //22
         ];
-
+        $i = 0;
         foreach ($data as $user) {
             User::create([
                 'nama' => $user[0],
+                'username' => 'user'.$i,
                 'role_id' => $user[1]
             ]);
+            $i++;
         }
     }
 }

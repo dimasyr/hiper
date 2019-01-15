@@ -11,9 +11,19 @@
 |
 */
 
-Route::get('/', [
+Auth::routes();
+Auth::routes(['register' => false]);
+
+Route::get('/dashboard', [
     'uses' => 'PageController@dashboard',
     'as' => 'dashboard'
+]);
+
+Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/masuk', [
+    'uses' => 'PageController@masuk',
+    'as' => 'masuk'
 ]);
 
 Route::get('/detail_truck/{plat_nomor}', [
@@ -24,14 +34,4 @@ Route::get('/detail_truck/{plat_nomor}', [
 Route::get('/perbaikan', [
     'uses' => 'PageController@perbaikan',
     'as' => 'perbaikan'
-]);
-
-Route::get('/login', [
-    'uses' => 'PageController@login',
-    'as' => 'login'
-]);
-
-Route::get('/signup', [
-    'uses' => 'PageController@signup',
-    'as' => 'signup'
 ]);
