@@ -21,7 +21,7 @@
 <div class="content">
 <!-- Animated -->
 <div class="animated fadeIn">
-    <div class="col-lg-10">
+    <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
                 <strong>Form Perbaikan</strong>
@@ -31,7 +31,12 @@
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Plat Nomor</label></div>
                         <div class="col-12 col-md-9">
-                            <p class="form-control-static">L 1234 A</p>
+                            <select name="select" id="select" class="form-control">
+                                <option value="0">Pilih Plat Nomor</option>
+                                <option value="1">Plat</option>
+                                <option value="2">Plat</option>
+                                <option value="3">plat</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row form-group">
