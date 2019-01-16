@@ -1,12 +1,5 @@
 <!doctype html>
-<!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
-<!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
-<!--[if IE 8]>
-<html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html class="no-js" lang=""> <!--<![endif]-->
+<html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,10 +19,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="{{asset('css/assets/css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{asset('css/assets/css/style.css')}}">
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
+    <link rel="stylesheet" href="{{asset('css/assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet"/>
 
@@ -76,7 +68,7 @@
         }
 
     </style>
-    <style>
+    {{-- <style>
         input[type=text] {
             width: 250px;
             box-sizing: border-box;
@@ -95,7 +87,7 @@
         input[type=text]:focus {
             width: 78%;
         }
-    </style>
+    </style> --}}
 </head>
 
 <body>
@@ -132,9 +124,9 @@
     <header id="header" class="header">
         <div class="top-left">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ route('dashboard')}}"><img src="{{asset('images/logo.png')}}"
+                <a class="navbar-brand" href="{{ route('dashboard')}}"><img src="{{asset('images/logo1.jpg')}}"
                                                                             alt="Logo"></a>
-                <a class="navbar-brand hidden" href="{{ route('dashboard')}}"><img src="{{asset('images/logo.png')}}"
+                <a class="navbar-brand hidden" href="{{ route('dashboard')}}"><img src="{{asset('images/logo1.jpg')}}"
                                                                                    alt="Logo"></a>
                 <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
             </div>
@@ -197,7 +189,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
-<script src="{{asset('assets/js/init/fullcalendar-init.js')}}"></script>
+<script src="{{asset('js/js/init/fullcalendar-init.js')}}"></script>
 
 <!--Local Stuff-->
 <script>
@@ -390,6 +382,23 @@
         });
         // Bar Chart #flotBarChart End
     });
+</script>
+<script src="{{ asset('js/js/lib/data-table/datatables.min.js')}}"></script>
+<script src="{{ asset('js/js/lib/data-table/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/js/lib/data-table/dataTables.buttons.min.js')}}"></script>
+<script src="{{ asset('js/js/lib/data-table/buttons.bootstrap.min.js')}}"></script>
+<script src="{{ asset('js/js/lib/data-table/jszip.min.js')}}"></script>
+<script src="{{ asset('js/js/lib/data-table/vfs_fonts.js')}}"></script>
+<script src="{{ asset('js/js/lib/data-table/buttons.html5.min.js')}}"></script>
+<script src="{{ asset('js/js/lib/data-table/buttons.print.min.js')}}"></script>
+<script src="{{ asset('js/js/lib/data-table/buttons.colVis.min.js')}}"></script>
+<script src="{{ asset('js/js/init/datatables-init.js')}}"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('#bootstrap-data-table-export').DataTable();
+  } );
 </script>
 </body>
 </html>
