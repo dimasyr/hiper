@@ -22,13 +22,22 @@
         <!-- Animated -->
         <div class="animated fadeIn">
             <!-- Search  -->
-            <div class="search-form col-lg-12">
-                <div class="form-group">
-                    <label>Cari Plat Nomor</label>
-                    <input type="text" name="search" placeholder="Masukkan Plat Nomor ...">
+            <form action="{{ route('cariPlatNomor') }}" method="GET" role="search">
+                @csrf
+                <div class="search-form col-lg-12">
+                    <div class="form-group">
+                        {{--<label>Cari Plat Nomor</label>--}}
+                        <input type="text" name="q" placeholder="Cari Plat Nomor ...">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-info ml-3 w-10">
+                                <span class="fa fa-search"></span>
+                            </button>
+                        </span>
+                    </div>
                 </div>
-            </div>
-            <!-- /Search -->
+            </form>
+        @include('layouts.alert')
+        <!-- /Search -->
 
             <!-- Table -->
             <div class="content">
@@ -52,25 +61,29 @@
                                         <tbody>
 
                                         @foreach($kendaraan as $data)
-                                        <tr>
-                                            <td class="serial">{{ $loop->iteration }}</td>
-                                            <td>{{ $data->plat_nomor }}</td>
-                                            <td><span class="name">{{ $data->getSupir(false)->nama ?? '(Belum ada supir)' }}</span></td>
-                                            <td>
-                                                <a href="{{ route('detailTruck', [
+                                            <tr>
+                                                <td class="serial">{{ $loop->iteration }}</td>
+                                                <td>{{ $data->plat_nomor }}</td>
+                                                <td>
+                                                    <span class="name">{{ $data->getSupir(false)->nama ?? '(Belum ada supir)' }}</span>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('detailTruck', [
                                                 'plat_nomor' => $data->plat_nomor
                                                 ]) }}">
-                                                    <button type="button" class="btn btn-secondary btn-sm">Detail Truk
-                                                    </button>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                                        <button type="button" class="btn btn-secondary btn-sm">Detail
+                                                            Truk
+                                                        </button>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         @endforeach
-
                                         </tbody>
+
                                     </table>
                                 </div> <!-- /.table-stats -->
                             </div>
+                            {{ $kendaraan->links() }}
                         </div>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $dataKendaraan = Kendaraan::all();
+        $dataKendaraan = Kendaraan::paginate(10);
 
         return view('home',[
             'kendaraan' => $dataKendaraan

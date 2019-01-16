@@ -19,6 +19,11 @@ Route::get('/dashboard', [
     'as' => 'dashboard'
 ]);
 
+Route::get('/cari', [
+    'uses' => 'PageController@cariPlatNomor',
+    'as' => 'cariPlatNomor'
+]);
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/masuk', [
