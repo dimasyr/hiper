@@ -19,10 +19,10 @@ Route::get('/masuk', [
     'as' => 'masuk'
 ]);
 
+Route::get('/', 'HomeController@index')->name('home');
+
 //Route Operator
 Route::middleware(['operator'])->prefix('operator')->group(function () {
-
-    Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/dashboard', [
         'uses' => 'PageController@dashboard',
@@ -49,15 +49,14 @@ Route::middleware(['operator'])->prefix('operator')->group(function () {
 //Route Owner
 Route::middleware(['owner'])->prefix('owner')->group(function () {
 
+    Route::get('/inputkendaraan', [
+        'uses' => 'PageController@inputkendaraan',
+        'as' => 'inputkendaraan'
+    ]);
+
+    Route::get('/inputonderdil', [
+        'uses' => 'PageController@inputonderdil',
+        'as' => 'inputonderdil'
+    ]);
+
 });
-
-
-Route::get('/inputkendaraan', [
-    'uses' => 'PageController@inputkendaraan',
-    'as' => 'inputkendaraan'
-]);
-
-Route::get('/inputonderdil', [
-    'uses' => 'PageController@inputonderdil',
-    'as' => 'inputonderdil'
-]);

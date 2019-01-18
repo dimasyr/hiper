@@ -10,20 +10,21 @@ class Operator
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
      * @return mixed
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::check()) {
+        if(Auth::check()){
             if (Auth::user()->role_id == 2) {
-                return redirect()->route('dashboard');
+                return $next($request);
+            } else {
+                return redirect()->route('inputkendaraan');
             }
-        } else {
+        }
+        else{
             return redirect()->route('masuk');
         }
-
-        return $next($request);
     }
 }

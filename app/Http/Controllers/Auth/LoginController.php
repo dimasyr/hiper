@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -25,13 +27,35 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
+    public function login(Request $request)
+    {
+        $username = $request->username;
+        $password = $request->password;
+
+        if (Auth::attempt([
+            'username' => $username,
+            'password' => $password
+        ])) {
+            // user login
+            if(Auth::user()->role_id == 1)
+                return redirect()->route('inputkendaraan');
+            else
+                return redirect()->route('dashboard');
+        }
+        else {
+            return back()->withErrors([
+                'email' => 'Email atau password salah !!!'
+            ]);
+        }
+    }
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

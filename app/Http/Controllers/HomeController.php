@@ -24,10 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $dataKendaraan = Kendaraan::paginate(10);
-
-        return view('home',[
-            'kendaraan' => $dataKendaraan
-        ]);
+        return redirect()->route('dashboard');
     }
 }
