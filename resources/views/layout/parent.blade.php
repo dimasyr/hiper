@@ -102,6 +102,16 @@
                 <li class="#">
                     <a href="{{ route('perbaikan') }}"><i class="menu-icon ti-settings"></i>Perbaikan </a>
                 </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Tambah Data</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputkendaraan')}}">Tambah Kendaraan</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputonderdil')}}">Tambah Onderdil</a></li>
+                    </ul>
+                </li>
+                <li class="#">
+                    <a href="#"><i class="menu-icon ti-user"></i>Tambah User </a>
+                </li>
                 <li class="#">
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();
@@ -113,6 +123,7 @@
                         @csrf
                     </form>
                 </li>
+                
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
@@ -146,6 +157,8 @@
 @yield('info')
 @yield('form')
 @yield('login')
+@yield('inputkendaraan')
+@yield('inputonderdil')
 
 <!-- Footer -->
     <footer class="site-footer">

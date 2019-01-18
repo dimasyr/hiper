@@ -40,3 +40,13 @@ Route::get('/perbaikan', [
     'uses' => 'PageController@perbaikan',
     'as' => 'perbaikan'
 ]);
+
+Route::get('/inputkendaraan', [
+    'uses' => 'PageController@inputkendaraan',
+    'as' => 'inputkendaraan'
+]);
+
+Route::get('/inputonderdil', [
+    'uses' => 'PageController@inputonderdil',
+    'as' => 'inputonderdil'
+]);
