@@ -68,26 +68,7 @@
         }
 
     </style>
-    {{-- <style>
-        input[type=text] {
-            width: 250px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 100px;
-            font-size: 16px;
-            background-color: white;
-            background-image: url('searchicon.png');
-            background-position: 10px 10px;
-            background-repeat: no-repeat;
-            padding: 12px 21px 12px 40px;
-            -webkit-transition: width 0.4s ease-in-out;
-            transition: width 0.4s ease-in-out;
-        }
 
-        input[type=text]:focus {
-            width: 78%;
-        }
-    </style> --}}
 </head>
 
 <body>
@@ -103,7 +84,8 @@
                     <a href="{{ route('perbaikan') }}"><i class="menu-icon ti-settings"></i>Perbaikan </a>
                 </li>
                 <li class="menu-item-has-children dropdown  @if(Route::currentRouteName() == 'inputkendaraan') active @endif @if(Route::currentRouteName() == 'inputonderdil') active @endif">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Tambah Data</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="menu-icon fa fa-th"></i>Tambah Data</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputkendaraan')}}">Tambah Kendaraan</a></li>
                         <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputonderdil')}}">Tambah Onderdil</a></li>

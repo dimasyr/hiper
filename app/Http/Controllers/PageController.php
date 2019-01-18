@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Session;
 class PageController extends Controller
 {
     public function dashboard(){
-        $dataKendaraan = Kendaraan::paginate(10);
+        $dataKendaraan = Kendaraan::all();
 
         return view('home',[
             'kendaraan' => $dataKendaraan
