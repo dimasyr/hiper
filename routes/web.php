@@ -14,32 +14,43 @@
 Auth::routes();
 Auth::routes(['register' => false]);
 
-Route::get('/dashboard', [
-    'uses' => 'PageController@dashboard',
-    'as' => 'dashboard'
-]);
-
-Route::get('/cari', [
-    'uses' => 'PageController@cariPlatNomor',
-    'as' => 'cariPlatNomor'
-]);
-
-Route::get('/', 'HomeController@index')->name('home');
-
 Route::get('/masuk', [
     'uses' => 'PageController@masuk',
     'as' => 'masuk'
 ]);
 
-Route::get('/detail_truck/{plat_nomor}', [
-    'uses' => 'PageController@detailTruck',
-    'as' => 'detailTruck'
-]);
+//Route Operator
+Route::middleware(['operator'])->prefix('operator')->group(function () {
 
-Route::get('/perbaikan', [
-    'uses' => 'PageController@perbaikan',
-    'as' => 'perbaikan'
-]);
+    Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('/dashboard', [
+        'uses' => 'PageController@dashboard',
+        'as' => 'dashboard'
+    ]);
+
+    Route::get('/cari', [
+        'uses' => 'PageController@cariPlatNomor',
+        'as' => 'cariPlatNomor'
+    ]);
+
+    Route::get('/detail_truck/{plat_nomor}', [
+        'uses' => 'PageController@detailTruck',
+        'as' => 'detailTruck'
+    ]);
+
+    Route::get('/perbaikan', [
+        'uses' => 'PageController@perbaikan',
+        'as' => 'perbaikan'
+    ]);
+
+});
+
+//Route Owner
+Route::middleware(['owner'])->prefix('owner')->group(function () {
+
+});
+
 
 Route::get('/inputkendaraan', [
     'uses' => 'PageController@inputkendaraan',
