@@ -13,6 +13,9 @@ class UserSeeder extends Seeder
     public function run()
     {
         $data = [
+            //OWNER
+            ['Owner',1],
+
             // OPERATOR
             ['Darul Ulum',2], //1
             ['Naili Rohmah',2], //2

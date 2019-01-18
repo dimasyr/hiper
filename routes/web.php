@@ -15,14 +15,14 @@ Auth::routes();
 Auth::routes(['register' => false]);
 
 Route::get('/masuk', [
-    'uses' => 'PageController@masuk',
+    'uses' => 'Auth\LoginController@showLoginForm',
     'as' => 'masuk'
 ]);
 
 Route::get('/', 'HomeController@index')->name('home');
 
 //Route Operator
-Route::middleware(['operator'])->prefix('operator')->group(function () {
+Route::group(['prefix' => 'operator', 'middleware' => 'operator'], function () {
 
     Route::get('/dashboard', [
         'uses' => 'PageController@dashboard',
@@ -47,7 +47,7 @@ Route::middleware(['operator'])->prefix('operator')->group(function () {
 });
 
 //Route Owner
-Route::middleware(['owner'])->prefix('owner')->group(function () {
+Route::group(['prefix' => 'owner', 'middleware' => 'owner'], function () {
 
     Route::get('/inputkendaraan', [
         'uses' => 'PageController@inputkendaraan',
@@ -60,3 +60,4 @@ Route::middleware(['owner'])->prefix('owner')->group(function () {
     ]);
 
 });
+f

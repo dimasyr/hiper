@@ -22,8 +22,7 @@ class Operator
             } else {
                 return redirect()->route('inputkendaraan');
             }
-        }
-        else{
+        } else{
             return redirect()->route('masuk');
         }
     }

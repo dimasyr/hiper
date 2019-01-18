@@ -34,6 +34,17 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLoginForm()
+    {
+        return view('page-login');
+    }
+
     public function login(Request $request)
     {
         $username = $request->username;
