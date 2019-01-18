@@ -31,11 +31,10 @@
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Plat Nomor</label></div>
                         <div class="col-12 col-md-9">
-                            <select name="select" id="select" class="form-control">
-                                <option value="0">Pilih Plat Nomor</option>
-                                <option value="1">Plat</option>
-                                <option value="2">Plat</option>
-                                <option value="3">plat</option>
+                            <select name="plat_nomor" id="plat_nomor" class="form-control">
+                                @foreach($kendaraan as $truk)
+                                <option value="{{ $truk->plat_nomor }}">{{ $truk->plat_nomor }}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>
@@ -49,11 +48,10 @@
                     <div class="row form-group">
                         <div class="col col-md-3"><label class=" form-control-label">Teknisi</label></div>
                         <div class="col-12 col-md-9">
-                            <select name="select" id="select" class="form-control">
-                                <option value="0">Pilih Plat Teknisi</option>
-                                <option value="1">Joni</option>
-                                <option value="2">Jono</option>
-                                <option value="3">Jona</option>
+                            <select name="teknisi" id="teknisi" class="form-control">
+                                @foreach($user as $teknisi)
+                                    <option value="{{ $teknisi->id}}">{{ $teknisi->nama}}</option>
+                                @endforeach
                             </select>
                         </div>
                     </div>

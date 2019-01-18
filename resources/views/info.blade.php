@@ -153,7 +153,7 @@
                                                 <div class="col-md-11">
                                                     <div class="card">
                                                         <div class="card-body">
-                                                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                                            <table id="" class="table table-striped table-bordered">
                                                                 <thead>
                                                                     <tr>
                                                                         <th>No</th>
@@ -162,13 +162,15 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>Tanggal</td>
-                                                                        <td><button type="button" class="btn btn-secondary btn-sm float-right">
-                                                                            Detail
-                                                                        </button></td>
-                                                                    </tr>
+                                                                    @if($riwayat)
+                                                                        <tr>
+                                                                            <td>1</td>
+                                                                            <td>Tanggal</td>
+                                                                            <td><button type="button" class="btn btn-secondary btn-sm float-right">
+                                                                                    Detail
+                                                                                </button></td>
+                                                                        </tr>
+                                                                    @else
                                                                     </tbody>
                                                             </table>
                                                         </div>

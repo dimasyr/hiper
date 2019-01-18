@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Permintaan;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Kendaraan;
@@ -45,15 +47,22 @@ class PageController extends Controller
     public function detailTruck($plat_nomor){
         $kendaraan = Kendaraan::where('plat_nomor', $plat_nomor)->first();
         $jenis_onderdil = JenisOnderdil::all();
+        $permintaan = Permintaan::where('kendaraan_id', $kendaraan->plat_nomor)->paginate(10);
 
         return view('info', [
             'kendaraan' => $kendaraan,
-            'jenis_onderdil' => $jenis_onderdil
+            'jenis_onderdil' => $jenis_onderdil,
+            'riwayat' => $permintaan
         ]);
     }
 
     public function perbaikan(){
-        return view('form');
+        $kendaraan = Kendaraan::all();
+        $user = User::where('role_id',3)->get();
+        return view('form',[
+            'kendaraan' => $kendaraan,
+            'user' => $user
+        ]);
     }
 
     public function inputkendaraan(){
