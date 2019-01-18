@@ -44,6 +44,11 @@ Route::group(['prefix' => 'operator', 'middleware' => 'operator'], function () {
         'as' => 'perbaikan'
     ]);
 
+    Route::get('/perbaikan/{plat_nomor}', [
+        'uses' => 'PageController@perbaikiSekarang',
+        'as' => 'perbaikiSekarang'
+    ]);
+
 });
 
 //Route Owner

@@ -59,8 +59,21 @@ class PageController extends Controller
     public function perbaikan(){
         $kendaraan = Kendaraan::all();
         $user = User::where('role_id',3)->get();
+
         return view('form',[
             'kendaraan' => $kendaraan,
+            'user' => $user
+        ]);
+    }
+
+    public function perbaikiSekarang($plat_nomor){
+        $kendaraan_terpilih = Kendaraan::where('plat_nomor', $plat_nomor)->first();
+        $kendaraan = Kendaraan::all();
+        $user = User::where('role_id',3)->get();
+
+        return view('form',[
+            'kendaraan' => $kendaraan,
+            'kendaraan_terpilih' => $kendaraan_terpilih,
             'user' => $user
         ]);
     }
