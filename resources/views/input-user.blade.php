@@ -2,7 +2,7 @@
 
 @section('title', 'Hiper')
 
-@section('inputkendaraan')
+@section('inputuser')
 
 <!-- Content -->
 <div class="breadcrumbs">
@@ -24,41 +24,30 @@
     <div class="col-lg-12">
         <div class="card">
             <div class="card-header">
-                <strong>Tambah Kendaraan</strong>
+                <strong>Tambah User</strong>
             </div>
             <div class="card-body card-block">
                 <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
                     <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Plat Nomor</label></div>
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nama</label></div>
                         <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nomor Rangka</label></div>
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Username</label></div>
                         <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nomor Mesin</label></div>
+                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Password</label></div>
                         <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
                     </div>
                     <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Stnk</label></div>
-                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Pajak</label></div>
-                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Kir</label></div>
-                        <div class="col-12 col-md-9"><input type="text" id="text-input" name="text-input" placeholder="Text" class="form-control"><small class="form-text text-muted">This is a help text</small></div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col col-md-3"><label class=" form-control-label">Jenis Kendaraan</label></div>
+                        <div class="col col-md-3"><label class=" form-control-label">Role</label></div>
                         <div class="col-12 col-md-9">
                             <select name="select" id="select" class="form-control">
-                                <option value="0">Pilih Jenis Kendaraan</option>
-                                <option value="1">Gandeng</option>
-                                <option value="2">Colt Diesel</option>
+                                <option value="0">Pilih Role</option>
+                                <option value="1">Administrator</option>
+                                <option value="2">Operator</option>
+                                <option value="3">Teknisi</option>
                             </select>
                         </div>
                     </div>

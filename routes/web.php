@@ -59,5 +59,9 @@ Route::group(['prefix' => 'owner', 'middleware' => 'owner'], function () {
         'as' => 'inputonderdil'
     ]);
 
+    Route::get('/inputuser', [
+        'uses' => 'PageController@inputuser',
+        'as' => 'inputuser'
+    ]);
+
 });
-f

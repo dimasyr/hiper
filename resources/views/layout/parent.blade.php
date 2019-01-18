@@ -96,21 +96,21 @@
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active">
+                <li class="@if(Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="{{ route('dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
-                <li class="#">
+                <li  class="@if(Route::currentRouteName() == 'perbaikan') active @endif" >
                     <a href="{{ route('perbaikan') }}"><i class="menu-icon ti-settings"></i>Perbaikan </a>
                 </li>
-                <li class="menu-item-has-children dropdown">
+                <li class="menu-item-has-children dropdown  @if(Route::currentRouteName() == 'inputkendaraan') active @endif @if(Route::currentRouteName() == 'inputonderdil') active @endif">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Tambah Data</a>
                     <ul class="sub-menu children dropdown-menu">
                         <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputkendaraan')}}">Tambah Kendaraan</a></li>
                         <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputonderdil')}}">Tambah Onderdil</a></li>
                     </ul>
                 </li>
-                <li class="#">
-                    <a href="#"><i class="menu-icon ti-user"></i>Tambah User </a>
+                <li class="@if(Route::currentRouteName() == 'inputuser') active @endif">
+                    <a href="{{ route('inputuser')}}"><i class="menu-icon ti-user"></i>Tambah User </a>
                 </li>
                 <li class="#">
                     <a href="{{ route('logout') }}"
@@ -159,6 +159,7 @@
 @yield('login')
 @yield('inputkendaraan')
 @yield('inputonderdil')
+@yield('inputuser')
 
 <!-- Footer -->
     <footer class="site-footer">

@@ -56,15 +56,15 @@ class PageController extends Controller
         return view('form');
     }
 
-    public function signup(){
-        return view('page-signup');
-    }
-
     public function inputkendaraan(){
         return view('input-kendaraan');
     }
 
     public function inputonderdil(){
         return view('input-onderdil');
+    }
+
+    public function inputuser(){
+        return view('input-user');
     }
 }
