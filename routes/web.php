@@ -54,9 +54,14 @@ Route::group(['prefix' => 'operator', 'middleware' => 'operator'], function () {
 //Route Owner
 Route::group(['prefix' => 'owner', 'middleware' => 'owner'], function () {
 
-    Route::get('/inputkendaraan', [
-        'uses' => 'PageController@inputkendaraan',
-        'as' => 'inputkendaraan'
+    Route::get('/create_kendaraan', [
+        'uses' => 'KendaraanController@create',
+        'as' => 'create.kendaraan'
+    ]);
+
+    Route::post('/store_kendaraan', [
+        'uses' => 'KendaraanController@store',
+        'as' => 'store.kendaraan'
     ]);
 
     Route::get('/inputonderdil', [

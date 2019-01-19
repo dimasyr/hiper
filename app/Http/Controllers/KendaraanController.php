@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\JenisKendaraan;
 use Illuminate\Http\Request;
 
 class KendaraanController extends Controller
@@ -23,7 +24,11 @@ class KendaraanController extends Controller
      */
     public function create()
     {
-        //
+        $jenis_kendaraan = JenisKendaraan::all();
+
+        return view('input-kendaraan', [
+            'jenis_kendaraan' => $jenis_kendaraan
+        ]);
     }
 
     /**
@@ -34,7 +39,19 @@ class KendaraanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'plat_nomor' => 'required|regex:/[A-Z]{1,2} [1-9]{1,4} [A-Z]{1,3}/',
+            'nomor_rangka' => 'required',
+            'nomor_mesin' => 'required',
+            'stnk' => 'required',
+            'pajak' => 'required',
+            'kir' => 'required',
+        ], [
+            'required' => 'kolom di atas tidak boleh kosong',
+            'regex' => 'pola plat nomor salah'
+        ]);
+
+        return redirect()->route('create.kendaraan')->with('success', 'Berhasil menambahkan kendaraan baru.');
     }
 
     /**

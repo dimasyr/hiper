@@ -46,16 +46,14 @@ class UserController extends Controller
             'username' => 'required | unique:users',
             'password' => 'required',
         ], [
-            'nama.required' => 'Nama tidak boleh kosong',
-            'username.required' => 'Username tidak boleh kosong',
-            'password.required' => 'Password tidak boleh kosong',
-            'unique' => 'Username tersebut telah digunakan'
+            'required' => 'kolom di tidak boleh kosong',
+            'unique' => 'username tersebut telah digunakan'
         ]);
 
         User::create([
             'nama' => $request->nama,
             'username' => $request->username,
-            'password' => $request->password,
+            'password' => bcrypt($request->password),
             'role_id' => $request->role_id
         ]);
 

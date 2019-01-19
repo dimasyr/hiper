@@ -80,7 +80,7 @@ class PageController extends Controller
     }
 
     public function inputkendaraan(){
-        return view('input-kendaraan');
+
     }
 
     public function inputonderdil(){

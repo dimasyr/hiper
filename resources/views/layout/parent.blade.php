@@ -83,11 +83,11 @@
                 <li  class="@if(Route::currentRouteName() == 'perbaikan') active @endif" >
                     <a href="{{ route('perbaikan') }}"><i class="menu-icon ti-settings"></i>Perbaikan </a>
                 </li>
-                <li class="menu-item-has-children dropdown  @if(Route::currentRouteName() == 'inputkendaraan') active @endif @if(Route::currentRouteName() == 'inputonderdil') active @endif">
+                <li class="menu-item-has-children dropdown  @if(Route::currentRouteName() == 'create.kendaraan') active @endif @if(Route::currentRouteName() == 'inputonderdil') active @endif">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="menu-icon fa fa-th"></i>Tambah Data</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputkendaraan')}}">Tambah Kendaraan</a></li>
+                        <li><i class="menu-icon fa fa-th"></i><a href="{{ route('create.kendaraan')}}">Tambah Kendaraan</a></li>
                         <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputonderdil')}}">Tambah Onderdil</a></li>
                     </ul>
                 </li>
