@@ -64,9 +64,14 @@ Route::group(['prefix' => 'owner', 'middleware' => 'owner'], function () {
         'as' => 'inputonderdil'
     ]);
 
-    Route::get('/inputuser', [
-        'uses' => 'PageController@inputuser',
-        'as' => 'inputuser'
+    Route::get('/create_user', [
+        'uses' => 'UserController@create',
+        'as' => 'create.user'
+    ]);
+
+    Route::post('/store_user', [
+        'uses' => 'UserController@store',
+        'as' => 'store.user'
     ]);
 
 });

@@ -91,8 +91,8 @@
                         <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputonderdil')}}">Tambah Onderdil</a></li>
                     </ul>
                 </li>
-                <li class="@if(Route::currentRouteName() == 'inputuser') active @endif">
-                    <a href="{{ route('inputuser')}}"><i class="menu-icon ti-user"></i>Tambah User </a>
+                <li class="@if(Route::currentRouteName() == 'create.user') active @endif">
+                    <a href="{{ route('create.user')}}"><i class="menu-icon ti-user"></i>Tambah User </a>
                 </li>
                 <li class="#">
                     <a href="{{ route('logout') }}"

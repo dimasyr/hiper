@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Permintaan;
+use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -87,6 +88,6 @@ class PageController extends Controller
     }
 
     public function inputuser(){
-        return view('input-user');
+
     }
 }
