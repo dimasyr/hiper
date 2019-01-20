@@ -56,7 +56,7 @@ class LoginController extends Controller
         ])) {
             // user login
             if(Auth::user()->role_id == 1)
-                return redirect()->route('inputkendaraan');
+                return redirect()->route('create.kendaraan');
             else
                 return redirect()->route('dashboard');
         }

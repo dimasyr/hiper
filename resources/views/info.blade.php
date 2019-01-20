@@ -32,11 +32,14 @@
                                     <div>
                                         <h4>Info Kendaraan</h4>
                                         <div class="float-right">
+
                                             <div>
+                                                @if(Auth::user()->role_id == 2)
                                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                                         data-target="#staticModal">
                                                     Perbaiki Sekarang
                                                 </button>
+                                                @endif
                                             </div>
                                             <div>
                                                 <div class="modal fade" id="staticModal" tabindex="-1" role="dialog"
@@ -60,11 +63,13 @@
                                                                 <button type="button" class="btn btn-secondary"
                                                                         data-dismiss="modal">Cancel
                                                                 </button>
+
                                                                 <a href="{{ route('perbaikiSekarang',['plat_nomor' => $kendaraan->plat_nomor]) }}">
                                                                     <button type="button" class="btn btn-primary">
                                                                         Confirm
                                                                     </button>
                                                                 </a>
+
                                                             </div>
                                                         </div>
                                                     </div>

@@ -5,25 +5,25 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Owner
+class CheckRole
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
+    public function handle($request, Closure $next, $role)
     {
-        if(Auth::check()){
-            if (Auth::user()->role_id == 1) {
+//        dd($role);
+        if (Auth::check()) {
+            if (in_array(Auth::user()->role_id, explode('|',$role))) {
                 return $next($request);
             } else {
                 return redirect()->route('dashboard');
             }
-        }
-        else{
+        } else {
             return redirect()->route('masuk');
         }
     }

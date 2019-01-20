@@ -80,9 +80,12 @@
                 <li class="@if(Route::currentRouteName() == 'dashboard') active @endif">
                     <a href="{{ route('dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                 </li>
+                @if(Auth::user()->role_id == 2)
                 <li  class="@if(Route::currentRouteName() == 'perbaikan') active @endif" >
                     <a href="{{ route('perbaikan') }}"><i class="menu-icon ti-settings"></i>Perbaikan </a>
                 </li>
+                @endif
+                @if(Auth::user()->role_id == 1)
                 <li class="menu-item-has-children dropdown  @if(Route::currentRouteName() == 'create.kendaraan') active @endif @if(Route::currentRouteName() == 'inputonderdil') active @endif">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="menu-icon fa fa-th"></i>Tambah Data</a>
@@ -94,6 +97,7 @@
                 <li class="@if(Route::currentRouteName() == 'create.user') active @endif">
                     <a href="{{ route('create.user')}}"><i class="menu-icon ti-user"></i>Tambah User </a>
                 </li>
+                @endif
                 <li class="#">
                     <a href="{{ route('logout') }}"
                        onclick="event.preventDefault();

@@ -21,13 +21,13 @@ Route::get('/masuk', [
 
 Route::get('/', 'HomeController@index')->name('home');
 
-//Route Operator
-Route::group(['prefix' => 'operator', 'middleware' => 'operator'], function () {
+Route::get('/dashboard', [
+    'uses' => 'PageController@dashboard',
+    'as' => 'dashboard'
+])->middleware("role:1|2");
 
-    Route::get('/dashboard', [
-        'uses' => 'PageController@dashboard',
-        'as' => 'dashboard'
-    ]);
+//Route Operator
+Route::group(['prefix' => 'operator', 'middleware' => 'role:2'], function () {
 
     Route::get('/cari', [
         'uses' => 'PageController@cariPlatNomor',
@@ -52,7 +52,12 @@ Route::group(['prefix' => 'operator', 'middleware' => 'operator'], function () {
 });
 
 //Route Owner
-Route::group(['prefix' => 'owner', 'middleware' => 'owner'], function () {
+Route::group(['prefix' => 'owner', 'middleware' => 'role:1'], function () {
+
+    Route::get('/detail_truck/{plat_nomor}', [
+        'uses' => 'PageController@detailTruck',
+        'as' => 'detailTruck'
+    ]);
 
     Route::get('/create_kendaraan', [
         'uses' => 'KendaraanController@create',
