@@ -74,6 +74,11 @@ Route::group(['prefix' => 'owner', 'middleware' => 'role:1'], function () {
         'as' => 'inputonderdil'
     ]);
 
+    Route::get('/data_user', [
+        'uses' => 'UserController@index',
+        'as' => 'index.user'
+    ]);
+
     Route::get('/create_user', [
         'uses' => 'UserController@create',
         'as' => 'create.user'

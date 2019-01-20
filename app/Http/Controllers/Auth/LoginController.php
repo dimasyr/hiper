@@ -45,28 +45,6 @@ class LoginController extends Controller
         return view('page-login');
     }
 
-    public function login(Request $request)
-    {
-        $username = $request->username;
-        $password = $request->password;
-
-        if (Auth::attempt([
-            'username' => $username,
-            'password' => $password
-        ])) {
-            // user login
-            if(Auth::user()->role_id == 1)
-                return redirect()->route('create.kendaraan');
-            else
-                return redirect()->route('dashboard');
-        }
-        else {
-            return back()->withErrors([
-                'email' => 'Email atau password salah !!!'
-            ]);
-        }
-    }
-
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

@@ -94,8 +94,8 @@
                         <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputonderdil')}}">Tambah Onderdil</a></li>
                     </ul>
                 </li>
-                <li class="@if(Route::currentRouteName() == 'create.user') active @endif">
-                    <a href="{{ route('create.user')}}"><i class="menu-icon ti-user"></i>Tambah User </a>
+                <li class="@if(Route::currentRouteName() == 'index.user') active @endif">
+                    <a href="{{ route('index.user')}}"><i class="menu-icon ti-user"></i>Data User </a>
                 </li>
                 @endif
                 <li class="#">
@@ -146,6 +146,7 @@
 @yield('inputkendaraan')
 @yield('inputonderdil')
 @yield('inputuser')
+@yield('user-all')
 
 <!-- Footer -->
     <footer class="site-footer">
