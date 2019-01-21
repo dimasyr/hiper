@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\JenisKendaraan;
+use App\Kendaraan;
+use App\User;
 use Illuminate\Http\Request;
 
 class KendaraanController extends Controller
@@ -14,7 +16,11 @@ class KendaraanController extends Controller
      */
     public function index()
     {
-        //
+        $dataKendaraan = Kendaraan::all();
+
+        return view('home',[
+            'kendaraan' => $dataKendaraan
+        ]);
     }
 
     /**
@@ -25,9 +31,11 @@ class KendaraanController extends Controller
     public function create()
     {
         $jenis_kendaraan = JenisKendaraan::all();
+        $supirs = User::where('role_id',4)->get();
 
         return view('input-kendaraan', [
-            'jenis_kendaraan' => $jenis_kendaraan
+            'jenis_kendaraan' => $jenis_kendaraan,
+            'supirs' => $supirs
         ]);
     }
 
@@ -40,18 +48,27 @@ class KendaraanController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'plat_nomor' => 'required|regex:/[A-Z]{1,2} [1-9]{1,4} [A-Z]{1,3}/',
+            'plat_nomor' => 'required|unique:kendaraan|regex:/[A-Z]{1,2} [1-9]{1,4} [A-Z]{1,3}/',
             'nomor_rangka' => 'required',
             'nomor_mesin' => 'required',
-            'stnk' => 'required',
-            'pajak' => 'required',
-            'kir' => 'required',
         ], [
             'required' => 'kolom di atas tidak boleh kosong',
-            'regex' => 'pola plat nomor salah'
+            'regex' => 'pola plat nomor salah',
+            'unique' => 'plat nomor tersebut sudah ada.'
         ]);
 
-        return redirect()->route('create.kendaraan')->with('success', 'Berhasil menambahkan kendaraan baru.');
+        Kendaraan::create([
+            'plat_nomor' => $request->plat_nomor,
+            'nomor_rangka' => $request->nomor_rangka,
+            'nomor_mesin' => $request->nomor_mesin,
+            'stnk' => $request->stnk,
+            'pajak' => $request->pajak,
+            'kir' => $request->kir,
+            'supir_id' => $request->supir_id,
+            'jenis_kendaraan_id' => $request->jenis_kendaraan_id
+        ]);
+
+        return redirect()->route('kendaraan.index')->with('success', 'Berhasil menambahkan kendaraan baru dengan plat nomor "'.$request->plat_nomor.'"');
     }
 
     /**
@@ -73,7 +90,15 @@ class KendaraanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kendaraan = Kendaraan::where('plat_nomor',$id)->first();
+        $supirs = User::where('role_id',4)->get();
+        $jenis_kendaraan = JenisKendaraan::all();
+
+        return view('kendaraan-edit', [
+            'kendaraan' => $kendaraan,
+            'jenis_kendaraan' => $jenis_kendaraan,
+            'supirs' => $supirs
+        ]);
     }
 
     /**
@@ -85,7 +110,28 @@ class KendaraanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'plat_nomor' => 'required|unique:kendaraan|regex:/[A-Z]{1,2} [1-9]{1,4} [A-Z]{1,3}/',
+            'nomor_rangka' => 'required',
+            'nomor_mesin' => 'required',
+        ], [
+            'required' => 'kolom di atas tidak boleh kosong',
+            'unique' => 'plat nomor sudah ada',
+            'regex' => 'pola plat nomor salah',
+        ]);
+
+        Kendaraan::where('plat_nomor',$id)->update([
+            'plat_nomor' => $request->plat_nomor,
+            'nomor_rangka' => $request->nomor_rangka,
+            'nomor_mesin' => $request->nomor_mesin,
+            'stnk' => $request->stnk,
+            'pajak' => $request->pajak,
+            'kir' => $request->kir,
+            'supir_id' => $request->supir_id,
+            'jenis_kendaraan_id' => $request->jenis_kendaraan_id
+        ]);
+
+        return redirect()->route('kendaraan.index')->with('edited', 'Berhasil mengedit kendaraan dengan plat nomor "'.$request->plat_nomor.'"');
     }
 
     /**
@@ -96,6 +142,11 @@ class KendaraanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $kendaraan = Kendaraan::where('plat_nomor', '=',$id)->first();
+        $plat_nomor = $kendaraan->plat_nomor;
+
+        Kendaraan::where('plat_nomor', '=',$id)->delete();
+
+        return redirect()->route('kendaraan.index')->with('deleted', 'Kendaraan dengan plat nomor "'.$plat_nomor.'" berhasil dihapus.');
     }
 }

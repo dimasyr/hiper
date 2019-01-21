@@ -78,6 +78,7 @@
                                         </div>
                                     </div>
                                     <div class="card-body">
+
                                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                                             <li class="nav-item">
                                                 <a class="nav-link active" id="pills-home-tab" data-toggle="pill"
@@ -95,6 +96,7 @@
                                                    aria-selected="false">Riwayat Perbaikan</a>
                                             </li>
                                         </ul>
+                                        {{--informasi umum--}}
                                         <div class="tab-content" id="pills-tabContent">
                                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                                  aria-labelledby="pills-home-tab">
@@ -118,11 +120,19 @@
                                                             <p class="card-text">Tanggal pajak
                                                                 : {{ $kendaraan->pajak }} </p>
                                                             <p class="card-text">Tanggal kir : {{ $kendaraan->kir}} </p>
+                                                            <a href="{{ route('kendaraan.edit', [
+                                                'id' => $kendaraan->plat_nomor
+                                                ]) }}">
+                                                                <button type="button" class="btn btn-success btn-sm"><i
+                                                                            class="fa fa-edit"> Edit Kendaraan</i>
+                                                                </button>
+                                                            </a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
+                                            {{--onderdil--}}
                                             <div class="tab-pane fade" id="pills-profile" role="tabpanel"
                                                  aria-labelledby="pills-profile-tab">
                                                 <div class="col-lg-12">
@@ -138,10 +148,10 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                @foreach($jenis_onderdil as $data)
+                                                                @foreach($onderdils as $onderdil)
                                                                     <tr>
                                                                         <th scope="row">{{ $loop->iteration }}</th>
-                                                                        <td>{{ $data->nama }}</td>
+                                                                        <td>{{ $onderdil->nama }}</td>
                                                                         <td>
                                                                             <div class="progress mb-2">
                                                                                 <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"
@@ -204,6 +214,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            {{--riwayat perbaikan--}}
                                             <div class="tab-pane fade" id="pills-contact" role="tabpanel"
                                                  aria-labelledby="pills-contact-tab">
                                                 <div class="col-md-11">

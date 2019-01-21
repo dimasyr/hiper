@@ -23,7 +23,7 @@
     <!-- Animated -->
         <div class="animated fadeIn">
             <a href="{{ route('user.create') }}">
-                <button class="btn btn-info"><i class="fa fa-plus"></i> Tambah User</button>
+                <button class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Tambah User</button>
             </a>
             <!-- Table -->
             <div class="content">

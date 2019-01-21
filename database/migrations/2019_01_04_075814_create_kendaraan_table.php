@@ -26,6 +26,7 @@ class CreateKendaraanTable extends Migration
             $table->foreign('supir_id')->references('id')->on('users');
             $table->integer('jenis_kendaraan_id')->unsigned();
             $table->foreign('jenis_kendaraan_id')->references('id')->on('jenis_kendaraan');
+            $table->softDeletes();
         });
     }
 

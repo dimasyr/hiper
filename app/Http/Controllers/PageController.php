@@ -8,7 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Kendaraan;
-use App\JenisOnderdil;
+use App\Onderdil;
 use Illuminate\Support\Facades\Session;
 
 class PageController extends Controller
@@ -47,12 +47,12 @@ class PageController extends Controller
 
     public function detailTruck($plat_nomor){
         $kendaraan = Kendaraan::where('plat_nomor', $plat_nomor)->first();
-        $jenis_onderdil = JenisOnderdil::all();
+        $onderdils = Onderdil::all();
         $permintaan = Permintaan::where('kendaraan_id', $kendaraan->plat_nomor)->paginate(10);
 
         return view('info', [
             'kendaraan' => $kendaraan,
-            'jenis_onderdil' => $jenis_onderdil,
+            'onderdils' => $onderdils,
             'riwayat' => $permintaan
         ]);
     }

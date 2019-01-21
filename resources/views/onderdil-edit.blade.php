@@ -11,7 +11,7 @@
             <div class="col-sm-4">
                 <div class="page-header float-left">
                     <div class="page-title">
-                        <h1><a href="{{ route('onderdil.index') }}">Data User </a>/ Edit User</h1>
+                        <h1><a href="{{ route('onderdil.index') }}">Data Onderdil </a>/ Edit Onderdil</h1>
                     </div>
                 </div>
             </div>
