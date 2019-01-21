@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::paginate(10);
+        $users = User::all();
 
         return view('user-all',[
             'users' => $users
@@ -61,7 +61,7 @@ class UserController extends Controller
             'role_id' => $request->role_id
         ]);
 
-        return redirect()->route('create.user')->with('success', 'Berhasil menambahkan user baru.');
+        return redirect()->route('index.user')->with('success', 'Berhasil menambahkan user baru.');
     }
 
     /**
@@ -72,7 +72,7 @@ x     * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -83,7 +83,12 @@ x     * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        $roles = Role::all();
+        return view('user-edit', [
+            'user' => $user,
+            'roles' => $roles
+        ]);
     }
 
     /**
@@ -95,7 +100,25 @@ x     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'nama' => 'required',
+            'username' => 'required|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ], [
+            'required' => 'kolom di tidak boleh kosong',
+            'unique' => 'username tersebut telah digunakan',
+            'min' => 'Kolom di atas setidaknya mengandung :digits karakter',
+            'confirmed' => 'Password yang anda masukkan tidak sama'
+        ]);
+
+        User::find($id)->update([
+            'nama' => $request->nama,
+            'username' => $request->username,
+            'password' => bcrypt($request->password),
+            'role_id' => $request->role_id
+        ]);
+
+        return redirect()->route('index.user')->with('edited', 'Data user "'.$request->nama.'" berhasil diperbarui');
     }
 
     /**
@@ -106,6 +129,9 @@ x     * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        User::find($id)->delete();
+
+        return redirect()->route('index.user')->with('deleted', 'User "'.$user->nama.'" berhasil dihapus.');
     }
 }

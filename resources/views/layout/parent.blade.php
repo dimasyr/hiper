@@ -147,6 +147,7 @@
 @yield('inputonderdil')
 @yield('inputuser')
 @yield('user-all')
+@yield('user-edit')
 
 <!-- Footer -->
     <footer class="site-footer">

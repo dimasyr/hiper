@@ -89,4 +89,19 @@ Route::group(['prefix' => 'owner', 'middleware' => 'role:1'], function () {
         'as' => 'store.user'
     ]);
 
+    Route::get('/edit_user/{id}', [
+        'uses' => 'UserController@edit',
+        'as' => 'edit.user'
+    ]);
+
+    Route::post('/update_user/{id}', [
+        'uses' => 'UserController@update',
+        'as' => 'update.user'
+    ]);
+
+    Route::delete('/delete_user/{id}', [
+        'uses' => 'UserController@destroy',
+        'as' => 'delete.user'
+    ]);
+
 });
