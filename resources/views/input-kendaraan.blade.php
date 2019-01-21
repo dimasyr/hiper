@@ -2,7 +2,7 @@
 
 @section('title', 'Hiper')
 
-@section('inputkendaraan')
+@section('content')
 
     <!-- Content -->
     <div class="breadcrumbs">

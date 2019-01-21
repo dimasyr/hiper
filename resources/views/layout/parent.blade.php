@@ -139,15 +139,7 @@
     </header>
     <!-- /#header -->
 
-@yield('home')
-@yield('info')
-@yield('form')
-@yield('login')
-@yield('inputkendaraan')
-@yield('inputonderdil')
-@yield('inputuser')
-@yield('user-all')
-@yield('user-edit')
+@yield('content')
 
 <!-- Footer -->
     <footer class="site-footer">

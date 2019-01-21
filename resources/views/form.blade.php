@@ -2,7 +2,7 @@
 
 @section('title', 'Hiper')
 
-@section('form')
+@section('content')
 
     <!-- Content -->
     <div class="breadcrumbs">

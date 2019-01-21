@@ -2,7 +2,7 @@
 
 @section('title', 'Hiper')
 
-@section('inputuser')
+@section('content')
 
     <!-- Content -->
     <div class="breadcrumbs">

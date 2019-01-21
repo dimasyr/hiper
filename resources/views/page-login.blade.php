@@ -2,7 +2,7 @@
 
 @section('title', 'Hiper')
 
-@section('login')
+@section('content')
     
 <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
