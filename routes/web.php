@@ -59,49 +59,15 @@ Route::group(['prefix' => 'owner', 'middleware' => 'role:1'], function () {
         'as' => 'detailTruck'
     ]);
 
-    Route::get('/create_kendaraan', [
-        'uses' => 'KendaraanController@create',
-        'as' => 'create.kendaraan'
-    ]);
-
-    Route::post('/store_kendaraan', [
-        'uses' => 'KendaraanController@store',
-        'as' => 'store.kendaraan'
-    ]);
-
     Route::get('/inputonderdil', [
         'uses' => 'PageController@inputonderdil',
         'as' => 'inputonderdil'
     ]);
 
-    Route::get('/data_user', [
-        'uses' => 'UserController@index',
-        'as' => 'index.user'
-    ]);
-
-    Route::get('/create_user', [
-        'uses' => 'UserController@create',
-        'as' => 'create.user'
-    ]);
-
-    Route::post('/store_user', [
-        'uses' => 'UserController@store',
-        'as' => 'store.user'
-    ]);
-
-    Route::get('/edit_user/{id}', [
-        'uses' => 'UserController@edit',
-        'as' => 'edit.user'
-    ]);
-
-    Route::post('/update_user/{id}', [
-        'uses' => 'UserController@update',
-        'as' => 'update.user'
-    ]);
-
-    Route::delete('/delete_user/{id}', [
-        'uses' => 'UserController@destroy',
-        'as' => 'delete.user'
+    Route::resources([
+        'user' => 'UserController',
+        'kendaraan' => 'KendaraanController',
+        'onderdil' => 'OnderdilController'
     ]);
 
 });

@@ -11,7 +11,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1><a href="{{ route('index.user') }}">Data User </a>/ Edit User</h1>
+                            <h1><a href="{{ route('user.index') }}">Data User </a>/ Edit User</h1>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="card-body card-block">
 
-                        <form action="{{ route('update.user', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('user.update', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data"
                               class="form-horizontal">
                             @csrf
                             <div class="row form-group">

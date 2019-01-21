@@ -61,7 +61,7 @@ class UserController extends Controller
             'role_id' => $request->role_id
         ]);
 
-        return redirect()->route('index.user')->with('success', 'Berhasil menambahkan user baru.');
+        return redirect()->route('user.index')->with('success', 'Berhasil menambahkan user baru.');
     }
 
     /**
@@ -118,7 +118,7 @@ x     * @return \Illuminate\Http\Response
             'role_id' => $request->role_id
         ]);
 
-        return redirect()->route('index.user')->with('edited', 'Data user "'.$request->nama.'" berhasil diperbarui');
+        return redirect()->route('user.index')->with('edited', 'Data user "'.$request->nama.'" berhasil diperbarui');
     }
 
     /**
@@ -132,6 +132,6 @@ x     * @return \Illuminate\Http\Response
         $user = User::find($id);
         User::find($id)->delete();
 
-        return redirect()->route('index.user')->with('deleted', 'User "'.$user->nama.'" berhasil dihapus.');
+        return redirect()->route('user.index')->with('deleted', 'User "'.$user->nama.'" berhasil dihapus.');
     }
 }

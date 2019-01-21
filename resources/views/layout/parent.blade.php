@@ -77,26 +77,24 @@
     <nav class="navbar navbar-expand-sm navbar-default">
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="@if(Route::currentRouteName() == 'dashboard') active @endif">
-                    <a href="{{ route('dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
-                </li>
                 @if(Auth::user()->role_id == 2)
-                <li  class="@if(Route::currentRouteName() == 'perbaikan') active @endif" >
-                    <a href="{{ route('perbaikan') }}"><i class="menu-icon ti-settings"></i>Perbaikan </a>
-                </li>
+                    <li class="@if(Route::currentRouteName() == 'dashboard') active @endif">
+                        <a href="{{ route('dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+                    </li>
+                    <li class="@if(Route::currentRouteName() == 'perbaikan') active @endif">
+                        <a href="{{ route('perbaikan') }}"><i class="menu-icon ti-settings"></i>Perbaikan </a>
+                    </li>
                 @endif
                 @if(Auth::user()->role_id == 1)
-                <li class="menu-item-has-children dropdown  @if(Route::currentRouteName() == 'create.kendaraan') active @endif @if(Route::currentRouteName() == 'inputonderdil') active @endif">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="menu-icon fa fa-th"></i>Tambah Data</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{ route('create.kendaraan')}}">Tambah Kendaraan</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="{{ route('inputonderdil')}}">Tambah Onderdil</a></li>
-                    </ul>
-                </li>
-                <li class="@if(Route::currentRouteName() == 'index.user') active @endif">
-                    <a href="{{ route('index.user')}}"><i class="menu-icon ti-user"></i>Data User </a>
-                </li>
+                    <li class="@if(Route::currentRouteName() == 'kendaraan.index') active @endif">
+                        <a href="{{ route('kendaraan.index')}}"><i class="menu-icon fa fa-truck"></i>Data Kendaraan</a>
+                    </li>
+                    <li class="@if(Route::currentRouteName() == 'onderdil.index') active @endif">
+                        <a href="{{ route('onderdil.index')}}"><i class="menu-icon fa fa-wrench"></i>Data Onderdil</a>
+                    </li>
+                    <li class="@if(Route::currentRouteName() == 'user.index') active @endif">
+                        <a href="{{ route('user.index')}}"><i class="menu-icon fa fa-user"></i>Data User</a>
+                    </li>
                 @endif
                 <li class="#">
                     <a href="{{ route('logout') }}"
@@ -109,7 +107,7 @@
                         @csrf
                     </form>
                 </li>
-                
+
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
@@ -390,9 +388,9 @@
 
 
 <script type="text/javascript">
-    $(document).ready(function() {
-      $('#bootstrap-data-table-export').DataTable();
-  } );
+    $(document).ready(function () {
+        $('#bootstrap-data-table-export').DataTable();
+    });
 </script>
 </body>
 </html>

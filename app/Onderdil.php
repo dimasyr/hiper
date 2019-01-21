@@ -8,18 +8,14 @@ class Onderdil extends Model
 {
     protected $table = 'onderdil';
 
+    protected $primaryKey = 'id';
+
     protected $fillable = [
-        'nomor_seri', 'merk', 'masa_berlaku', 'tempat_pembelian', 'kategori', 'jenis_id', 'permintaan_id'
+        'nama'
     ];
 
-    public function getPermintaan($queryReturn = true){
-        $data = $this->belongsTo(Permintaan::class,'permintaan_id');
-        return $queryReturn ? $data : $data->first();
+    public function getOnderdilKendaraan($queryReturn = true){
+        $data = $this->hasMany(OnderdilKendaraan::class,'onderdil_id');
+        return $queryReturn ? $data : $data->get();
     }
-
-    public function getJenisOnderdil($queryReturn = true){
-        $data = $this->belongsTo(JenisOnderdil::class,'jenis_id');
-        return $queryReturn ? $data : $data->first();
-    }
-
 }

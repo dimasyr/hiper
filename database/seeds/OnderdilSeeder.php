@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\JenisOnderdil;
+use App\Onderdil;
 
-class JenisOnderdilSeeder extends Seeder
+class OnderdilSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -36,7 +36,7 @@ class JenisOnderdilSeeder extends Seeder
         ];
 
         foreach ($data as $nama) {
-            JenisOnderdil::create([
+            Onderdil::create([
                 'nama' => $nama
             ]);
         }

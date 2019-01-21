@@ -11,7 +11,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>Data User</h1>
+                            <h1>Data Onderdil</h1>
                         </div>
                     </div>
                 </div>
@@ -22,8 +22,8 @@
     @include('layouts.alert')
     <!-- Animated -->
         <div class="animated fadeIn">
-            <a href="{{ route('user.create') }}">
-                <button class="btn btn-info"><i class="fa fa-plus"></i> Tambah User</button>
+            <a href="{{ route('onderdil.create') }}">
+                <button class="btn btn-info"><i class="fa fa-plus"></i> Tambah Onderdil</button>
             </a>
             <!-- Table -->
             <div class="content">
@@ -32,7 +32,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong class="card-title">Daftar User</strong>
+                                    <strong class="card-title">Daftar Onderdil</strong>
                                 </div>
                                 <div class="card-body">
                                     <table id="bootstrap-data-table" class="table table-striped table-bordered"
@@ -41,28 +41,24 @@
                                         <tr>
                                             <th class="serial">No</th>
                                             <th>Nama</th>
-                                            <th>Username</th>
-                                            <th>Role</th>
                                             <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
 
-                                        @foreach($users as $user)
+                                        @foreach($onderdils as $onderdil)
                                             <tr>
                                                 <td class="serial">{{ $loop->iteration }}</td>
-                                                <td>{{ $user->nama}}</td>
-                                                <td>{{ $user->username }}</td>
-                                                <td>{{ $user->getRole(false)->nama }}</td>
+                                                <td>{{ $onderdil->nama}}</td>
                                                 <td>
-                                                    <a href="{{ route('user.edit', [
-                                                'id' => $user->id
+                                                    <a href="{{ route('onderdil.edit', [
+                                                'id' => $onderdil->id
                                                 ]) }}">
                                                         <button type="button" class="btn btn-success btn-sm"><i
                                                                     class="fa fa-edit"></i>
                                                         </button>
                                                     </a>
-                                                    <form onclick="return confirm('Apakah anda yakin ingin menghapus user tersebut?');" action="{{ route('user.destroy',[$user->id]) }}" method="post" class="d-inline">
+                                                    <form onclick="return confirm('Apakah anda yakin ingin menghapus onderdil tersebut?');" action="{{ route('onderdil.destroy',[$onderdil->id]) }}" method="post" class="d-inline">
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger btn-sm"><i
                                                                     class="fa fa-trash"></i>

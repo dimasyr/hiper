@@ -28,7 +28,7 @@
                         <strong>Tambah Kendaraan</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="{{ route('store.kendaraan') }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('kendaraan.store') }}" method="POST" enctype="multipart/form-data"
                               class="form-horizontal">
                             @csrf
                             <div class="row form-group">
