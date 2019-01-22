@@ -142,10 +142,10 @@ class KendaraanController extends Controller
      */
     public function destroy($id)
     {
-        $kendaraan = Kendaraan::where('plat_nomor', '=',$id)->first();
+        $kendaraan = Kendaraan::where('plat_nomor', $id)->first();
         $plat_nomor = $kendaraan->plat_nomor;
 
-        Kendaraan::where('plat_nomor', '=',$id)->delete();
+        Kendaraan::where('plat_nomor', $id)->delete();
 
         return redirect()->route('kendaraan.index')->with('deleted', 'Kendaraan dengan plat nomor "'.$plat_nomor.'" berhasil dihapus.');
     }

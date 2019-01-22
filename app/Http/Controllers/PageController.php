@@ -59,23 +59,26 @@ class PageController extends Controller
 
     public function perbaikan(){
         $kendaraan = Kendaraan::all();
-        $user = User::where('role_id',3)->get();
+        $teknisis = User::where('role_id',3)->get();
+        $supirs = User::where('role_id',4)->get();
 
         return view('form',[
             'kendaraan' => $kendaraan,
-            'user' => $user
+            'teknisis' => $teknisis,
+            'supirs' => $supirs
         ]);
     }
 
     public function perbaikiSekarang($plat_nomor){
         $kendaraan_terpilih = Kendaraan::where('plat_nomor', $plat_nomor)->first();
         $kendaraan = Kendaraan::all();
-        $user = User::where('role_id',3)->get();
+        $teknisis = User::where('role_id',3)->get();
+        $supirs = User::where('role_id',4)->get();
 
         return view('form',[
             'kendaraan' => $kendaraan,
-            'kendaraan_terpilih' => $kendaraan_terpilih,
-            'user' => $user
+            'teknisis' => $teknisis,
+            'supirs' => $supirs
         ]);
     }
 

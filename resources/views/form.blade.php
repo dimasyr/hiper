@@ -54,8 +54,18 @@
                                 <div class="col col-md-3"><label class=" form-control-label">Teknisi</label></div>
                                 <div class="col-12 col-md-9">
                                     <select name="teknisi" id="teknisi" class="form-control">
-                                        @foreach($user as $teknisi)
+                                        @foreach($teknisis as $teknisi)
                                             <option value="{{ $teknisi->id}}">{{ $teknisi->nama}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label">Supir</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="supir" id="supir" class="form-control">
+                                        @foreach($supirs as $supir)
+                                            <option value="{{ $supir->id}}">{{ $supir->nama}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -103,8 +113,6 @@
                 </div>
                 <div class="card-body">
                     <button type="button" class="btn btn-primary">Submit
-                    </button>
-                    <button type="button" class="btn btn-danger">Reset
                     </button>
                 </div>
             </div>

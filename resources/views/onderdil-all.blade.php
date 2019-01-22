@@ -23,7 +23,7 @@
     <!-- Animated -->
         <div class="animated fadeIn">
             <a href="{{ route('onderdil.create') }}">
-                <button class="btn btn-info"><i class="fa fa-plus"></i> Tambah Onderdil</button>
+                <button class="btn btn-info btn-smlogincont"><i class="fa fa-plus"></i> Tambah Onderdil</button>
             </a>
             <!-- Table -->
             <div class="content">

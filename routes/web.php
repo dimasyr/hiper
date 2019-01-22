@@ -26,17 +26,17 @@ Route::get('/dashboard', [
     'as' => 'dashboard'
 ])->middleware("role:1|2");
 
+Route::get('/detail_truck/{plat_nomor}', [
+    'uses' => 'PageController@detailTruck',
+    'as' => 'detailTruck'
+])->middleware("role:1|2");
+
 //Route Operator
 Route::group(['prefix' => 'operator', 'middleware' => 'role:2'], function () {
 
     Route::get('/cari', [
         'uses' => 'PageController@cariPlatNomor',
         'as' => 'cariPlatNomor'
-    ]);
-
-    Route::get('/detail_truck/{plat_nomor}', [
-        'uses' => 'PageController@detailTruck',
-        'as' => 'detailTruck'
     ]);
 
     Route::get('/perbaikan', [
@@ -49,15 +49,13 @@ Route::group(['prefix' => 'operator', 'middleware' => 'role:2'], function () {
         'as' => 'perbaikiSekarang'
     ]);
 
+//    Route::resources([
+//        'perbaikan' => 'PermintaanController',
+//    ]);
 });
 
 //Route Owner
 Route::group(['prefix' => 'owner', 'middleware' => 'role:1'], function () {
-
-    Route::get('/detail_truck/{plat_nomor}', [
-        'uses' => 'PageController@detailTruck',
-        'as' => 'detailTruck'
-    ]);
 
     Route::get('/inputonderdil', [
         'uses' => 'PageController@inputonderdil',

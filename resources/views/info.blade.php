@@ -123,9 +123,11 @@
                                                             <a href="{{ route('kendaraan.edit', [
                                                 'id' => $kendaraan->plat_nomor
                                                 ]) }}">
+                                                                @if(Auth::user()->role_id == 1)
                                                                 <button type="button" class="btn btn-success btn-sm"><i
                                                                             class="fa fa-edit"> Edit Kendaraan</i>
                                                                 </button>
+                                                                @endif
                                                             </a>
                                                         </div>
                                                     </div>
