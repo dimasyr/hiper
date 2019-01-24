@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\OnderdilKendaraan;
 use App\Permintaan;
 use App\Role;
 use App\User;
@@ -61,11 +62,13 @@ class PageController extends Controller
         $kendaraan = Kendaraan::all();
         $teknisis = User::where('role_id',3)->get();
         $supirs = User::where('role_id',4)->get();
+        $onderdils = Onderdil::all();
 
         return view('form',[
             'kendaraan' => $kendaraan,
             'teknisis' => $teknisis,
-            'supirs' => $supirs
+            'supirs' => $supirs,
+            'onderdils' => $onderdils
         ]);
     }
 
@@ -74,23 +77,47 @@ class PageController extends Controller
         $kendaraan = Kendaraan::all();
         $teknisis = User::where('role_id',3)->get();
         $supirs = User::where('role_id',4)->get();
+        $onderdils = Onderdil::all();
 
         return view('form',[
             'kendaraan' => $kendaraan,
             'teknisis' => $teknisis,
-            'supirs' => $supirs
+            'supirs' => $supirs,
+            'onderdils' => $onderdils
         ]);
     }
 
-    public function inputkendaraan(){
+    public function prosesPerbaikan(Request $request){
 
-    }
+        $request->validate([
+            'onderdil_id.*' => 'required',
+            'nomor_seri.*' => 'required',
+            'merk.*' => 'required',
+            'masa_berlaku.*' => 'required',
+            'tempat_pembelian.*' => 'required',
+        ], [
+            'required' => 'Tidak boleh kosong'
+        ]);
 
-    public function inputonderdil(){
-        return view('input-onderdil');
-    }
+        $permintaan = Permintaan::create([
+            'supir_id' => $request->supir_id,
+            'teknisi_id' => $request->teknisi_id,
+            'operator_id' => $request->operator_id,
+            'kendaraan_id' => $request->plat_nomor
+        ]);
 
-    public function inputuser(){
+        foreach ($request->input('onderdil_id.*') as $index => $value){
+            OnderdilKendaraan::create([
+                'onderdil_id' => $value,
+                'nomor_seri' => $request->input('nomor_seri.*')[$index],
+                'merk' => $request->input('merk.*')[$index],
+                'masa_berlaku' => $request->input('masa_berlaku.*')[$index],
+                'tempat_pembelian' => $request->input('tempat_pembelian.*')[$index],
+                'permintaan_id' => $permintaan->id
+            ]);
+        }
+
+        return redirect('form')->with('success','Berhasil melakukan perbaikan.');
 
     }
 }

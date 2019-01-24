@@ -3,34 +3,30 @@
 @section('title', 'Hiper')
 
 @section('content')
-
-    <!-- Content -->
-    <div class="breadcrumbs">
-        <div class="breadcrumbs-inner">
-            <div class="row m-0">
-                <div class="col-sm-4">
-                    <div class="page-header float-left">
-                        <div class="page-title">
-                            <h1>Perbaikan</h1>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    @include('layouts.alert')
+    <div class="alert alert-danger print-error-msg" style="display:none">
+        <ul></ul>
     </div>
+
+
+    <div class="alert alert-success print-success-msg" style="display:none">
+        <ul></ul>
+    </div>
+    <!-- Content -->
     <div class="content">
         <!-- Animated -->
         <div class="animated fadeIn">
             <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong>Form Perbaikan</strong>
-                    </div>
-                    <div class="card-body card-block">
-                        <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <form action="{{ route('proses.perbaikan') }}" method="post" name="form_perbaikan" id="form_perbaikan" class="form-horizontal">
+                    @csrf
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Form Perbaikan</strong>
+                        </div>
+                        <div class="card-body card-block">
                             <div class="row form-group">
-                                <div class="col col-md-3"><label class=" form-control-label">Plat Nomor</label></div>
-                                <div class="col-12 col-md-9">
+                                <div class="col col-md-2"><label class=" form-control-label">Plat Nomor</label></div>
+                                <div class="col-3 col-md-3">
                                     <select name="plat_nomor" id="plat_nomor" class="form-control">
                                         @foreach($kendaraan as $truk)
                                             <option value="{{ $truk->plat_nomor }}"
@@ -40,81 +36,112 @@
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Tanggal</label>
+                                <div class="col col-md-1"></div>
+                                <div class="col col-md-2"><label for="disabled-input" class=" form-control-label">Tanggal</label>
                                 </div>
-                                <div class="col-12 col-md-9"><input type="text" id="disabled-input"
-                                                                    name="disabled-input" placeholder="<?php
+                                <div class="col-3 col-md-3"><input type="text" id="disabled-input"
+                                                                   name="disabled-input" placeholder="<?php
                                     $tgl = date('l, d-m-Y');
                                     echo $tgl;
                                     ?>" disabled="" class="form-control"></div>
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-3"><label class=" form-control-label">Teknisi</label></div>
-                                <div class="col-12 col-md-9">
-                                    <select name="teknisi" id="teknisi" class="form-control">
+                                <div class="col col-md-2"><label class=" form-control-label">Teknisi</label></div>
+                                <div class="col-3 col-md-3">
+                                    <select name="teknisi_id" id="teknisi_id" class="form-control">
                                         @foreach($teknisis as $teknisi)
                                             <option value="{{ $teknisi->id}}">{{ $teknisi->nama}}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3"><label class=" form-control-label">Supir</label></div>
-                                <div class="col-12 col-md-9">
-                                    <select name="supir" id="supir" class="form-control">
+                                <div class="col col-md-1"></div>
+                                <div class="col col-md-2"><label class=" form-control-label">Supir</label></div>
+                                <div class="col-3 col-md-3">
+                                    <select name="supir_id" id="supir_id" class="form-control">
                                         @foreach($supirs as $supir)
                                             <option value="{{ $supir->id}}">{{ $supir->nama}}</option>
                                         @endforeach
                                     </select>
                                 </div>
+                                <input type="hidden" name="operator_id" value="{{ Auth::user()->id }}">
                             </div>
                             <div class="col-lg-12">
                                 <div class="card">
-                                    <div class="card-header">
-                                        <button class="card-title">Basic Table</button>
-                                    </div>
                                     <div class="card-body">
-                                        <table class="table">
+                                        <table class="table" >
                                             <thead>
                                             <tr>
-                                                <th scope="col">#</th>
-                                                <th scope="col">First</th>
-                                                <th scope="col">Last</th>
-                                                <th scope="col">Handle</th>
+                                                <th scope="col">Onderdil</th>
+                                                <th scope="col">No. Seri</th>
+                                                <th scope="col">Merk</th>
+                                                <th scope="col">Masa berlaku (tahun)</th>
+                                                <th scope="col">Tempat beli</th>
+                                                <th scope="col">
+                                                    <button type="button" class="btn btn-sm btn-success" name="add" id="add">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </th>
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="dynamic_field">
                                             <tr>
-                                                <th scope="row">1</th>
-                                                <td>Mark</td>
-                                                <td>Otto</td>
-                                                <td>@mdo</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">2</th>
-                                                <td>Jacob</td>
-                                                <td>Thornton</td>
-                                                <td>@fat</td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">3</th>
-                                                <td>Larry</td>
-                                                <td>the Bird</td>
-                                                <td>@twitter</td>
+                                                <th style="width: 200px;">
+                                                    <select name="onderdil_id[]" class="form-control">
+                                                        @foreach($onderdils as $onderdil)
+                                                            <option value="{{ $onderdil->id}}">{{ $onderdil->nama}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </th>
+                                                <td>
+                                                    <input class="form-control" type="text" name="nomor_seri[]">
+                                                    <small class="form-text text-muted alert-danger">
+                                                        @if($errors->has('nomor_seri.*'))
+                                                            {{ $errors->first('nomor_seri.*') }}
+                                                        @endif
+                                                    </small>
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" type="text" name="merk[]">
+                                                    <small class="form-text text-muted alert-danger">
+                                                        @if($errors->has('merk.*'))
+                                                            {{ $errors->first('merk.*') }}
+                                                        @endif
+                                                    </small>
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" type="text" name="masa_berlaku[]">
+                                                    <small class="form-text text-muted alert-danger">
+                                                        @if($errors->has('masa_berlaku.*'))
+                                                            {{ $errors->first('masa_berlaku.*') }}
+                                                        @endif
+                                                    </small>
+                                                </td>
+                                                <td>
+                                                    <input class="form-control" type="text" name="tempat_pembelian[]">
+                                                    <small class="form-text text-muted alert-danger">
+                                                        @if($errors->has('tempat_pembelian.*'))
+                                                            {{ $errors->first('tempat_pembelian.*') }}
+                                                        @endif
+                                                    </small>
+                                                </td>
+                                                {{--<td>--}}
+                                                    {{--<button class="btn btn-sm btn-danger">--}}
+                                                    {{--<i class="fa fa-close"></i>--}}
+                                                    {{--</button>--}}
+                                                {{--</td>--}}
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
-                        </form>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card-body">
-                    <button type="button" class="btn btn-primary">Submit
-                    </button>
-                </div>
+                    <div class="card-body">
+                        <button type="submit" class="btn btn-primary" id="submit" name="submit">Submit
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -124,3 +151,66 @@
     <div class="clearfix"></div>
 
 @endsection
+@push('js')
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postURL = "<?php echo url('proses.perbaikan'); ?>";
+        var i = 1;
+
+        /*
+        menambah field input onderdil
+         */
+        $('#add').click(function () {
+            i++;
+            $('#dynamic_field').append(
+                '<tr id="row'+i+'" class="dynamic-added">'+$('tbody').find('tr').clone()[0].innerHTML+'<td><button type="button" name="remove" id="'+i+'" class="btn btn-sm btn-danger btn_remove"><i class="fa fa-close"></i></button></td>'+'</tr>'
+            );
+        });
+
+        /*
+        menghapus field input onderdil
+         */
+        $(document).on('click', '.btn_remove', function () {
+            var button_id = $(this).attr("id");
+            $('#row' + button_id + '').remove();
+        });
+
+        // $.ajaxSetup({
+        //     headers: {
+        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //     }
+        // });
+
+        // $('#submit').click(function () {
+        //     $.ajax({
+        //         url: postURL,
+        //         method: "POST",
+        //         data: $('#form_perbaikan').serialize(),
+        //         type: 'json',
+        //         success: function (data) {
+        //             if (data.error) {
+        //                 printErrorMsg(data.error);
+        //             } else {
+        //                 i = 1;
+        //                 $('.dynamic-added').remove();
+        //                 $('#form_perbaikan')[0].reset();
+        //                 $(".print-success-msg").find("ul").html('');
+        //                 $(".print-success-msg").css('display', 'block');
+        //                 $(".print-error-msg").css('display', 'none');
+        //                 $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
+        //             }
+        //         }
+        //     });
+        // });
+
+        function printErrorMsg(msg) {
+            $(".print-error-msg").find("ul").html('');
+            $(".print-error-msg").css('display', 'block');
+            $(".print-success-msg").css('display', 'none');
+            $.each(msg, function (key, value) {
+                $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
+            });
+        }
+    });
+</script>
+@endpush

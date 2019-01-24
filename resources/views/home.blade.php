@@ -22,9 +22,11 @@
     @include('layouts.alert')
         <!-- Animated -->
         <div class="animated fadeIn">
+            @if(Auth::user()->role_id == 1)
             <a href="{{ route('kendaraan.create') }}">
                 <button class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Kendaraan</button>
             </a>
+            @endif
             <!-- Table -->
             <div class="content">
                 <div class="animated fadeIn">

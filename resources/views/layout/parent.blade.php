@@ -392,5 +392,6 @@
         $('#bootstrap-data-table-export').DataTable();
     });
 </script>
+@stack('js')
 </body>
 </html>

@@ -19,7 +19,7 @@ class CreateOnderdilKendaraanTable extends Migration
             $table->string('merk',30);
             $table->integer('masa_berlaku');
             $table->string('tempat_pembelian',100);
-            $table->string('kategori',15);
+//            $table->string('kategori',15);
             $table->timestamps();
 
             $table->integer('onderdil_id')->unsigned();

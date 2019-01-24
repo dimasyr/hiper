@@ -53,7 +53,7 @@ class KendaraanController extends Controller
             'nomor_mesin' => 'required',
         ], [
             'required' => 'kolom di atas tidak boleh kosong',
-            'regex' => 'pola plat nomor salah',
+               'regex' => 'pola plat nomor salah',
             'unique' => 'plat nomor tersebut sudah ada.'
         ]);
 

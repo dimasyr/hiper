@@ -49,6 +49,11 @@ Route::group(['prefix' => 'operator', 'middleware' => 'role:2'], function () {
         'as' => 'perbaikiSekarang'
     ]);
 
+    Route::post('/proses_perbaikan', [
+        'uses' => 'PageController@prosesPerbaikan',
+        'as' => 'proses.perbaikan'
+    ]);
+
 //    Route::resources([
 //        'perbaikan' => 'PermintaanController',
 //    ]);
