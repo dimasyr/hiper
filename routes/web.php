@@ -54,6 +54,11 @@ Route::group(['prefix' => 'operator', 'middleware' => 'role:2'], function () {
         'as' => 'proses.perbaikan'
     ]);
 
+    Route::get('/inforiwayat', [
+        'uses' => 'PageController@inforiwayat',
+        'as' => 'inforiwayat'
+    ]);    
+
 //    Route::resources([
 //        'perbaikan' => 'PermintaanController',
 //    ]);

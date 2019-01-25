@@ -120,4 +120,9 @@ class PageController extends Controller
         return redirect('form')->with('success','Berhasil melakukan perbaikan.');
 
     }
+
+    public function inforiwayat()
+    {
+        return view('info-riwayat');
+    }
 }
