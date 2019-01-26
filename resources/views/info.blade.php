@@ -35,10 +35,11 @@
 
                                             <div>
                                                 @if(Auth::user()->role_id == 2)
-                                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                                        data-target="#staticModal">
-                                                    Perbaiki Sekarang
-                                                </button>
+                                                    <button type="button" class="btn btn-primary btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#staticModal">
+                                                        Perbaiki Sekarang
+                                                    </button>
                                                 @endif
                                             </div>
                                             <div>
@@ -124,9 +125,10 @@
                                                 'id' => $kendaraan->plat_nomor
                                                 ]) }}">
                                                                 @if(Auth::user()->role_id == 1)
-                                                                <button type="button" class="btn btn-success btn-sm"><i
-                                                                            class="fa fa-edit"> Edit Kendaraan</i>
-                                                                </button>
+                                                                    <button type="button"
+                                                                            class="btn btn-success btn-sm"><i
+                                                                                class="fa fa-edit"> Edit Kendaraan</i>
+                                                                    </button>
                                                                 @endif
                                                             </a>
                                                         </div>
@@ -232,16 +234,20 @@
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                    <tr>
-                                                                        <td>1</td>
-                                                                        <td>Tanggal</td>
-                                                                        <td>
-                                                                            <button type="button"
-                                                                                    class="btn btn-secondary btn-sm float-right">
-                                                                                Detail
-                                                                            </button>
-                                                                        </td>
-                                                                    </tr>
+                                                                    @foreach($riwayat as $permintaan)
+                                                                        <tr>
+                                                                            <td>{{ $loop->iteration }}</td>
+                                                                            <td>{{ $permintaan->created_at }}</td>
+                                                                            <td>
+                                                                                <a href="{{ route('info.riwayat',['id' => $permintaan->id]) }}">
+                                                                                    <button type="button"
+                                                                                            class="btn btn-info btn-sm float-right">
+                                                                                        Detail
+                                                                                    </button>
+                                                                                </a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    @endforeach
                                                                     </tbody>
                                                                 </table>
                                                             @else
@@ -269,5 +275,5 @@
         </div>
         <!-- /.content -->
         <div class="clearfix"></div>
-
+    </div>
 @endsection

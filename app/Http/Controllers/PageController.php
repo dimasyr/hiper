@@ -117,12 +117,19 @@ class PageController extends Controller
             ]);
         }
 
-        return redirect('form')->with('success','Berhasil melakukan perbaikan.');
+        return redirect()->route('perbaikan')->with('success','Berhasil melakukan perbaikan.');
 
     }
 
-    public function inforiwayat()
+    public function infoRiwayat($id)
     {
-        return view('info-riwayat');
+        $permintaan = Permintaan::where('id',$id)->first();
+        $kendaraan = Kendaraan::where('plat_nomor',$permintaan->kendaraan_id)->first();
+        $onderdils = OnderdilKendaraan::where('permintaan_id',$id)->get();
+        return view('info-riwayat', [
+            'onderdils' => $onderdils,
+            'permintaan' => $permintaan,
+            'kendaraan' => $kendaraan
+        ]);
     }
 }

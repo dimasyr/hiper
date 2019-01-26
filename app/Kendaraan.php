@@ -24,4 +24,9 @@ class Kendaraan extends Model
         $data = $this->belongsTo('App\JenisKendaraan','jenis_kendaraan_id');
         return $queryReturn ? $data : $data->first();
     }
+
+    public function getPermintaan($queryReturn = true){
+        $data = $this->hasMany(Permintaan::class,'kendaraan_id');
+        return $queryReturn ? $data : $data->get();
+    }
 }

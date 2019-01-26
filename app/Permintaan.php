@@ -32,7 +32,7 @@ class Permintaan extends Model
         return $queryReturn ? $data : $data->first();
     }
 
-    public function getOnderdil($queryReturn = true ){
+    public function getOnderdilKendaraan($queryReturn = true ){
         $data = $this->hasMany(OnderdilKendaraan::class,'permintaan_id');
         return $queryReturn ? $data : $data->get();
     }

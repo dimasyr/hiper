@@ -21,15 +21,24 @@ Route::get('/masuk', [
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/dashboard', [
-    'uses' => 'PageController@dashboard',
-    'as' => 'dashboard'
-])->middleware("role:1|2");
+Route::group(['middleware' => 'role:1|2'], function(){
 
-Route::get('/detail_truck/{plat_nomor}', [
-    'uses' => 'PageController@detailTruck',
-    'as' => 'detailTruck'
-])->middleware("role:1|2");
+    Route::get('/dashboard', [
+        'uses' => 'PageController@dashboard',
+        'as' => 'dashboard'
+    ]);
+
+    Route::get('/detail_truck/{plat_nomor}', [
+        'uses' => 'PageController@detailTruck',
+        'as' => 'detailTruck'
+    ]);
+
+    Route::get('/info_riwayat/{id}', [
+        'uses' => 'PageController@infoRiwayat',
+        'as' => 'info.riwayat'
+    ]);
+});
+
 
 //Route Operator
 Route::group(['prefix' => 'operator', 'middleware' => 'role:2'], function () {
@@ -53,11 +62,6 @@ Route::group(['prefix' => 'operator', 'middleware' => 'role:2'], function () {
         'uses' => 'PageController@prosesPerbaikan',
         'as' => 'proses.perbaikan'
     ]);
-
-    Route::get('/inforiwayat', [
-        'uses' => 'PageController@inforiwayat',
-        'as' => 'inforiwayat'
-    ]);    
 
 //    Route::resources([
 //        'perbaikan' => 'PermintaanController',

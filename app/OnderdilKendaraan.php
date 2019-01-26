@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class OnderdilKendaraan extends Model
@@ -11,6 +12,15 @@ class OnderdilKendaraan extends Model
     protected $fillable = [
         'nomor_seri', 'merk', 'masa_berlaku', 'tempat_pembelian', 'kategori', 'onderdil_id', 'permintaan_id'
     ];
+
+    protected $dates = [
+        'created_at', 'updated_at'
+    ];
+
+    public function kadaluarsa()
+    {
+        return $this->created_at->addYears($this->masa_berlaku);
+    }
 
     public function getPermintaan($queryReturn = true){
         $data = $this->belongsTo(Permintaan::class,'permintaan_id');
