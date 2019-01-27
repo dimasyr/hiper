@@ -31,16 +31,17 @@
                                 <div class="card-header float-left">
                                     <div>
                                         <h4>Info Kendaraan</h4>
+                                        @if(Auth::user()->role_id == 2)
+                                            <button type="button" class="btn btn-success btn-sm "
+                                                    data-toggle="modal"
+                                                    data-target="#staticModal">
+                                                <i class="menu-icon fa fa-wrench"></i> Perbaiki
+                                            </button>
+                                        @endif
                                         <div class="float-right">
 
                                             <div>
-                                                @if(Auth::user()->role_id == 2)
-                                                    <button type="button" class="btn btn-primary btn-sm"
-                                                            data-toggle="modal"
-                                                            data-target="#staticModal">
-                                                        Perbaiki Sekarang
-                                                    </button>
-                                                @endif
+
                                             </div>
                                             <div>
                                                 <div class="modal fade" id="staticModal" tabindex="-1" role="dialog"
@@ -97,8 +98,9 @@
                                                    aria-selected="false">Riwayat Perbaikan</a>
                                             </li>
                                         </ul>
-                                        {{--informasi umum--}}
                                         <div class="tab-content" id="pills-tabContent">
+
+                                            {{--informasi umum--}}
                                             <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
                                                  aria-labelledby="pills-home-tab">
                                                 <div class="col-md-8">
@@ -157,18 +159,23 @@
                                                                         <th scope="row">{{ $loop->iteration }}</th>
                                                                         <td>{{ $onderdil->nama }}</td>
                                                                         <td>
+                                                                            @if($kendaraan->getStatusOnderdil($onderdil->id) != null)
                                                                             <div class="progress mb-2">
-                                                                                <div class="progress-bar bg-info progress-bar-striped progress-bar-animated"
+                                                                                <div class="text-dark font-weight-bold progress-bar bg-info progress-bar-striped progress-bar-animated"
                                                                                      role="progressbar"
-                                                                                     style="width: 50%"
-                                                                                     aria-valuenow="50"
+                                                                                     style="width: {{ number_format($kendaraan->getStatusOnderdil($onderdil->id),2) }}%"
+                                                                                     aria-valuenow="{{ number_format($kendaraan->getStatusOnderdil($onderdil->id),2) }}"
                                                                                      aria-valuemin="0"
-                                                                                     aria-valuemax="100">50%
+                                                                                     aria-valuemax="100">{{ number_format($kendaraan->getStatusOnderdil($onderdil->id),2) }}%
                                                                                 </div>
                                                                             </div>
+                                                                                @else
+                                                                                Belum pernah perbaikan
+                                                                                @endif
                                                                         </td>
                                                                         <td>
                                                                             <div>
+                                                                                {{--detail button--}}
                                                                                 <button type="button"
                                                                                         class="btn btn-secondary btn-sm"
                                                                                         data-toggle="modal"
@@ -176,6 +183,7 @@
                                                                                     Detail
                                                                                 </button>
                                                                             </div>
+                                                                            {{--modal detail button--}}
                                                                             <div class="modal fade" id="mediumModal"
                                                                                  tabindex="-1" role="dialog"
                                                                                  aria-labelledby="mediumModalLabel"
@@ -218,6 +226,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             {{--riwayat perbaikan--}}
                                             <div class="tab-pane fade" id="pills-contact" role="tabpanel"
                                                  aria-labelledby="pills-contact-tab">
@@ -261,6 +270,7 @@
                                                 </div>
                                                 </p>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>

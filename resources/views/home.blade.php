@@ -55,13 +55,18 @@
                                                 <td>{{ $data->plat_nomor }}</td>
                                                 <td><span class="name">{{ $data->getSupir(false)->nama ?? '(Belum ada
                                                     supir)' }}</span></td>
-                                                <td>
+                                                <td style="width: 181px;">
                                                     @if(Auth::user()->role_id == 2)
                                                         <a href="{{ route('detailTruck', [
                                                 'plat_nomor' => $data->plat_nomor
                                                 ]) }}">
                                                             <button type="button" class="btn btn-primary btn-sm">Detail
                                                                 Truk
+                                                            </button>
+                                                        </a>
+                                                        <a href="{{ route('perbaikiSekarang',['plat_nomor' => $data->plat_nomor]) }}">
+                                                            <button type="button" class="btn btn-success btn-sm">
+                                                                <i class="menu-icon fa fa-wrench"></i> Perbaiki
                                                             </button>
                                                         </a>
                                                 </td>

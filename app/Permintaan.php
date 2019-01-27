@@ -13,7 +13,7 @@ class Permintaan extends Model
     ];
 
     public function getKendaraan($queryReturn = true ){
-        $data = $this->belongsTo(Kendaraan::class,'kendaraan_id');
+        $data = $this->belongsTo(Kendaraan::class,'kendaraan_id', 'plat_nomor');
         return $queryReturn ? $data : $data->first();
     }
 

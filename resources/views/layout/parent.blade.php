@@ -82,7 +82,7 @@
                         <a href="{{ route('dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                     </li>
                     <li class="@if(Route::currentRouteName() == 'perbaikan') active @endif">
-                        <a href="{{ route('perbaikan') }}"><i class="menu-icon ti-settings"></i>Perbaikan </a>
+                        <a href="{{ route('perbaikan') }}"><i class="menu-icon fa fa-wrench"></i>Perbaikan </a>
                     </li>
                 @endif
                 @if(Auth::user()->role_id == 1)

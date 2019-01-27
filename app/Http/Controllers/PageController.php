@@ -6,6 +6,7 @@ use App\OnderdilKendaraan;
 use App\Permintaan;
 use App\Role;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use App\Kendaraan;
@@ -83,7 +84,8 @@ class PageController extends Controller
             'kendaraan' => $kendaraan,
             'teknisis' => $teknisis,
             'supirs' => $supirs,
-            'onderdils' => $onderdils
+            'onderdils' => $onderdils,
+            'kendaraan_terpilih' => $kendaraan_terpilih
         ]);
     }
 
@@ -118,7 +120,6 @@ class PageController extends Controller
         }
 
         return redirect()->route('perbaikan')->with('success','Berhasil melakukan perbaikan.');
-
     }
 
     public function infoRiwayat($id)
@@ -126,6 +127,7 @@ class PageController extends Controller
         $permintaan = Permintaan::where('id',$id)->first();
         $kendaraan = Kendaraan::where('plat_nomor',$permintaan->kendaraan_id)->first();
         $onderdils = OnderdilKendaraan::where('permintaan_id',$id)->get();
+
         return view('info-riwayat', [
             'onderdils' => $onderdils,
             'permintaan' => $permintaan,
