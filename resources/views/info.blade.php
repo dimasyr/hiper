@@ -30,20 +30,28 @@
                             <div class="card">
                                 <div class="card-header float-left">
                                     <div>
-                                        <h4>Info Kendaraan</h4>
-                                        @if(Auth::user()->role_id == 2)
-                                            <button type="button" class="btn btn-success btn-sm "
-                                                    data-toggle="modal"
-                                                    data-target="#staticModal">
-                                                <i class="menu-icon fa fa-wrench"></i> Perbaiki
-                                            </button>
-                                        @endif
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <h4>Info Kendaraan</h4>
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                            <div class="col-md-2 ml-4">
+                                                @if(Auth::user()->role_id == 2)
+                                                    <button type="button" class="btn btn-success btn-sm "
+                                                            data-toggle="modal"
+                                                            data-target="#staticModal">
+                                                        <i class="menu-icon fa fa-wrench"></i> Perbaiki
+                                                    </button>
+                                                @endif
+                                            </div>
+                                        </div>
                                         <div class="float-right">
 
                                             <div>
 
                                             </div>
                                             <div>
+                                                {{--modal--}}
                                                 <div class="modal fade" id="staticModal" tabindex="-1" role="dialog"
                                                      aria-labelledby="staticModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog modal-sm" role="document">
@@ -119,10 +127,10 @@
                                                             <p class="card-text">Nomor mesin
                                                                 : {{ $kendaraan->nomor_mesin }} </p>
                                                             <p class="card-text">Tanggal STNK
-                                                                : {{ $kendaraan->stnk }} </p>
+                                                                : {{ formatDate(\Carbon\Carbon::parse($kendaraan->stnk),false,false) }} </p>
                                                             <p class="card-text">Tanggal pajak
-                                                                : {{ $kendaraan->pajak }} </p>
-                                                            <p class="card-text">Tanggal kir : {{ $kendaraan->kir}} </p>
+                                                                : {{ formatDate(\Carbon\Carbon::parse($kendaraan->pajak), false, false) }} </p>
+                                                            <p class="card-text">Tanggal kir : {{ formatDate(\Carbon\Carbon::parse($kendaraan->kir),false,false) }} </p>
                                                             <a href="{{ route('kendaraan.edit', [
                                                 'id' => $kendaraan->plat_nomor
                                                 ]) }}">
@@ -149,7 +157,7 @@
                                                                 <tr>
                                                                     <th scope="col">No</th>
                                                                     <th scope="col">Nama Onderdil</th>
-                                                                    <th scope="col">Status</th>
+                                                                    <th scope="col">Status Penggunaan</th>
                                                                     <th scope="col">Detail</th>
                                                                 </tr>
                                                                 </thead>
@@ -159,64 +167,76 @@
                                                                         <th scope="row">{{ $loop->iteration }}</th>
                                                                         <td>{{ $onderdil->nama }}</td>
                                                                         <td>
-                                                                            @if($kendaraan->getStatusOnderdil($onderdil->id) != null)
-                                                                            <div class="progress mb-2">
-                                                                                <div class="text-dark font-weight-bold progress-bar bg-info progress-bar-striped progress-bar-animated"
-                                                                                     role="progressbar"
-                                                                                     style="width: {{ number_format($kendaraan->getStatusOnderdil($onderdil->id),2) }}%"
-                                                                                     aria-valuenow="{{ number_format($kendaraan->getStatusOnderdil($onderdil->id),2) }}"
-                                                                                     aria-valuemin="0"
-                                                                                     aria-valuemax="100">{{ number_format($kendaraan->getStatusOnderdil($onderdil->id),2) }}%
+                                                                            @if($kendaraan->getStatusOnderdil($onderdil->id)['status'] != null)
+                                                                                <div class="progress mb-2">
+                                                                                    <div class="text-dark font-weight-bold progress-bar bg-info progress-bar-striped progress-bar-animated"
+                                                                                         role="progressbar"
+                                                                                         style="width: {{ number_format($kendaraan->getStatusOnderdil($onderdil->id)['status'],2) }}%"
+                                                                                         aria-valuenow="{{ number_format($kendaraan->getStatusOnderdil($onderdil->id)['status'],2) }}"
+                                                                                         aria-valuemin="0"
+                                                                                         aria-valuemax="100">{{ number_format($kendaraan->getStatusOnderdil($onderdil->id)['status'],2) }}
+                                                                                        %
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                                @else
-                                                                                Belum pernah perbaikan
-                                                                                @endif
+                                                                            @else
+                                                                                <em>Belum pernah perbaikan</em>
+                                                                            @endif
                                                                         </td>
                                                                         <td>
-                                                                            <div>
-                                                                                {{--detail button--}}
-                                                                                <button type="button"
-                                                                                        class="btn btn-secondary btn-sm"
-                                                                                        data-toggle="modal"
-                                                                                        data-target="#mediumModal">
-                                                                                    Detail
-                                                                                </button>
-                                                                            </div>
-                                                                            {{--modal detail button--}}
-                                                                            <div class="modal fade" id="mediumModal"
-                                                                                 tabindex="-1" role="dialog"
-                                                                                 aria-labelledby="mediumModalLabel"
-                                                                                 aria-hidden="true">
-                                                                                <div class="modal-dialog modal-lg"
-                                                                                     role="document">
-                                                                                    <div class="modal-content">
-                                                                                        <div class="modal-header">
-                                                                                            <h5 class="modal-title"
-                                                                                                id="mediumModalLabel">
-                                                                                                Medium Modal</h5>
-                                                                                            <button type="button"
-                                                                                                    class="close"
-                                                                                                    data-dismiss="modal"
-                                                                                                    aria-label="Close">
-                                                                                                <span aria-hidden="true">&times;</span>
-                                                                                            </button>
-                                                                                        </div>
-                                                                                        <div class="modal-body">
-                                                                                            <p>Ban Merk :</p>
-                                                                                            <p>Tahun :</p>
-                                                                                            <p>Foto :</p>
-                                                                                        </div>
-                                                                                        <div class="modal-footer">
-                                                                                            <button type="button"
-                                                                                                    class="btn btn-secondary"
-                                                                                                    data-dismiss="modal">
-                                                                                                Close
-                                                                                            </button>
+                                                                            @if($kendaraan->getStatusOnderdil($onderdil->id)['status'] != null)
+                                                                                <div>
+                                                                                    {{--detail button--}}
+                                                                                    <button type="button"
+                                                                                            class="btn btn-secondary btn-sm"
+                                                                                            data-toggle="modal"
+                                                                                            data-target="#mediumModal{{ $loop->iteration }}">
+                                                                                        Detail
+                                                                                    </button>
+                                                                                </div>
+
+                                                                                {{--modal detail button--}}
+                                                                                <div class="modal fade"
+                                                                                     id="mediumModal{{ $loop->iteration }}"
+                                                                                     tabindex="-1" role="dialog"
+                                                                                     aria-labelledby="mediumModalLabel"
+                                                                                     aria-hidden="true">
+                                                                                    <div class="modal-dialog modal-lg"
+                                                                                         role="document">
+                                                                                        <div class="modal-content">
+                                                                                            <div class="modal-header">
+                                                                                                <h5 class="modal-title"
+                                                                                                    id="mediumModalLabel">
+                                                                                                    Detail Onderdil</h5>
+                                                                                                <button type="button"
+                                                                                                        class="close"
+                                                                                                        data-dismiss="modal"
+                                                                                                        aria-label="Close">
+                                                                                                    <span aria-hidden="true">&times;</span>
+                                                                                                </button>
+                                                                                            </div>
+                                                                                            <div class="modal-body">
+                                                                                                <p>No. Seri
+                                                                                                    : {{$kendaraan->getStatusOnderdil($onderdil->id)['onderdilKendaraan']->nomor_seri}}</p>
+                                                                                                <p>Merk
+                                                                                                    : {{$kendaraan->getStatusOnderdil($onderdil->id)['onderdilKendaraan']->merk}}</p>
+                                                                                                <p>Masa Berlaku
+                                                                                                    : {{$kendaraan->getStatusOnderdil($onderdil->id)['onderdilKendaraan']->masa_berlaku}}
+                                                                                                    tahun</p>
+                                                                                                <p>Tempat beli
+                                                                                                    : {{$kendaraan->getStatusOnderdil($onderdil->id)['onderdilKendaraan']->tempat_pembelian}}</p>
+                                                                                            </div>
+                                                                                            <div class="modal-footer">
+                                                                                                <button type="button"
+                                                                                                        class="btn btn-secondary"
+                                                                                                        data-dismiss="modal">
+                                                                                                    Close
+                                                                                                </button>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
+                                                                                {{--end modal detail button--}}
+                                                                            @endif
                                                                         </td>
                                                                     </tr>
                                                                 @endforeach
@@ -246,7 +266,7 @@
                                                                     @foreach($riwayat as $permintaan)
                                                                         <tr>
                                                                             <td>{{ $loop->iteration }}</td>
-                                                                            <td>{{ $permintaan->created_at }}</td>
+                                                                            <td>{{ formatDate(\Carbon\Carbon::parse($permintaan->created_at),false,false) }}</td>
                                                                             <td>
                                                                                 <a href="{{ route('info.riwayat',['id' => $permintaan->id]) }}">
                                                                                     <button type="button"

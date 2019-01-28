@@ -36,7 +36,7 @@
                             <div class="row form-group">
                                 <div class="col col-md-6"><label class=" form-control-label">Tanggal</label></div>
                                 <div class="col-12 col-md-6">
-                                    <p class="form-control-static">{{ $permintaan->created_at->format('d-m-Y') }}</p>
+                                    <p class="form-control-static">{{ formatDate(\Carbon\Carbon::parse($permintaan->created_at),false,false) }}</p>
                                 </div>
                             </div>
                             <div class="row form-group">

@@ -55,9 +55,15 @@ class Kendaraan extends Model
             $sisa_hari = $hari_sekarang->diffInDays($onderdil->created_at->addYears($onderdil->masa_berlaku));
             $status = abs(($total_hari-$sisa_hari)/$total_hari)*100;
 
-            return $status;
+            return [
+                'onderdilKendaraan' => $onderdil,
+                'status' => $status
+            ];
         }
-        else return null;
+        else return [
+            'onderdilKendaraan' => $onderdil,
+            'status' => null
+        ];
 
     }
 }

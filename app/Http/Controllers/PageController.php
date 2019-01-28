@@ -95,10 +95,11 @@ class PageController extends Controller
             'onderdil_id.*' => 'required',
             'nomor_seri.*' => 'required',
             'merk.*' => 'required',
-            'masa_berlaku.*' => 'required',
+            'masa_berlaku.*' => 'required | numeric',
             'tempat_pembelian.*' => 'required',
         ], [
-            'required' => 'Tidak boleh kosong'
+            'required' => 'Tidak boleh kosong',
+            'numeric' => 'Harus berupa angka'
         ]);
 
         $permintaan = Permintaan::create([

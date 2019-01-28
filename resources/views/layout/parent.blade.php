@@ -113,6 +113,7 @@
     </nav>
 </aside>
 <!-- /#left-panel -->
+
 <!-- Right Panel -->
 <div id="right-panel" class="right-panel">
     <!-- Header-->
@@ -134,6 +135,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </header>
     <!-- /#header -->
 
