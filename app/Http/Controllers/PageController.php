@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Input;
 use App\Kendaraan;
 use App\Onderdil;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class PageController extends Controller
 {
@@ -91,7 +92,18 @@ class PageController extends Controller
 
     public function prosesPerbaikan(Request $request){
 
-        $request->validate([
+//        $request->validate([
+//            'onderdil_id.*' => 'required',
+//            'nomor_seri.*' => 'required',
+//            'merk.*' => 'required',
+//            'masa_berlaku.*' => 'required | numeric',
+//            'tempat_pembelian.*' => 'required',
+//        ], [
+//            'required' => 'Tidak boleh kosong',
+//            'numeric' => 'Harus berupa angka'
+//        ]);
+
+        $validator = Validator::make($request->all(), [
             'onderdil_id.*' => 'required',
             'nomor_seri.*' => 'required',
             'merk.*' => 'required',
@@ -101,6 +113,16 @@ class PageController extends Controller
             'required' => 'Tidak boleh kosong',
             'numeric' => 'Harus berupa angka'
         ]);
+
+        if ($validator->fails()) {
+            $jum = 0;
+            foreach ($request->input('onderdil_id.*') as $index => $value){
+                $jum++;
+            }
+
+            return redirect()->route('perbaikan')->withInput()
+                ->withErrors($validator)->with('jumlah', $jum);
+        }
 
         $permintaan = Permintaan::create([
             'supir_id' => $request->supir_id,

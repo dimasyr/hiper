@@ -43,7 +43,7 @@
                                 <div class="col-3 col-md-3"><input type="text" id="disabled-input"
                                                                    name="disabled-input" placeholder="<?php
                                     $tgl = date('l, d-m-Y');
-                                    echo formatDate(\Carbon\Carbon::parse($tgl),true,false);
+                                    echo formatDate(\Carbon\Carbon::parse($tgl), true, false);
                                     ?>" disabled="" class="form-control"></div>
                             </div>
                             <div class="row form-group">
@@ -100,41 +100,89 @@
                                                 <td>
                                                     <input class="form-control" type="text" name="nomor_seri[]">
                                                     <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('nomor_seri.*'))
-                                                            {{ $errors->first('nomor_seri.*') }}
+                                                        @if($errors->has('nomor_seri.0'))
+                                                            {{ $errors->first('nomor_seri.0') }}
                                                         @endif
                                                     </small>
                                                 </td>
                                                 <td>
                                                     <input class="form-control" type="text" name="merk[]">
                                                     <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('merk.*'))
-                                                            {{ $errors->first('merk.*') }}
+                                                        @if($errors->has('merk.0'))
+                                                            {{ $errors->first('merk.0') }}
                                                         @endif
                                                     </small>
                                                 </td>
                                                 <td>
                                                     <input class="form-control" type="text" name="masa_berlaku[]">
                                                     <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('masa_berlaku.*'))
-                                                            {{ $errors->first('masa_berlaku.*') }}
+                                                        @if($errors->has('masa_berlaku.0'))
+                                                            {{ $errors->first('masa_berlaku.0') }}
                                                         @endif
                                                     </small>
                                                 </td>
                                                 <td>
                                                     <input class="form-control" type="text" name="tempat_pembelian[]">
                                                     <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('tempat_pembelian.*'))
-                                                            {{ $errors->first('tempat_pembelian.*') }}
+                                                        @if($errors->has('tempat_pembelian.0'))
+                                                            {{ $errors->first('tempat_pembelian.0') }}
                                                         @endif
                                                     </small>
                                                 </td>
-                                                {{--<td>--}}
-                                                {{--<button class="btn btn-sm btn-danger">--}}
-                                                {{--<i class="fa fa-close"></i>--}}
-                                                {{--</button>--}}
-                                                {{--</td>--}}
                                             </tr>
+                                            {{--{{ $jumlah }}--}}
+                                            @if(session()->has('jumlah'))
+                                                @for($i = 1 ; $i < session('jumlah') ; $i++)
+                                                    <tr id="row{{ $i }}" class="dynamic-added">
+                                                        <th style="width: 200px;">
+                                                            <select name="onderdil_id[]" class="form-control">
+                                                                @foreach($onderdils as $onderdil)
+                                                                    <option value="{{ $onderdil->id}}">{{ $onderdil->nama}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </th>
+                                                        <td>
+                                                            <input class="form-control" type="text" name="nomor_seri[]">
+                                                            <small class="form-text text-muted alert-danger">
+                                                                @if($errors->has('nomor_seri.'.$i))
+                                                                    {{ $errors->first('nomor_seri.'.$i) }}
+                                                                @endif
+                                                            </small>
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control" type="text" name="merk[]">
+                                                            <small class="form-text text-muted alert-danger">
+                                                                @if($errors->has('merk.'.$i))
+                                                                    {{ $errors->first('merk.'.$i) }}
+                                                                @endif
+                                                            </small>
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control" type="text"
+                                                                   name="masa_berlaku[]">
+                                                            <small class="form-text text-muted alert-danger">
+                                                                @if($errors->has('masa_berlaku.'.$i))
+                                                                    {{ $errors->first('masa_berlaku.'.$i) }}
+                                                                @endif
+                                                            </small>
+                                                        </td>
+                                                        <td>
+                                                            <input class="form-control" type="text"
+                                                                   name="tempat_pembelian[]">
+                                                            <small class="form-text text-muted alert-danger">
+                                                                @if($errors->has('tempat_pembelian.'.$i))
+                                                                    {{ $errors->first('tempat_pembelian.'.$i) }}
+                                                                @endif
+                                                            </small>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" name="remove" id="{{ $i }}"
+                                                                    class="btn btn-sm btn-danger btn_remove"><i
+                                                                        class="fa fa-close"></i></button>
+                                                        </td>
+                                                    </tr>
+                                                @endfor
+                                            @endif
                                             </tbody>
                                         </table>
                                     </div>
