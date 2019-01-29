@@ -73,8 +73,8 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="stnk"
                                                                  class=" form-control-label">Stnk</label></div>
-                                <div class="col-12 col-md-9"><input type="date" id="stnk" name="stnk"
-                                                                    class="form-control">
+                                <div class="col-12 col-md-9"><input type="text" name="stnk"
+                                                                    class="form-control tanggal">
                                     <small class="form-text text-muted alert-danger">
                                         @if($errors->has('stnk'))
                                             {{ $errors->first('stnk') }}
@@ -85,8 +85,8 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="pajak"
                                                                  class=" form-control-label">Pajak</label></div>
-                                <div class="col-12 col-md-9"><input type="date" id="pajak" name="pajak"
-                                                                    class="form-control">
+                                <div class="col-12 col-md-9"><input type="text" name="pajak"
+                                                                    class="form-control tanggal">
                                     <small class="form-text text-muted alert-danger">
                                         @if($errors->has('pajak'))
                                             {{ $errors->first('pajak') }}
@@ -97,8 +97,8 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="kir"
                                                                  class=" form-control-label">Kir</label></div>
-                                <div class="col-12 col-md-9"><input type="date" id="kir" name="kir"
-                                                                    class="form-control">
+                                <div class="col-12 col-md-9"><input type="text" name="kir"
+                                                                    class="form-control tanggal">
                                     <small class="form-text text-muted alert-danger">
                                         @if($errors->has('kir'))
                                             {{ $errors->first('kir') }}

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{asset('css/assets/css/cs-skin-elastic.css')}}">
     <link rel="stylesheet" href="{{asset('css/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('css/assets/css/lib/datatable/dataTables.bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/assets/css/datepicker.css')}}">
     <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet"/>
@@ -387,12 +388,17 @@
 <script src="{{ asset('js/js/lib/data-table/buttons.print.min.js')}}"></script>
 <script src="{{ asset('js/js/lib/data-table/buttons.colVis.min.js')}}"></script>
 <script src="{{ asset('js/js/init/datatables-init.js')}}"></script>
-
+<script src="{{ asset('js/js/bootstrap-datepicker.js') }}"></script>
 
 <script type="text/javascript">
     $(document).ready(function () {
         $('#bootstrap-data-table-export').DataTable();
     });
+</script>
+<script>
+$('.tanggal').datepicker({
+    format: 'mm/dd/yyyy'
+});
 </script>
 @stack('js')
 </body>
