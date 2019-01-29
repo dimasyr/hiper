@@ -41,10 +41,7 @@
                                 <div class="col col-md-2"><label class=" form-control-label">Tanggal</label>
                                 </div>
                                 <div class="col-3 col-md-3"><input type="text" id=""
-                                                                   name="" placeholder="<?php
-                                    $tgl = date('l, d-m-Y');
-                                    echo formatDate(\Carbon\Carbon::parse($tgl), true, false);
-                                    ?>" class="form-control tanggal"></div>
+                                                                   name="" placeholder="" class="form-control tanggal"></div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-2"><label class=" form-control-label">Teknisi</label></div>

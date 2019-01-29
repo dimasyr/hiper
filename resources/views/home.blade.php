@@ -43,6 +43,7 @@
                                         <tr>
                                             <th class="serial">No</th>
                                             <th>Plat Nomor</th>
+                                            <th>Jenis</th>
                                             <th>Nama Supir</th>
                                             <th></th>
                                         </tr>
@@ -53,6 +54,7 @@
                                             <tr>
                                                 <td class="serial">{{ $loop->iteration }}</td>
                                                 <td>{{ $data->plat_nomor }}</td>
+                                                <td>{{ $data->getJenisKendaraan(false)->nama }}</td>
                                                 <td><span class="name">{{ $data->getSupir(false)->nama ?? '(Belum ada
                                                     supir)' }}</span></td>
                                                 <td style="width: 181px;">
