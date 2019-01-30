@@ -26,6 +26,7 @@ class CreateOnderdilKendaraanTable extends Migration
             $table->foreign('onderdil_id')->references('id')->on('onderdil');
             $table->bigInteger('permintaan_id')->unsigned();
             $table->foreign('permintaan_id')->references('id')->on('permintaan');
+            $table->softDeletes();
         });
     }
 

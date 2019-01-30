@@ -79,7 +79,8 @@ Route::group(['prefix' => 'owner', 'middleware' => 'role:1'], function () {
     Route::resources([
         'user' => 'UserController',
         'kendaraan' => 'KendaraanController',
-        'onderdil' => 'OnderdilController'
+        'onderdil' => 'OnderdilController',
+        'alatberat' => 'AlatBeratController'
     ]);
 
 });

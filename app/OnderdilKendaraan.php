@@ -4,9 +4,12 @@ namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OnderdilKendaraan extends Model
 {
+    use SoftDeletes;
+
     protected $table = 'onderdil_kendaraan';
 
     protected $fillable = [

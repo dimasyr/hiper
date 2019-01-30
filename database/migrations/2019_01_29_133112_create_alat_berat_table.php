@@ -18,6 +18,7 @@ class CreateAlatBeratTable extends Migration
             $table->string('nama', 20);
             $table->string('tahun',10);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

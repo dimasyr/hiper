@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
@@ -90,9 +91,12 @@
                     <li class="@if(Route::currentRouteName() == 'kendaraan.index') active @endif">
                         <a href="{{ route('kendaraan.index')}}"><i class="menu-icon fa fa-truck"></i>Data Kendaraan</a>
                     </li>
-                    <li class="@if(Route::currentRouteName() == 'onderdil.index') active @endif">
-                        <a href="{{ route('onderdil.index')}}"><i class="menu-icon fa fa-wrench"></i>Data Onderdil</a>
+                    <li class="@if(Route::currentRouteName() == 'alatberat.index') active @endif">
+                        <a href="{{ route('alatberat.index')}}"><i class="menu-icon fa fa-truck-loading"></i>Data Alat Berat</a>
                     </li>
+                        <li class="@if(Route::currentRouteName() == 'onderdil.index') active @endif">
+                            <a href="{{ route('onderdil.index')}}"><i class="menu-icon fa fa-tools"></i>Data Onderdil</a>
+                        </li>
                     <li class="@if(Route::currentRouteName() == 'user.index') active @endif">
                         <a href="{{ route('user.index')}}"><i class="menu-icon fa fa-user"></i>Data User</a>
                     </li>

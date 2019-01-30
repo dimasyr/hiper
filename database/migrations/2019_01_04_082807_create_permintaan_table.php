@@ -17,6 +17,7 @@ class CreatePermintaanTable extends Migration
             $table->bigIncrements('id');
             $table->date('tanggal');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->integer('supir_id')->unsigned();
             $table->foreign('supir_id')->references('id')->on('users');
