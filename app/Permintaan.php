@@ -9,7 +9,7 @@ class Permintaan extends Model
     protected $table = 'permintaan';
 
     protected $fillable = [
-        'supir_id', 'teknisi_id', 'operator_id', 'kendaraan_id'
+        'supir_id', 'teknisi_id', 'operator_id', 'kendaraan_id', 'tanggal'
     ];
 
     public function getKendaraan($queryReturn = true ){

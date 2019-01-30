@@ -28,7 +28,8 @@
                         <strong>Edit Kendaraan</strong>
                     </div>
                     <div class="card-body card-block">
-                        <form action="{{ route('kendaraan.update',['id' => $kendaraan->plat_nomor ]) }}" method="POST" enctype="multipart/form-data"
+                        <form action="{{ route('kendaraan.update',['id' => $kendaraan->plat_nomor ]) }}" method="POST"
+                              enctype="multipart/form-data"
                               class="form-horizontal">
                             @csrf
                             <input type="hidden" name="_method" value="PUT">
@@ -77,9 +78,9 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="stnk"
                                                                  class=" form-control-label">Stnk</label></div>
-                                <div class="col-12 col-md-9"><input type="date" id="stnk" name="stnk"
+                                <div class="col-12 col-md-9"><input type="text" id="stnk" name="stnk"
                                                                     value="{{ $kendaraan->stnk }}"
-                                                                    class="form-control">
+                                                                    class="form-control tanggal" autocomplete="off">
                                     <small class="form-text text-muted alert-danger">
                                         @if($errors->has('stnk'))
                                             {{ $errors->first('stnk') }}
@@ -90,9 +91,9 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="pajak"
                                                                  class=" form-control-label">Pajak</label></div>
-                                <div class="col-12 col-md-9"><input type="date" id="pajak" name="pajak"
+                                <div class="col-12 col-md-9"><input type="text" id="pajak" name="pajak"
                                                                     value="{{ $kendaraan->pajak }}"
-                                                                    class="form-control">
+                                                                    class="form-control tanggal" autocomplete="off">
                                     <small class="form-text text-muted alert-danger">
                                         @if($errors->has('pajak'))
                                             {{ $errors->first('pajak') }}
@@ -103,9 +104,9 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="kir"
                                                                  class=" form-control-label">Kir</label></div>
-                                <div class="col-12 col-md-9"><input type="date" id="kir" name="kir"
+                                <div class="col-12 col-md-9"><input type="text" id="kir" name="kir"
                                                                     value="{{ $kendaraan->kir }}"
-                                                                    class="form-control">
+                                                                    class="form-control tanggal" autocomplete="off">
                                     <small class="form-text text-muted alert-danger">
                                         @if($errors->has('kir'))
                                             {{ $errors->first('kir') }}
@@ -119,7 +120,8 @@
                                 <div class="col-12 col-md-9">
                                     <select name="jenis_kendaraan_id" id="jenis_kendaraan_id" class="form-control">
                                         @foreach($jenis_kendaraan as $jk)
-                                            <option value="{{ $jk->id }}" @if($kendaraan->jenis_kendaraan_id == $jk->id) selected @endif>{{ $jk->nama }}</option>
+                                            <option value="{{ $jk->id }}"
+                                                    @if($kendaraan->jenis_kendaraan_id == $jk->id) selected @endif>{{ $jk->nama }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -131,7 +133,8 @@
                                     <select name="supir_id" id="supir_id" class="form-control">
                                         <option value="">-Kosong-</option>
                                         @foreach($supirs as $supir)
-                                            <option value="{{ $supir->id }}" @if($kendaraan->supir_id == $supir->id) selected @endif>{{ $supir->nama }}</option>
+                                            <option value="{{ $supir->id }}"
+                                                    @if($kendaraan->supir_id == $supir->id) selected @endif>{{ $supir->nama }}</option>
                                         @endforeach
                                     </select>
                                 </div>

@@ -55,8 +55,8 @@
                                                 <td class="serial">{{ $loop->iteration }}</td>
                                                 <td>{{ $data->plat_nomor }}</td>
                                                 <td>{{ $data->getJenisKendaraan(false)->nama }}</td>
-                                                <td><span class="name">{{ $data->getSupir(false)->nama ?? '(Belum ada
-                                                    supir)' }}</span></td>
+                                                <td>@if(($data->getSupir(false)->nama ?? 'kosong') == 'kosong')<em> @endif<span class="name">{{ $data->getSupir(false)->nama ?? '(Belum ada
+                                                    supir)' }}</span>@if(($data->getSupir(false)->nama ?? 'kosong') == 'kosong')</em> @endif</td>
                                                 <td style="width: 181px;">
                                                     @if(Auth::user()->role_id == 2)
                                                         <a href="{{ route('detailTruck', [

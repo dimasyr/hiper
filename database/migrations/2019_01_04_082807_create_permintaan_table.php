@@ -15,6 +15,7 @@ class CreatePermintaanTable extends Migration
     {
         Schema::create('permintaan', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->date('tanggal');
             $table->timestamps();
 
             $table->integer('supir_id')->unsigned();

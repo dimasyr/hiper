@@ -31,7 +31,7 @@
                                     <select name="plat_nomor" id="plat_nomor" class="form-control">
                                         @foreach($kendaraan as $truk)
                                             <option value="{{ $truk->plat_nomor }}"
-                                                    @if(isset($kendaraan_terpilih) && $truk->plat_nomor == $kendaraan_terpilih->plat_nomor)
+                                                    @if(isset($kendaraan_terpilih) && $truk->plat_nomor == $kendaraan_terpilih->plat_nomor || old('plat_nomor') == $truk->plat_nomor)
                                                     selected
                                                     @endif>{{ $truk->plat_nomor }}</option>
                                         @endforeach
@@ -40,15 +40,20 @@
                                 <div class="col col-md-1"></div>
                                 <div class="col col-md-2"><label class=" form-control-label">Tanggal</label>
                                 </div>
-                                <div class="col-3 col-md-3"><input type="text" id=""
-                                                                   name="" placeholder="" class="form-control tanggal"></div>
+                                <div class="col-3 col-md-3"><input type="text" autocomplete="off" value="{{ old('tanggal') }}"
+                                                                   name="tanggal" class="form-control tanggal"><small class="form-text text-muted alert-danger">
+                                    @if($errors->has('tanggal'))
+                                        {{ $errors->first('tanggal') }}
+                                    @endif
+                                    </small>
+                                </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-2"><label class=" form-control-label">Teknisi</label></div>
                                 <div class="col-3 col-md-3">
                                     <select name="teknisi_id" id="teknisi_id" class="form-control">
                                         @foreach($teknisis as $teknisi)
-                                            <option value="{{ $teknisi->id}}">{{ $teknisi->nama}}</option>
+                                            <option value="{{ $teknisi->id}}" @if($teknisi->id == old('teknisi_id')) selected @endif>{{ $teknisi->nama}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -58,7 +63,7 @@
                                     <select name="supir_id" id="supir_id" class="form-control">
                                         @foreach($supirs as $supir)
                                             <option value="{{ $supir->id}}"
-                                                    @if(isset($kendaraan_terpilih) && $supir->id== $kendaraan_terpilih->supir_id)
+                                                    @if(isset($kendaraan_terpilih) && $supir->id == $kendaraan_terpilih->supir_id || $supir->id == old('supir_id'))
                                                     selected
                                                     @endif>{{ $supir->nama}}</option>
                                         @endforeach
@@ -90,12 +95,14 @@
                                                 <th style="width: 200px;">
                                                     <select name="onderdil_id[]" class="form-control">
                                                         @foreach($onderdils as $onderdil)
-                                                            <option value="{{ $onderdil->id}}">{{ $onderdil->nama}}</option>
+                                                            <option value="{{ $onderdil->id}}"
+                                                                    @if($onderdil->id == old('onderdil_id.0')) selected @endif>{{ $onderdil->nama}}</option>
                                                         @endforeach
                                                     </select>
                                                 </th>
                                                 <td>
-                                                    <input class="form-control" type="text" name="nomor_seri[]">
+                                                    <input class="form-control" type="text" name="nomor_seri[]"
+                                                           value="{{ old('nomor_seri.0') }}">
                                                     <small class="form-text text-muted alert-danger">
                                                         @if($errors->has('nomor_seri.0'))
                                                             {{ $errors->first('nomor_seri.0') }}
@@ -103,7 +110,8 @@
                                                     </small>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="text" name="merk[]">
+                                                    <input class="form-control" type="text" name="merk[]"
+                                                           value="{{ old('merk.0') }}">
                                                     <small class="form-text text-muted alert-danger">
                                                         @if($errors->has('merk.0'))
                                                             {{ $errors->first('merk.0') }}
@@ -111,7 +119,8 @@
                                                     </small>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="text" name="masa_berlaku[]">
+                                                    <input class="form-control" type="text" name="masa_berlaku[]"
+                                                           value="{{ old('masa_berlaku.0') }}">
                                                     <small class="form-text text-muted alert-danger">
                                                         @if($errors->has('masa_berlaku.0'))
                                                             {{ $errors->first('masa_berlaku.0') }}
@@ -119,7 +128,8 @@
                                                     </small>
                                                 </td>
                                                 <td>
-                                                    <input class="form-control" type="text" name="tempat_pembelian[]">
+                                                    <input class="form-control" type="text" name="tempat_pembelian[]"
+                                                           value="{{ old('tempat_pembelian.0') }}">
                                                     <small class="form-text text-muted alert-danger">
                                                         @if($errors->has('tempat_pembelian.0'))
                                                             {{ $errors->first('tempat_pembelian.0') }}
@@ -134,12 +144,14 @@
                                                         <th style="width: 200px;">
                                                             <select name="onderdil_id[]" class="form-control">
                                                                 @foreach($onderdils as $onderdil)
-                                                                    <option value="{{ $onderdil->id}}">{{ $onderdil->nama}}</option>
+                                                                    <option value="{{ $onderdil->id}}"
+                                                                            @if($onderdil->id == old('onderdil_id.'.$i)) selected @endif>{{ $onderdil->nama}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </th>
                                                         <td>
-                                                            <input class="form-control" type="text" name="nomor_seri[]">
+                                                            <input class="form-control" type="text" name="nomor_seri[]"
+                                                                   value="{{ old('nomor_seri.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
                                                                 @if($errors->has('nomor_seri.'.$i))
                                                                     {{ $errors->first('nomor_seri.'.$i) }}
@@ -147,7 +159,8 @@
                                                             </small>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text" name="merk[]">
+                                                            <input class="form-control" type="text" name="merk[]"
+                                                                   value="{{ old('merk.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
                                                                 @if($errors->has('merk.'.$i))
                                                                     {{ $errors->first('merk.'.$i) }}
@@ -156,7 +169,8 @@
                                                         </td>
                                                         <td>
                                                             <input class="form-control" type="text"
-                                                                   name="masa_berlaku[]">
+                                                                   name="masa_berlaku[]"
+                                                                   value="{{ old('masa_berlaku.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
                                                                 @if($errors->has('masa_berlaku.'.$i))
                                                                     {{ $errors->first('masa_berlaku.'.$i) }}
@@ -165,7 +179,8 @@
                                                         </td>
                                                         <td>
                                                             <input class="form-control" type="text"
-                                                                   name="tempat_pembelian[]">
+                                                                   name="tempat_pembelian[]"
+                                                                   value="{{ old('tempat_pembelian.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
                                                                 @if($errors->has('tempat_pembelian.'.$i))
                                                                     {{ $errors->first('tempat_pembelian.'.$i) }}

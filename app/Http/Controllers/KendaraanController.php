@@ -49,23 +49,16 @@ class KendaraanController extends Controller
      */
     public function store(Request $request)
     {
-//        $this->validate($request, [
-//            'plat_nomor' => 'required|unique:kendaraan|regex:/[A-Z]{1,2} [1-9][0-9]{1,3} [A-Z]{1,3}/',
-//            'nomor_rangka' => 'required',
-//            'nomor_mesin' => 'required',
-//        ], [
-//            'required' => 'kolom di atas tidak boleh kosong',
-//               'regex' => 'pola plat nomor salah',
-//            'unique' => 'plat nomor tersebut sudah ada.'
-//        ]);
-
         $validator = Validator::make($request->all(), [
-            'plat_nomor' => 'required|unique:kendaraan|regex:/[A-Z]{1,2} [1-9][0-9]{1,3} [A-Z]{1,3}/',
+            'plat_nomor' => array('required','unique:kendaraan','regex:/[A-Z]{1,2} [1-9][0-9]{1,3} [A-Z]{1,3}/'),
             'nomor_rangka' => 'required',
+            'stnk' => array('regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
+            'pajak' => array('regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
+            'kir' => array('regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
             'nomor_mesin' => 'required',
         ], [
             'required' => 'kolom di atas tidak boleh kosong',
-            'regex' => 'pola plat nomor salah',
+            'regex' => 'pola salah',
             'unique' => 'plat nomor tersebut sudah ada.'
         ]);
 
@@ -126,15 +119,22 @@ class KendaraanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'plat_nomor' => 'required|unique:kendaraan|regex:/[A-Z]{1,2} [1-9]{1,4} [A-Z]{1,3}/',
+        $validator = Validator::make($request->all(), [
+            'plat_nomor' => array('required','unique:kendaraan','regex:/[A-Z]{1,2} [1-9][0-9]{1,3} [A-Z]{1,3}/'),
             'nomor_rangka' => 'required',
+            'stnk' => array('regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
+            'pajak' => array('regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
+            'kir' => array('regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
             'nomor_mesin' => 'required',
         ], [
             'required' => 'kolom di atas tidak boleh kosong',
-            'unique' => 'plat nomor sudah ada',
-            'regex' => 'pola plat nomor salah',
+            'regex' => 'pola salah',
+            'unique' => 'plat nomor tersebut sudah ada.'
         ]);
+
+        if ($validator->fails()) {
+            return redirect()->route('kendaraan.edit')->withInput()->withErrors($validator);
+        }
 
         Kendaraan::where('plat_nomor',$id)->update([
             'plat_nomor' => $request->plat_nomor,

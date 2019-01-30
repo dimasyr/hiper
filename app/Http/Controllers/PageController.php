@@ -91,27 +91,17 @@ class PageController extends Controller
     }
 
     public function prosesPerbaikan(Request $request){
-
-//        $request->validate([
-//            'onderdil_id.*' => 'required',
-//            'nomor_seri.*' => 'required',
-//            'merk.*' => 'required',
-//            'masa_berlaku.*' => 'required | numeric',
-//            'tempat_pembelian.*' => 'required',
-//        ], [
-//            'required' => 'Tidak boleh kosong',
-//            'numeric' => 'Harus berupa angka'
-//        ]);
-
         $validator = Validator::make($request->all(), [
             'onderdil_id.*' => 'required',
             'nomor_seri.*' => 'required',
+            'tanggal' => array('required','regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
             'merk.*' => 'required',
             'masa_berlaku.*' => 'required | numeric',
             'tempat_pembelian.*' => 'required',
         ], [
             'required' => 'Tidak boleh kosong',
-            'numeric' => 'Harus berupa angka'
+            'numeric' => 'Harus berupa angka',
+            'regex' => 'format salah'
         ]);
 
         if ($validator->fails()) {
@@ -128,6 +118,7 @@ class PageController extends Controller
             'supir_id' => $request->supir_id,
             'teknisi_id' => $request->teknisi_id,
             'operator_id' => $request->operator_id,
+            'tanggal' => $request->tanggal,
             'kendaraan_id' => $request->plat_nomor
         ]);
 

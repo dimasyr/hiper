@@ -21,12 +21,6 @@
                     </div>
                     <div class="card-body card-block">
                         <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
-                            {{--<div class="row form-group">--}}
-                            {{--<div class="col col-md-6"><label class=" form-control-label">Plat Nomor</label></div>--}}
-                            {{--<div class="col-12 col-md-6">--}}
-                            {{--<p class="form-control-static"></p>--}}
-                            {{--</div>--}}
-                            {{--</div>--}}
                             <div class="row form-group">
                                 <div class="col col-md-6"><label class=" form-control-label">Teknisi</label></div>
                                 <div class="col-12 col-md-6">
