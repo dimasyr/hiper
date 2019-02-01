@@ -13,7 +13,7 @@
         <ul></ul>
     </div>
     <!-- Content -->
-    <div class="content">
+    <div class="content" style="margin-left: -280px; margin-top: -15px; width: auto;">
         <!-- Animated -->
         <div class="animated fadeIn">
             <div class="col-lg-12">
@@ -80,8 +80,10 @@
                                                 <th scope="col">Onderdil</th>
                                                 <th scope="col">No. Seri</th>
                                                 <th scope="col">Merk</th>
-                                                <th scope="col">Masa berlaku (tahun)</th>
+                                                <th scope="col">Masa berlaku</th>
                                                 <th scope="col">Tempat beli</th>
+                                                <th scope="col">Banyak</th>
+                                                <th scope="col">Harga (Rp)</th>
                                                 <th scope="col">
                                                     <button type="button" class="btn btn-sm btn-success" name="add"
                                                             id="add">
@@ -118,8 +120,8 @@
                                                         @endif
                                                     </small>
                                                 </td>
-                                                <td>
-                                                    <input class="form-control" type="text" name="masa_berlaku[]"
+                                                <td style="width: 70px;">
+                                                    <input style="text-align: right;" class="form-control" type="text" name="masa_berlaku[]"
                                                            value="{{ old('masa_berlaku.0') }}">
                                                     <small class="form-text text-muted alert-danger">
                                                         @if($errors->has('masa_berlaku.0'))
@@ -133,6 +135,24 @@
                                                     <small class="form-text text-muted alert-danger">
                                                         @if($errors->has('tempat_pembelian.0'))
                                                             {{ $errors->first('tempat_pembelian.0') }}
+                                                        @endif
+                                                    </small>
+                                                </td>
+                                                <td style="width: 70px;">
+                                                    <input style="text-align: right;" class="form-control" type="text" name="jumlah[]"
+                                                           value="{{ old('jumlah.0') }}">
+                                                    <small class="form-text text-muted alert-danger">
+                                                        @if($errors->has('jumlah.0'))
+                                                            {{ $errors->first('jumlah.0') }}
+                                                        @endif
+                                                    </small>
+                                                </td>
+                                                <td>
+                                                    <input style="text-align: right;" class="form-control" type="text" name="harga[]"
+                                                           value="{{ old('harga.0') }}">
+                                                    <small class="form-text text-muted alert-danger">
+                                                        @if($errors->has('harga.0'))
+                                                            {{ $errors->first('harga.0') }}
                                                         @endif
                                                     </small>
                                                 </td>
@@ -168,7 +188,7 @@
                                                             </small>
                                                         </td>
                                                         <td>
-                                                            <input class="form-control" type="text"
+                                                            <input style="text-align: right;" class="form-control" type="text"
                                                                    name="masa_berlaku[]"
                                                                    value="{{ old('masa_berlaku.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
@@ -184,6 +204,26 @@
                                                             <small class="form-text text-muted alert-danger">
                                                                 @if($errors->has('tempat_pembelian.'.$i))
                                                                     {{ $errors->first('tempat_pembelian.'.$i) }}
+                                                                @endif
+                                                            </small>
+                                                        </td>
+                                                        <td>
+                                                            <input style="text-align: right;" class="form-control" type="text"
+                                                                   name="jumlah[]"
+                                                                   value="{{ old('jumlah.'.$i) }}">
+                                                            <small class="form-text text-muted alert-danger">
+                                                                @if($errors->has('jumlah.'.$i))
+                                                                    {{ $errors->first('jumlah.'.$i) }}
+                                                                @endif
+                                                            </small>
+                                                        </td>
+                                                        <td>
+                                                            <input style="text-align: right;" class="form-control" type="text"
+                                                                   name="harga[]"
+                                                                   value="{{ old('harga.'.$i) }}">
+                                                            <small class="form-text text-muted alert-danger">
+                                                                @if($errors->has('harga.'.$i))
+                                                                    {{ $errors->first('harga.'.$i) }}
                                                                 @endif
                                                             </small>
                                                         </td>

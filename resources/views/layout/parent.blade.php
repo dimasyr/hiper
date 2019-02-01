@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
-    <meta name="description" content="Ela Admin - HTML5 Admin Template">
+    <title>PT. ROSAN PERMAI</title>
+    <meta name="description" content="PT. ROSAN PERMAI">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
@@ -75,48 +76,52 @@
 
 <body>
 <!-- Left Panel -->
-<aside id="left-panel" class="left-panel">
-    <nav class="navbar navbar-expand-sm navbar-default">
-        <div id="main-menu" class="main-menu collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                @if(Auth::user()->role_id == 2)
-                    <li class="@if(Route::currentRouteName() == 'dashboard') active @endif">
-                        <a href="{{ route('dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
-                    </li>
-                    <li class="@if(Route::currentRouteName() == 'perbaikan') active @endif">
-                        <a href="{{ route('perbaikan') }}"><i class="menu-icon fa fa-wrench"></i>Perbaikan </a>
-                    </li>
-                @endif
-                @if(Auth::user()->role_id == 1)
-                    <li class="@if(Route::currentRouteName() == 'kendaraan.index') active @endif">
-                        <a href="{{ route('kendaraan.index')}}"><i class="menu-icon fa fa-truck"></i>Data Kendaraan</a>
-                    </li>
-                    <li class="@if(Route::currentRouteName() == 'alatberat.index') active @endif">
-                        <a href="{{ route('alatberat.index')}}"><i class="menu-icon fa fa-truck-loading"></i>Data Alat Berat</a>
-                    </li>
-                        <li class="@if(Route::currentRouteName() == 'onderdil.index') active @endif">
-                            <a href="{{ route('onderdil.index')}}"><i class="menu-icon fa fa-tools"></i>Data Onderdil</a>
+@if(Route::currentRouteName() != 'perbaikan')
+    <aside id="left-panel" class="left-panel">
+        <nav class="navbar navbar-expand-sm navbar-default">
+            <div id="main-menu" class="main-menu collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    @if(Auth::user()->role_id == 2)
+                        <li class="@if(Route::currentRouteName() == 'dashboard') active @endif">
+                            <a href="{{ route('dashboard') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
                         </li>
-                    <li class="@if(Route::currentRouteName() == 'user.index') active @endif">
-                        <a href="{{ route('user.index')}}"><i class="menu-icon fa fa-user"></i>Data User</a>
-                    </li>
-                @endif
-                <li class="#">
-                    <a href="{{ route('logout') }}"
-                       onclick="event.preventDefault();
+                        <li class="@if(Route::currentRouteName() == 'perbaikan') active @endif">
+                            <a href="{{ route('perbaikan') }}"><i class="menu-icon fa fa-wrench"></i>Perbaikan </a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->role_id == 1)
+                        <li class="@if(Route::currentRouteName() == 'kendaraan.index') active @endif">
+                            <a href="{{ route('kendaraan.index')}}"><i class="menu-icon fa fa-truck"></i>Data Kendaraan</a>
+                        </li>
+                        <li class="@if(Route::currentRouteName() == 'alatberat.index') active @endif">
+                            <a href="{{ route('alatberat.index')}}"><i class="menu-icon fa fa-truck-loading"></i>Data
+                                Alat Berat</a>
+                        </li>
+                        <li class="@if(Route::currentRouteName() == 'onderdil.index') active @endif">
+                            <a href="{{ route('onderdil.index')}}"><i class="menu-icon fa fa-tools"></i>Data
+                                Onderdil</a>
+                        </li>
+                        <li class="@if(Route::currentRouteName() == 'user.index') active @endif">
+                            <a href="{{ route('user.index')}}"><i class="menu-icon fa fa-user"></i>Data User</a>
+                        </li>
+                    @endif
+                    <li class="#">
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        <i class="menu-icon ti-close"></i>{{ __('Logout') }}
-                    </a>
+                            <i class="menu-icon ti-close"></i>{{ __('Logout') }}
+                        </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
 
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </nav>
-</aside>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+    </aside>
+@endif
 <!-- /#left-panel -->
 
 <!-- Right Panel -->
@@ -129,7 +134,9 @@
                                                                             alt="Logo"></a>
                 <a class="navbar-brand hidden" href="{{ route('dashboard')}}"><img src="{{asset('images/logo1.jpg')}}"
                                                                                    alt="Logo"></a>
-                <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                @if(Route::currentRouteName() != 'perbaikan')
+                    <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+                @endif
             </div>
         </div>
         <div class="top-right">
@@ -400,9 +407,9 @@
     });
 </script>
 <script>
-$('.tanggal').datepicker({
-    format: 'yyyy-mm-dd'
-});
+    $('.tanggal').datepicker({
+        format: 'yyyy-mm-dd'
+    });
 </script>
 @stack('js')
 </body>
