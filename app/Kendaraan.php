@@ -49,11 +49,14 @@ class Kendaraan extends Model
     public function getStatusOnderdil($onderdil_id)
     {
         $onderdil = $this->getOnderdil()->where('onderdil_id', $onderdil_id)->orderByDesc('created_at')->first();
+
         if($onderdil != null){
-            $total_hari = $onderdil->masa_berlaku*365;
+            $total_hari = $onderdil->masa_berlaku*30.5;
             $hari_sekarang = Carbon::now();
-            $sisa_hari = $hari_sekarang->diffInDays($onderdil->created_at->addYears($onderdil->masa_berlaku));
+            $sisa_hari = $hari_sekarang->diffInDays($onderdil->created_at->addMonths($onderdil->masa_berlaku));
             $status = abs(($total_hari-$sisa_hari)/$total_hari)*100;
+
+//            echo "sisa: ".$sisa_hari. "total: ".$total_hari;
 
             return [
                 'onderdilKendaraan' => $onderdil,

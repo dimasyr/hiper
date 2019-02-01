@@ -40,9 +40,10 @@ class OnderdilController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'nama' => 'required',
+            'nama' => 'required | max:20',
         ], [
             'required' => 'kolom di tidak boleh kosong',
+            'max' => 'nama terlalu panjang'
         ]);
 
         Onderdil::create([
@@ -88,9 +89,10 @@ class OnderdilController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama' => 'required',
+            'nama' => 'required | max:20',
         ], [
             'required' => 'kolom di tidak boleh kosong',
+            'max' => 'nama terlalu panjang'
         ]);
 
         Onderdil::find($id)->update([

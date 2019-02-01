@@ -36,7 +36,7 @@
                             <div class="row form-group">
                                 <div class="col col-md-3"><label for="nama"
                                                                  class=" form-control-label">Nama</label></div>
-                                <div class="col-12 col-md-9"><input type="text" id="nama" name="nama"
+                                <div class="col-12 col-md-9"><input type="text" id="nama" name="nama" value="{{ old('nama') }}"
                                                                     placeholder="Masukkan nama" class="form-control">
                                     <small class="form-text text-muted alert-danger">
                                         @if($errors->has('nama'))
@@ -49,7 +49,7 @@
                                 <div class="col col-md-3"><label for="username"
                                                                  class=" form-control-label">Username</label></div>
                                 <div class="col-12 col-md-9"><input type="text" id="username" name="username"
-                                                                    placeholder="Masukkan username"
+                                                                    placeholder="Masukkan username" value="{{ old('username') }}"
                                                                     class="form-control">
                                     <small class="form-text text-muted alert-danger">
                                         @if($errors->has('username'))
@@ -76,7 +76,7 @@
                                 <div class="col-12 col-md-9">
                                     <select name="role_id" id="role_id" class="form-control">
                                         @foreach($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->nama }}</option>
+                                            <option value="{{ $role->id }}" @if($role->id == old('role_id')) selected @endif>{{ $role->nama }}</option>
                                         @endforeach
                                     </select>
                                 </div>

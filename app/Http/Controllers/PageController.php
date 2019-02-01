@@ -51,7 +51,7 @@ class PageController extends Controller
     public function detailTruck($plat_nomor){
         $kendaraan = Kendaraan::where('plat_nomor', $plat_nomor)->first();
         $onderdils = Onderdil::all();
-        $permintaan = Permintaan::where('kendaraan_id', $kendaraan->plat_nomor)->paginate(10);
+        $permintaan = Permintaan::where('kendaraan_id', $kendaraan->plat_nomor)->orderBy('tanggal')->paginate(10);
 
         return view('info', [
             'kendaraan' => $kendaraan,
@@ -119,7 +119,7 @@ class PageController extends Controller
             'teknisi_id' => $request->teknisi_id,
             'operator_id' => $request->operator_id,
             'tanggal' => $request->tanggal,
-            'kendaraan_id' => $request->plat_nomor
+            'kendaraan_id' => $request->plat_nomor,
         ]);
 
         foreach ($request->input('onderdil_id.*') as $index => $value){
@@ -129,7 +129,8 @@ class PageController extends Controller
                 'merk' => $request->input('merk.*')[$index],
                 'masa_berlaku' => $request->input('masa_berlaku.*')[$index],
                 'tempat_pembelian' => $request->input('tempat_pembelian.*')[$index],
-                'permintaan_id' => $permintaan->id
+                'permintaan_id' => $permintaan->id,
+                'created_at' => $request->tanggal
             ]);
         }
 

@@ -50,7 +50,7 @@ class KendaraanController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'plat_nomor' => array('required','unique:kendaraan','regex:/[A-Z]{1,2} [1-9][0-9]{1,3} [A-Z]{1,3}/'),
+            'plat_nomor' => array('required','unique:kendaraan', 'max:10','regex:/[A-Z]{1,2} [1-9][0-9]{1,3} [A-Z]{1,3}/'),
             'nomor_rangka' => 'required',
             'stnk' => array('regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
             'pajak' => array('regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
@@ -59,7 +59,8 @@ class KendaraanController extends Controller
         ], [
             'required' => 'kolom di atas tidak boleh kosong',
             'regex' => 'pola salah',
-            'unique' => 'plat nomor tersebut sudah ada.'
+            'unique' => 'plat nomor tersebut sudah ada.',
+            'max' => 'kode plat terlalu panjang'
         ]);
 
         if ($validator->fails()) {
@@ -120,7 +121,7 @@ class KendaraanController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'plat_nomor' => array('required','unique:kendaraan','regex:/[A-Z]{1,2} [1-9][0-9]{1,3} [A-Z]{1,3}/'),
+            'plat_nomor' => array('required','unique:kendaraan', 'max:10','regex:/[A-Z]{1,2} [1-9][0-9]{1,3} [A-Z]{1,3}/'),
             'nomor_rangka' => 'required',
             'stnk' => array('regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
             'pajak' => array('regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
@@ -129,11 +130,12 @@ class KendaraanController extends Controller
         ], [
             'required' => 'kolom di atas tidak boleh kosong',
             'regex' => 'pola salah',
-            'unique' => 'plat nomor tersebut sudah ada.'
+            'unique' => 'plat nomor tersebut sudah ada.',
+            'max' => 'kode plat terlalu panjang'
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('kendaraan.edit')->withInput()->withErrors($validator);
+            return redirect()->route('kendaraan.edit',['id' => $id])->withInput()->withErrors($validator);
         }
 
         Kendaraan::where('plat_nomor',$id)->update([

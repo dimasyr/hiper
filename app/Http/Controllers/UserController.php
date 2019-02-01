@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 class UserController extends Controller
@@ -53,6 +54,8 @@ class UserController extends Controller
             'required' => 'kolom di tidak boleh kosong',
             'unique' => 'username tersebut telah digunakan'
         ]);
+
+        $validator = Validator::make();
 
         User::create([
             'nama' => $request->nama,

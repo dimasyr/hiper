@@ -13,7 +13,7 @@ class OnderdilKendaraan extends Model
     protected $table = 'onderdil_kendaraan';
 
     protected $fillable = [
-        'nomor_seri', 'merk', 'masa_berlaku', 'tempat_pembelian', 'kategori', 'onderdil_id', 'permintaan_id'
+        'nomor_seri', 'merk', 'masa_berlaku', 'tempat_pembelian', 'kategori', 'onderdil_id', 'permintaan_id', 'created_at', 'updated_at'
     ];
 
     protected $dates = [
