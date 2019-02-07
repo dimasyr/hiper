@@ -28,7 +28,7 @@
 
 <body>
 <!-- Left Panel -->
-@if(Route::currentRouteName() != 'perbaikan' && Route::currentRouteName() != 'perbaikiSekarang')
+@if(Route::currentRouteName() != 'perbaikan' && Route::currentRouteName() != 'perbaiki.sekarang' && Route::currentRouteName() != 'permintaan.edit')
     <aside id="left-panel" class="left-panel">
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
@@ -87,7 +87,7 @@
                                                                             alt="Logo"></a>
                 <a class="navbar-brand hidden" href="{{ route('dashboard')}}"><img src="{{asset('images/logo1.jpg')}}"
                                                                                    alt="Logo"></a>
-                @if(Route::currentRouteName() != 'perbaikan' && Route::currentRouteName() != 'perbaikiSekarang')
+                @if(Route::currentRouteName() != 'perbaikan' && Route::currentRouteName() != 'perbaiki.sekarang' && Route::currentRouteName() != 'permintaan.edit')
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
                 @endif
             </div>

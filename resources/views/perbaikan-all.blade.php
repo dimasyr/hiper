@@ -35,7 +35,8 @@
 
 
                 <div class="col-md-6">
-                    <form action="{{ route('permintaan.index') }}" method="get" name="form_perbaikan" id="form_perbaikan"
+                    <form action="{{ route('permintaan.index') }}" method="get" name="form_perbaikan"
+                          id="form_perbaikan"
                           class="form-inline">
 
                         <label style="margin-right: 15px;">Pilih bulan</label>
@@ -64,8 +65,10 @@
                                         <tr>
                                             <th class="serial">No</th>
                                             <th>Tanggal
-                                                <a href="{{ route('permintaan.index', ['sort' => 'desc']) }}" class="float-right"><i class="fa fa-arrow-up"></i></a>
-                                                <a href="{{ route('permintaan.index', ['sort' => 'asc']) }}" class="float-right"><i class="fa fa-arrow-down"></i></a>
+                                                <a href="{{ route('permintaan.index', ['sort' => 'desc']) }}"
+                                                   class="float-right"><i class="fa fa-arrow-up"></i></a>
+                                                <a href="{{ route('permintaan.index', ['sort' => 'asc']) }}"
+                                                   class="float-right"><i class="fa fa-arrow-down"></i></a>
                                             </th>
                                             <th>Kendaraan</th>
                                             <th>Nama Supir</th>
@@ -90,22 +93,14 @@
                                                         </button>
                                                     </a>
 
-                                                    <a href="{{ route('detailTruck', [
-                                                'plat_nomor' => $permintaan->id
-                                                ]) }}">
-                                                        <button type="button" class="btn btn-primary btn-sm"><i
-                                                                    class="fa fa-eye"></i>
-                                                        </button>
-                                                    </a>
-
-                                                    <a href="{{ route('perbaiki.sekarang',['plat_nomor' => $permintaan->kendaraan_id]) }}">
+                                                    <a href="{{ route('permintaan.edit',['id' => $permintaan->id]) }}">
                                                         <button type="button" class="btn btn-success btn-sm"><i
                                                                     class="fa fa-edit"></i>
                                                         </button>
                                                     </a>
 
-                                                    <form onclick="return confirm('Apakah anda yakin ingin menghapus user tersebut?');"
-                                                          action="{{ route('kendaraan.destroy',[
+                                                    <form onclick="return confirm('Apakah anda yakin ingin menghapus data tersebut?');"
+                                                          action="{{ route('permintaan.destroy',[
                                                     'id' => $permintaan->id ]) }}" method="post" class="d-inline">
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger btn-sm"><i

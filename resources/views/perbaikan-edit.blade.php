@@ -9,9 +9,12 @@
     <!-- Animated -->
         <div class="animated fadeIn">
             <div class="col-lg-12">
-                <form action="{{ route('onderdilkendaraan.store') }}" method="post" name="form_perbaikan" id="form_perbaikan"
+                <form action="{{ route('permintaan.update', [ 'id' => $permintaan->id ]) }}" method="post" name="form_perbaikan"
+                      id="form_perbaikan"
                       class="form-horizontal">
                     @csrf
+                    <input type="hidden" name="_method" value="PATCH">
+
                     <div class="card">
                         <div class="card-header">
                             <strong>Form Perbaikan</strong>
@@ -23,7 +26,7 @@
                                     <select name="plat_nomor" id="plat_nomor" class="form-control">
                                         @foreach($kendaraan as $truk)
                                             <option value="{{ $truk->plat_nomor }}"
-                                                    @if(isset($kendaraan_terpilih) && $truk->plat_nomor == $kendaraan_terpilih->plat_nomor || old('plat_nomor') == $truk->plat_nomor)
+                                                    @if($truk->plat_nomor == $permintaan->kendaraan_id)
                                                     selected
                                                     @endif>{{ $truk->plat_nomor }}</option>
                                         @endforeach
@@ -32,8 +35,10 @@
                                 <div class="col col-md-1"></div>
                                 <div class="col col-md-2"><label class=" form-control-label">Tanggal</label>
                                 </div>
-                                <div class="col-3 col-md-3"><input type="text" autocomplete="off" value="{{ old('tanggal') }}"
-                                                                   name="tanggal" class="form-control tanggal"><small class="form-text text-muted alert-danger">
+                                <div class="col-3 col-md-3"><input type="text" autocomplete="off"
+                                                                   value="{{ $permintaan->tanggal }}"
+                                                                   name="tanggal" class="form-control tanggal">
+                                    <small class="form-text text-muted alert-danger">
                                         @if($errors->has('tanggal'))
                                             {{ $errors->first('tanggal') }}
                                         @endif
@@ -45,7 +50,9 @@
                                 <div class="col-3 col-md-3">
                                     <select name="teknisi_id" id="teknisi_id" class="form-control">
                                         @foreach($teknisis as $teknisi)
-                                            <option value="{{ $teknisi->id}}" @if($teknisi->id == old('teknisi_id')) selected @endif>{{ $teknisi->nama}}</option>
+                                            <option value="{{ $teknisi->id}}"
+                                                    @if($teknisi->id == $permintaan->teknisi_id))
+                                                    selected @endif>{{ $teknisi->nama}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -55,7 +62,7 @@
                                     <select name="supir_id" id="supir_id" class="form-control">
                                         @foreach($supirs as $supir)
                                             <option value="{{ $supir->id}}"
-                                                    @if((isset($kendaraan_terpilih) && ($supir->id == $kendaraan_terpilih->supir_id)) || $supir->id == old('supir_id'))
+                                                    @if($supir->id == $permintaan->supir_id)
                                                     selected
                                                     @endif>{{ $supir->nama}}</option>
                                         @endforeach
@@ -64,7 +71,8 @@
                                 <input type="hidden" name="operator_id" value="{{ Auth::user()->id }}">
                             </div>
                             <div class="col-lg-12">
-                                <div class="card" style="margin-left: -30px; margin-right: -30px; margin-bottom: -10px;">
+                                <div class="card"
+                                     style="margin-left: -30px; margin-right: -30px; margin-bottom: -10px;">
                                     <div class="card-body">
                                         <table class="table">
                                             <thead>
@@ -76,7 +84,7 @@
                                                 <th scope="col">Masa berlaku</th>
                                                 <th scope="col">Tempat beli</th>
                                                 <th scope="col">Jumlah</th>
-                                                <th scope="col">Harga (Rp)</th>
+                                                <th scope="col">Harga satuan(Rp)</th>
                                                 <th scope="col">
                                                     <button type="button" class="btn btn-sm btn-success" name="add"
                                                             id="add">
@@ -86,81 +94,102 @@
                                             </tr>
                                             </thead>
                                             <tbody id="dynamic_field">
-                                            <tr>
-                                                <th style="width: 200px;">
-                                                    <select name="onderdil_id[]" class="form-control">
-                                                        @foreach($onderdils as $onderdil)
-                                                            <option value="{{ $onderdil->id}}"
-                                                                    @if($onderdil->id == old('onderdil_id.0')) selected @endif>{{ $onderdil->nama}}</option>
-                                                        @endforeach
-                                                    </select>
-                                                </th>
-                                                <td>
-                                                    <input class="form-control" type="text" name="nomor_seri[]"
-                                                           value="{{ old('nomor_seri.0') }}">
-                                                    <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('nomor_seri.0'))
-                                                            {{ $errors->first('nomor_seri.0') }}
-                                                        @endif
-                                                    </small>
-                                                </td>
-                                                <td>
-                                                    <input style="width: 80px;" class="form-control" type="text" name="ukuran[]"
-                                                           value="{{ old('ukuran.0') }}">
-                                                    <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('ukuran.0'))
-                                                            {{ $errors->first('ukuran.0') }}
-                                                        @endif
-                                                    </small>
-                                                </td>
-                                                <td>
-                                                    <input class="form-control" type="text" name="merk[]"
-                                                           value="{{ old('merk.0') }}">
-                                                    <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('merk.0'))
-                                                            {{ $errors->first('merk.0') }}
-                                                        @endif
-                                                    </small>
-                                                </td>
-                                                <td style="width: 70px;">
-                                                    <input style="text-align: right;" class="form-control" type="text" name="masa_berlaku[]"
-                                                           value="{{ old('masa_berlaku.0') }}">
-                                                    <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('masa_berlaku.0'))
-                                                            {{ $errors->first('masa_berlaku.0') }}
-                                                        @endif
-                                                    </small>
-                                                </td>
-                                                <td>
-                                                    <input class="form-control" type="text" name="tempat_pembelian[]"
-                                                           value="{{ old('tempat_pembelian.0') }}">
-                                                    <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('tempat_pembelian.0'))
-                                                            {{ $errors->first('tempat_pembelian.0') }}
-                                                        @endif
-                                                    </small>
-                                                </td>
-                                                <td style="width: 70px;">
-                                                    <input style="text-align: right;" class="form-control" type="text" name="jumlah[]"
-                                                           value="{{ old('jumlah.0') }}">
-                                                    <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('jumlah.0'))
-                                                            {{ $errors->first('jumlah.0') }}
-                                                        @endif
-                                                    </small>
-                                                </td>
-                                                <td>
-                                                    <input style="text-align: right;" class="form-control" type="text" name="harga[]"
-                                                           value="{{ old('harga.0') }}">
-                                                    <small class="form-text text-muted alert-danger">
-                                                        @if($errors->has('harga.0'))
-                                                            {{ $errors->first('harga.0') }}
-                                                        @endif
-                                                    </small>
-                                                </td>
-                                            </tr>
+                                            @if(!session()->has('jumlah'))
+                                            @foreach($onderdilkendaraans as $onderdilkendaraan)
+                                                <tr id="row{{ $loop->iteration }}" class="dynamic-added">
+                                                    <th style="width: 200px;">
+                                                        <select name="onderdil_id[]" class="form-control">
+                                                            @foreach($onderdils as $onderdil)
+                                                                <option value="{{ $onderdil->id}}"
+                                                                        @if($onderdil->id == $onderdilkendaraan->onderdil_id))
+                                                                        selected @endif>{{ $onderdil->nama}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </th>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="nomor_seri[]"
+                                                               value="{{ $onderdilkendaraan->nomor_seri }}">
+                                                        <small class="form-text text-muted alert-danger">
+                                                            @if($errors->has('nomor_seri.'.$loop->iteration))
+                                                                {{ $errors->first('nomor_seri.'.$loop->iteration) }}
+                                                            @endif
+                                                        </small>
+                                                    </td>
+                                                    <td>
+                                                        <input style="width: 80px;" class="form-control" type="text"
+                                                               name="ukuran[]"
+                                                               value="{{ $onderdilkendaraan->ukuran }}">
+                                                        <small class="form-text text-muted alert-danger">
+                                                            @if($errors->has('ukuran.'.$loop->iteration))
+                                                                {{ $errors->first('ukuran.'.$loop->iteration) }}
+                                                            @endif
+                                                        </small>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text" name="merk[]"
+                                                               value="{{ $onderdilkendaraan->merk }}">
+                                                        <small class="form-text text-muted alert-danger">
+                                                            @if($errors->has('merk.'.$loop->iteration))
+                                                                {{ $errors->first('merk.'.$loop->iteration) }}
+                                                            @endif
+                                                        </small>
+                                                    </td>
+                                                    <td>
+                                                        <input style="text-align: right;" class="form-control"
+                                                               type="text"
+                                                               name="masa_berlaku[]"
+                                                               value="{{ $onderdilkendaraan->masa_berlaku }}">
+                                                        <small class="form-text text-muted alert-danger">
+                                                            @if($errors->has('masa_berlaku.'.$loop->iteration))
+                                                                {{ $errors->first('masa_berlaku.'.$loop->iteration) }}
+                                                            @endif
+                                                        </small>
+                                                    </td>
+                                                    <td>
+                                                        <input class="form-control" type="text"
+                                                               name="tempat_pembelian[]"
+                                                               value="{{ $onderdilkendaraan->tempat_pembelian }}">
+                                                        <small class="form-text text-muted alert-danger">
+                                                            @if($errors->has('tempat_pembelian.'.$loop->iteration))
+                                                                {{ $errors->first('tempat_pembelian.'.$loop->iteration) }}
+                                                            @endif
+                                                        </small>
+                                                    </td>
+                                                    <td>
+                                                        <input style="text-align: right;" class="form-control"
+                                                               type="text"
+                                                               name="jumlah[]"
+                                                               value="{{ $onderdilkendaraan->jumlah }}">
+                                                        <small class="form-text text-muted alert-danger">
+                                                            @if($errors->has('jumlah.'.$loop->iteration))
+                                                                {{ $errors->first('jumlah.'.$loop->iteration) }}
+                                                            @endif
+                                                        </small>
+                                                    </td>
+                                                    <td>
+                                                        <input style="text-align: right;" class="form-control"
+                                                               type="text"
+                                                               name="harga[]"
+                                                               value="{{ $onderdilkendaraan->harga }}">
+                                                        <small class="form-text text-muted alert-danger">
+                                                            @if($errors->has('harga.'.$loop->iteration))
+                                                                {{ $errors->first('harga.'.$loop->iteration) }}
+                                                            @endif
+                                                        </small>
+                                                    </td>
+                                                    @if($loop->iteration != 1)
+                                                        <td>
+                                                            <button type="button" name="remove"
+                                                                    id="{{ $loop->iteration }}"
+                                                                    class="btn btn-sm btn-danger btn_remove"><i
+                                                                        class="fa fa-close"></i></button>
+                                                        </td>
+                                                    @endif
+                                                </tr>
+                                            @endforeach
+
                                             {{--{{ $jumlah }}--}}
-                                            @if(session()->has('jumlah'))
+                                            @elseif(session()->has('jumlah'))
                                                 @for($i = 1 ; $i < session('jumlah') ; $i++)
                                                     <tr id="row{{ $i }}" class="dynamic-added">
                                                         <th style="width: 200px;">
@@ -181,7 +210,8 @@
                                                             </small>
                                                         </td>
                                                         <td>
-                                                            <input style="width: 80px;" class="form-control" type="text" name="ukuran[]"
+                                                            <input style="width: 80px;" class="form-control" type="text"
+                                                                   name="ukuran[]"
                                                                    value="{{ old('ukuran.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
                                                                 @if($errors->has('ukuran.'.$i))
@@ -199,7 +229,8 @@
                                                             </small>
                                                         </td>
                                                         <td>
-                                                            <input style="text-align: right;" class="form-control" type="text"
+                                                            <input style="text-align: right;" class="form-control"
+                                                                   type="text"
                                                                    name="masa_berlaku[]"
                                                                    value="{{ old('masa_berlaku.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
@@ -219,7 +250,8 @@
                                                             </small>
                                                         </td>
                                                         <td>
-                                                            <input style="text-align: right;" class="form-control" type="text"
+                                                            <input style="text-align: right;" class="form-control"
+                                                                   type="text"
                                                                    name="jumlah[]"
                                                                    value="{{ old('jumlah.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
@@ -229,7 +261,8 @@
                                                             </small>
                                                         </td>
                                                         <td>
-                                                            <input style="text-align: right;" class="form-control" type="text"
+                                                            <input style="text-align: right;" class="form-control"
+                                                                   type="text"
                                                                    name="harga[]"
                                                                    value="{{ old('harga.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
@@ -254,8 +287,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <button type="submit" class="btn btn-primary" id="submit" name="submit">Submit
-                        </button>
+                        <button type="submit" class="btn btn-primary" id="submit" name="submit">Edit</button>
                     </div>
                 </form>
             </div>

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Permintaan extends Model
 {
     use SoftDeletes;
+
     protected $table = 'permintaan';
 
     protected $fillable = [

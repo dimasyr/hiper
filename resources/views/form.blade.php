@@ -76,7 +76,7 @@
                                                 <th scope="col">Masa berlaku</th>
                                                 <th scope="col">Tempat beli</th>
                                                 <th scope="col">Jumlah</th>
-                                                <th scope="col">Harga Satuan (Rp)</th>
+                                                <th scope="col">Harga satuan (Rp)</th>
                                                 <th scope="col">
                                                     <button type="button" class="btn btn-sm btn-success" name="add"
                                                             id="add">

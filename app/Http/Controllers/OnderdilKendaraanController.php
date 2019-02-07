@@ -49,7 +49,6 @@ class OnderdilKendaraanController extends Controller
             'required' => 'Tidak boleh kosong',
             'numeric' => 'Harus berupa angka',
             'regex' => 'format salah',
-            'unique' => 'nomor seri tidak boleh sama'
         ]);
 
         if ($validator->fails()) {
