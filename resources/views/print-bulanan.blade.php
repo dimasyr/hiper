@@ -10,7 +10,7 @@
             margin-bottom: 30px
         }
 
-        .bordered td,
+        .bordered td, 
         .bordered th {
             border: 1px solid black;
         }
@@ -37,13 +37,13 @@
 
         @font-face {
             font-family: MyriadPro-Regular;
-            src: url("css/assets/fonts/MyriadPro-Regular.otf");
+            src: url("font/MyriadPro-Regular.otf");
 
         }
 
         @font-face {
             font-family: MyriadPro-Cond;
-            src: url("css/assets/fonts/MyriadPro-Cond.otf");
+            src: url("font/MyriadPro-Cond.otf");
 
         }
 
@@ -60,12 +60,28 @@
         #head-big {
             font-family: MyriadPro-Cond;
             font-weight: bold;
-            font-size: 21pt;
+            font-size: 22pt;
             padding-top: 30;
         }
 
         #container td {
             font-family: MyriadPro-Regular;
+        }
+
+        #font1 td {
+            font-size: 8pt;
+        }
+
+        #font2 td {
+            font-size: 9pt;
+        }
+
+        #font3 td {
+            font-size: 10pt;
+        }
+
+        #font4 td {
+            font-size: 11pt;
         }
 
         .headermk td {
@@ -148,28 +164,13 @@
                                 <tr>
                                     <td style="padding-right:10px"></td>
                                     <td style="padding:0px 10px 0px 10px;">
-                                        <div align="center" id="head-big">FORM PERBAIKAN KENDARAAN</div>
+                                        <div align="center" id="head-big">RIWAYAT PERBAIKAN (PLAT NOMOR)</div>
                                     </td>
-                                    <td valign="top">
+                                    <td valign="bottom">
                                         <table class="identitas" cellspacing="2" cellpadding="2">
                                             <tbody>
                                                 <tr>
-                                                    <td>Tanggal</td>
-                                                    <td>:</td>
-                                                    <td>placeholder</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nopol</td>
-                                                    <td>:</td>
-                                                    <td>placeholder</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sopir</td>
-                                                    <td>:</td>
-                                                    <td>placeholder</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Teknisi</td>
+                                                    <td>Bulan/Tahun</td>
                                                     <td>:</td>
                                                     <td>placeholder</td>
                                                 </tr>
@@ -181,31 +182,33 @@
                         </table>
                     </td>
                 </tr>
-
+                <tr class="bordered" id="font2" style="height: 29px;">
+                    <td style="height: 29px; text-align: center;">No</td>
+                    <td style="width: 60px height: 29px; text-align: center;">Tanggal</td>
+                    <td style="width: 87px; height: 29px; text-align: center;">Plat Nomor</td>
+                    <td style="width: 70px; height: 29px; text-align: center;">Onderdil</td>
+                    <td style="width: 87px; height: 29px; text-align: center;">Nomor Seri</td>
+                    <td style="width: 90px; height: 29px; text-align: center;">Merk</td>
+                    <td style="height: 29px; text-align: center;">Masa Berlaku</td>
+                    <td style="width: 90px; height: 29px; text-align: center;">Tempat Beli</td>
+                    <td style="height: 29px; text-align: center;">Banyak</td>
+                    <td style="width: 90px; height: 29px; text-align: center;">Harga</td>
+                </tr>
+                <tr class="bordered" id="font1">
+                    <td style="text-align: center;">1</td>
+                    <td style="width: 60px; text-align: center;">10-04-2019</td>
+                    <td style="width: 87px; text-align: center;">L 1234 L</td>
+                    <td style="width: 90px; text-align: center;">Oli</td>
+                    <td style="width: 90px; text-align: center;">123</td>
+                    <td style="width: 90px; text-align: center;">Sakura</td>
+                    <td style="text-align: center;">1</td>
+                    <td style="width: 90px; text-align: center;">Joyo</td>
+                    <td style="text-align: center;">1</td>
+                    <td style="width: 90px; text-align: center;">10000</td>
+                </tr>
                 <tr class="bordered" style="height: 29px;">
-                    <td style="width: 90px; height: 29px; text-align: center;">Tanggal</td>
-                    <td style="width: 396px; height: 29px; text-align: center;">Item Perbaikan</td>
-                    <td style="width: 87px; height: 29px; text-align: center;">Jumlah Item</td>
-                    <td rowspan="1" style="width: 191px; height: 29px; text-align: center;">Biaya</td>
-                    <td rowspan="4" style="width: 192px; height: 29px; text-align: center;">Keterangan</td>
-                </tr>
-                <tr class="bordered" style="height: 175px;">
-                    <td style="width: 90px; height: 175px;">&nbsp;</td>
-                    <td style="width: 396px; height: 175px;">&nbsp;</td>
-                    <td style="width: 87px; height: 175px;">&nbsp;</td>
-                </tr>
-                <tr class="bordered" style="height: 10px;">
-                    <td colspan="3" style="width: 90px; height: 10px;">Persetujuan :</td>
-                </tr>
-                <tr class="bordered" style="height: 79px;">
-                    <td style="width: 90px; height: 79px; padding-left: 30">Operator</td>
-                    <td style="width: 396px; height: 79px; text-align: center;">Teknisi</td>
-                    <td style="width: 87px; height: 79px; padding-right: 30">Sopir</td>
-                </tr>
-                <tr class="bordered" style="height: 20px;">
-                    <td colspan="3" style="width: 90px; height: 20px; text-align: center; padding-top: 10">Total :</td>
-                    <td style="width: 191px; height: 20px;">&nbsp;</td>
-                    <td style="width: 191px; height: 20px;">&nbsp;</td>
+                    <td colspan="9" style="width: 70px; height: 29px; text-align: center;">Total</td>
+                    <td style="width: 90px; height: 29px; text-align: center;"></td>
                 </tr>
             </tbody>
         </table>
