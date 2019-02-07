@@ -21,7 +21,7 @@ class CheckRole
             if (in_array(Auth::user()->role_id, explode('|',$role))) {
                 return $next($request);
             } else {
-                return redirect()->route('dashboard');
+                return redirect()->route('kendaraan.index');
             }
         } else {
             return redirect()->route('masuk');

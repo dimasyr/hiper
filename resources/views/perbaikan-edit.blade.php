@@ -6,7 +6,7 @@
     <!-- Content -->
     <div class="content" style="margin-left: -280px; margin-top: -15px; width: auto;">
     @include('layouts.alert')
-        <!-- Animated -->
+    <!-- Animated -->
         <div class="animated fadeIn">
             <div class="col-lg-12">
                 <form action="{{ route('onderdilkendaraan.store') }}" method="post" name="form_perbaikan" id="form_perbaikan"
@@ -34,9 +34,9 @@
                                 </div>
                                 <div class="col-3 col-md-3"><input type="text" autocomplete="off" value="{{ old('tanggal') }}"
                                                                    name="tanggal" class="form-control tanggal"><small class="form-text text-muted alert-danger">
-                                    @if($errors->has('tanggal'))
-                                        {{ $errors->first('tanggal') }}
-                                    @endif
+                                        @if($errors->has('tanggal'))
+                                            {{ $errors->first('tanggal') }}
+                                        @endif
                                     </small>
                                 </div>
                             </div>
@@ -76,7 +76,7 @@
                                                 <th scope="col">Masa berlaku</th>
                                                 <th scope="col">Tempat beli</th>
                                                 <th scope="col">Jumlah</th>
-                                                <th scope="col">Harga Satuan (Rp)</th>
+                                                <th scope="col">Harga (Rp)</th>
                                                 <th scope="col">
                                                     <button type="button" class="btn btn-sm btn-success" name="add"
                                                             id="add">
@@ -291,42 +291,6 @@
                 $('#row' + button_id + '').remove();
             });
 
-            // $.ajaxSetup({
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //     }
-            // });
-
-            // $('#submit').click(function () {
-            //     $.ajax({
-            //         url: postURL,
-            //         method: "POST",
-            //         data: $('#form_perbaikan').serialize(),
-            //         type: 'json',
-            //         success: function (data) {
-            //             if (data.error) {
-            //                 printErrorMsg(data.error);
-            //             } else {
-            //                 i = 1;
-            //                 $('.dynamic-added').remove();
-            //                 $('#form_perbaikan')[0].reset();
-            //                 $(".print-success-msg").find("ul").html('');
-            //                 $(".print-success-msg").css('display', 'block');
-            //                 $(".print-error-msg").css('display', 'none');
-            //                 $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
-            //             }
-            //         }
-            //     });
-            // });
-
-            function printErrorMsg(msg) {
-                $(".print-error-msg").find("ul").html('');
-                $(".print-error-msg").css('display', 'block');
-                $(".print-success-msg").css('display', 'none');
-                $.each(msg, function (key, value) {
-                    $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
-                });
-            }
         });
     </script>
 @endpush

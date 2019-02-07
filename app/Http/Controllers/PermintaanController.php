@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Permintaan;
 use Illuminate\Http\Request;
 
 class PermintaanController extends Controller
@@ -13,7 +14,32 @@ class PermintaanController extends Controller
      */
     public function index()
     {
-        //
+        $permintaans = new Permintaan();
+
+        if(request()->has('tanggal')){
+            $permintaans = $permintaans->where('tanggal', request('tanggal'));
+        }
+
+        if(request()->has('bulan') && (request('bulan') != null)){
+            $permintaans = $permintaans->where('tanggal', 'like', '%'.request('bulan').'%');
+        }
+
+        if(request()->has('sort')){
+            $permintaans = $permintaans->orderBy('tanggal', request('sort'));
+        }
+        else{
+            $permintaans = $permintaans->orderBy('tanggal');
+        }
+
+        $permintaans = $permintaans->paginate(5)->appends([
+            'tanggal' => request('tanggal'),
+            'sort' => request('sort'),
+            'bulan' => request('bulan')
+        ]);
+
+        return view('perbaikan-all', [
+            'permintaans' => $permintaans
+        ]);
     }
 
     /**
@@ -45,7 +71,7 @@ class PermintaanController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -56,7 +82,8 @@ class PermintaanController extends Controller
      */
     public function edit($id)
     {
-        //
+
+        return view('perbaikan-edit');
     }
 
     /**

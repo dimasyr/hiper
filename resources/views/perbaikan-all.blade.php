@@ -11,7 +11,7 @@
                 <div class="col-sm-4">
                     <div class="page-header float-left">
                         <div class="page-title">
-                            <h1>Data Kendaraan</h1>
+                            <h1>Data Perbaikan</h1>
                         </div>
                     </div>
                 </div>
@@ -22,58 +22,83 @@
     @include('layouts.alert')
     <!-- Animated -->
         <div class="animated fadeIn">
-                <a href="{{ route('kendaraan.create') }}">
-                    <button class="btn btn-sm btn-info"><i class="fa fa-plus"></i> Tambah Kendaraan</button>
-                </a>
-        <!-- Table -->
+            <div class="row">
+                <div class="col-md-2">
+                    <a href="{{ route('permintaan.index') }}">
+                        <button class="btn btn-sm btn-success">Semua</button>
+                    </a>
+
+                    <a href="{{ route('permintaan.index', ['tanggal' => today()->format('Y-m-d')]) }}">
+                        <button class="btn btn-sm btn-info">Hari ini</button>
+                    </a>
+                </div>
+
+
+                <div class="col-md-6">
+                    <form action="{{ route('permintaan.index') }}" method="get" name="form_perbaikan" id="form_perbaikan"
+                          class="form-inline">
+
+                        <label style="margin-right: 15px;">Pilih bulan</label>
+                        <input style="width: 90px;" type="text" autocomplete="off"
+                               name="bulan" class="form-control bulan">
+
+                        <button type="submit" class="btn btn-info ml-1"><i class="fa fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+
+
+            <!-- Table -->
             <div class="content">
                 <div class="animated fadeIn">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong class="card-title">Daftar Kendaraan</strong>
+                                    <strong class="card-title">Daftar Perbaikan</strong>
                                 </div>
                                 <div class="card-body">
-                                    <table id="bootstrap-data-table" class="table table-striped table-bordered"
+                                    <table class="table table-striped table-bordered"
                                            style="width: 100%">
                                         <thead>
                                         <tr>
                                             <th class="serial">No</th>
-                                            <th>Plat Nomor</th>
-                                            <th>Jenis</th>
+                                            <th>Tanggal
+                                                <a href="{{ route('permintaan.index', ['sort' => 'desc']) }}" class="float-right"><i class="fa fa-arrow-up"></i></a>
+                                                <a href="{{ route('permintaan.index', ['sort' => 'asc']) }}" class="float-right"><i class="fa fa-arrow-down"></i></a>
+                                            </th>
+                                            <th>Kendaraan</th>
                                             <th>Nama Supir</th>
                                             <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
 
-                                        @foreach($kendaraan as $data)
+                                        @foreach($permintaans as $permintaan)
                                             <tr>
                                                 <td class="serial">{{ $loop->iteration }}</td>
-                                                <td>{{ $data->plat_nomor }}</td>
-                                                <td>{{ $data->getJenisKendaraan(false)->nama }}</td>
-                                                <td>@if(($data->getSupir(false)->nama ?? 'kosong') == 'kosong')
-                                                        <em> @endif<span class="name">{{ $data->getSupir(false)->nama ?? '(Belum ada
-                                                    supir)' }}</span>@if(($data->getSupir(false)->nama ?? 'kosong') == 'kosong')
-                                                        </em> @endif</td>
+                                                <td>{{ formatDate(\Carbon\Carbon::parse($permintaan->tanggal),false,false) }}</td>
+                                                <td>{{ $permintaan->kendaraan_id }}</td>
+                                                <td>{{  $permintaan->getSupir(false)->nama }}</td>
                                                 <td style="width: 181px;">
-                                                    <a href="{{ route('perbaiki.sekarang',['plat_nomor' => $data->plat_nomor]) }}">
-                                                        <button type="button" class="btn btn-warning btn-sm">
-                                                            <i class="menu-icon fa fa-wrench"></i>
+
+                                                    <a href="{{ route('detailTruck', [
+                                                'plat_nomor' => $permintaan->id
+                                                ]) }}">
+                                                        <button type="button" class="btn btn-outline-primary btn-sm"><i
+                                                                    class="fa fa-print"></i>
                                                         </button>
                                                     </a>
+
                                                     <a href="{{ route('detailTruck', [
-                                                'plat_nomor' => $data->plat_nomor
+                                                'plat_nomor' => $permintaan->id
                                                 ]) }}">
                                                         <button type="button" class="btn btn-primary btn-sm"><i
                                                                     class="fa fa-eye"></i>
                                                         </button>
                                                     </a>
 
-                                                    <a href="{{ route('kendaraan.edit', [
-                                                'id' => $data->plat_nomor
-                                                ]) }}">
+                                                    <a href="{{ route('perbaiki.sekarang',['plat_nomor' => $permintaan->kendaraan_id]) }}">
                                                         <button type="button" class="btn btn-success btn-sm"><i
                                                                     class="fa fa-edit"></i>
                                                         </button>
@@ -81,7 +106,7 @@
 
                                                     <form onclick="return confirm('Apakah anda yakin ingin menghapus user tersebut?');"
                                                           action="{{ route('kendaraan.destroy',[
-                                                    'id' => $data->plat_nomor ]) }}" method="post" class="d-inline">
+                                                    'id' => $permintaan->id ]) }}" method="post" class="d-inline">
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger btn-sm"><i
                                                                     class="fa fa-trash"></i>
@@ -91,6 +116,7 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        {{ $permintaans->links() }}
                                         </tbody>
 
                                         </tbody>

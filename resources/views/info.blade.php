@@ -69,7 +69,7 @@
                                                                     data-dismiss="modal">Cancel
                                                             </button>
 
-                                                            <a href="{{ route('perbaikiSekarang',['plat_nomor' => $kendaraan->plat_nomor]) }}">
+                                                            <a href="{{ route('perbaiki.sekarang',['plat_nomor' => $kendaraan->plat_nomor]) }}">
                                                                 <button type="button" class="btn btn-primary">
                                                                     Confirm
                                                                 </button>
@@ -232,7 +232,7 @@
                                                                                             <p>Masa Berlaku
                                                                                                 :
                                                                                                 {{$kendaraan->getStatusOnderdil($onderdil->id)['onderdilKendaraan']->masa_berlaku}}
-                                                                                                tahun</p>
+                                                                                                bulan</p>
                                                                                             <p>Tempat beli
                                                                                                 :
                                                                                                 {{$kendaraan->getStatusOnderdil($onderdil->id)['onderdilKendaraan']->tempat_pembelian}}</p>

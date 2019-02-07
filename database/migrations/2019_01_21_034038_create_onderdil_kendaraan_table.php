@@ -15,11 +15,11 @@ class CreateOnderdilKendaraanTable extends Migration
     {
         Schema::create('onderdil_kendaraan', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nomor_seri')->unique()->nullable();
+            $table->string('nomor_seri')->nullable();
             $table->string('merk',30);
             $table->string('ukuran',30)->nullable();
             $table->bigInteger('harga')->nullable();
-            $table->integer('jumlah');
+            $table->integer('jumlah')->nullable();
             $table->integer('masa_berlaku');
             $table->string('tempat_pembelian',100);
             $table->timestamps();

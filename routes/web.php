@@ -21,7 +21,23 @@ Route::get('/masuk', [
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => 'role:1|2'], function(){
+//Route Operator
+Route::group(['prefix' => 'operator', 'middleware' => 'role:1|2'], function () {
+
+    Route::get('/perbaikan', [
+        'uses' => 'PageController@perbaikan',
+        'as' => 'perbaikan'
+    ]);
+
+    Route::get('/perbaikan/{plat_nomor}', [
+        'uses' => 'PageController@perbaikiSekarang',
+        'as' => 'perbaiki.sekarang'
+    ]);
+
+    Route::post('/proses_perbaikan', [
+        'uses' => 'PageController@prosesPerbaikan',
+        'as' => 'proses.perbaikan'
+    ]);
 
     Route::get('/dashboard', [
         'uses' => 'PageController@dashboard',
@@ -37,50 +53,25 @@ Route::group(['middleware' => 'role:1|2'], function(){
         'uses' => 'PageController@infoRiwayat',
         'as' => 'info.riwayat'
     ]);
-});
 
-
-//Route Operator
-Route::group(['prefix' => 'operator', 'middleware' => 'role:2'], function () {
-
-    Route::get('/cari', [
-        'uses' => 'PageController@cariPlatNomor',
-        'as' => 'cariPlatNomor'
+    Route::post('/ganti_password/{id}', [
+        'uses' => 'UserController@gantiPassword',
+        'as' => 'ganti.password'
     ]);
 
-    Route::get('/perbaikan', [
-        'uses' => 'PageController@perbaikan',
-        'as' => 'perbaikan'
-    ]);
-
-    Route::get('/perbaikan/{plat_nomor}', [
-        'uses' => 'PageController@perbaikiSekarang',
-        'as' => 'perbaikiSekarang'
-    ]);
-
-    Route::post('/proses_perbaikan', [
-        'uses' => 'PageController@prosesPerbaikan',
-        'as' => 'proses.perbaikan'
-    ]);
-
-//    Route::resources([
-//        'perbaikan' => 'PermintaanController',
-//    ]);
-});
-
-//Route Owner
-Route::group(['prefix' => 'owner', 'middleware' => 'role:1'], function () {
-
-    Route::get('/inputonderdil', [
-        'uses' => 'PageController@inputonderdil',
-        'as' => 'inputonderdil'
+    Route::post('/ganti_role/{id}', [
+        'uses' => 'UserController@gantiRole',
+        'as' => 'ganti.role'
     ]);
 
     Route::resources([
         'user' => 'UserController',
         'kendaraan' => 'KendaraanController',
         'onderdil' => 'OnderdilController',
-        'alatberat' => 'AlatBeratController'
+        'alatberat' => 'AlatBeratController',
+        'onderdilkendaraan' => 'OnderdilKendaraanController',
+        'permintaan' => 'PermintaanController'
     ]);
 
 });
+

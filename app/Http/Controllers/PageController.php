@@ -24,30 +24,6 @@ class PageController extends Controller
         ]);
     }
 
-    public function cariPlatNomor(){
-        $q = Input::get('q');
-        if($q){
-           $dataKendaraan = Kendaraan::where('plat_nomor', 'LIKE', '%'.$q.'%')
-           ->paginate(5);
-           $jum= count($dataKendaraan);
-           if($jum != 0){
-               Session::flash('success','Berhasil menemukan plat nomor dengan keyword "'.$q.'"');
-
-               return view('home',[
-                   'kendaraan' => $dataKendaraan,
-                   'q' => $q
-               ]);
-           }
-           else{
-               if(session()->has('success')) session_reset();
-               return back()->with('deleted','Plat nomor tersebut tidak ada!');
-           }
-        }
-        else{
-            return back();
-        }
-    }
-
     public function detailTruck($plat_nomor){
         $kendaraan = Kendaraan::where('plat_nomor', $plat_nomor)->first();
         $onderdils = Onderdil::all();
@@ -93,11 +69,12 @@ class PageController extends Controller
     public function prosesPerbaikan(Request $request){
         $validator = Validator::make($request->all(), [
             'onderdil_id.*' => 'required',
-            'nomor_seri.*' => 'required',
             'tanggal' => array('required','regex:/([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/'),
             'merk.*' => 'required',
             'masa_berlaku.*' => 'required | numeric',
             'tempat_pembelian.*' => 'required',
+            'jumlah.*' => 'numeric',
+            'harga.*' => 'numeric'
         ], [
             'required' => 'Tidak boleh kosong',
             'numeric' => 'Harus berupa angka',
@@ -126,9 +103,12 @@ class PageController extends Controller
             OnderdilKendaraan::create([
                 'onderdil_id' => $value,
                 'nomor_seri' => $request->input('nomor_seri.*')[$index],
+                'ukuran' => $request->input('ukuran.*')[$index],
                 'merk' => $request->input('merk.*')[$index],
                 'masa_berlaku' => $request->input('masa_berlaku.*')[$index],
                 'tempat_pembelian' => $request->input('tempat_pembelian.*')[$index],
+                'jumlah' => $request->input('jumlah.*')[$index],
+                'harga' => $request->input('harga.*')[$index],
                 'permintaan_id' => $permintaan->id,
                 'created_at' => $request->tanggal
             ]);
