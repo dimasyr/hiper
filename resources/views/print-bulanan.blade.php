@@ -204,7 +204,7 @@
                     </td>
                     <td style="width: 90px; text-align: right;">
                         @foreach($permintaan->getOnderdilKendaraan(false) as $onderdilkendaraan)
-                            {{ number_format(($onderdilkendaraan->harga*$onderdilkendaraan->jumlah),2,',','.') }} <br>
+                            {{ number_format(($onderdilkendaraan->harga*$onderdilkendaraan->jumlah),0,',','.') }} <br>
                         @endforeach
                     </td>
                 </tr>
@@ -212,7 +212,7 @@
                 <tr class="bordered" style="height: 29px;">
                     <td colspan="9" style="width: 70px; height: 29px; text-align: center; font-weight: bold;">Total</td>
                     <td style="padding-right: 7px; width: 90px; height: 29px; text-align: right; font-weight: bold; font-size: 8pt;">
-                        {{ number_format($total,2,',','.') }}
+                        {{ number_format($total,0,',','.') }}
                     </td>
                 </tr>
             </tbody>
