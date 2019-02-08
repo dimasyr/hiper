@@ -64,6 +64,7 @@ class OnderdilKendaraanController extends Controller
         $permintaan = Permintaan::create([
             'supir_id' => $request->supir_id,
             'teknisi_id' => $request->teknisi_id,
+            'teknisi_luar' => $request->teknisi_luar,
             'operator_id' => $request->operator_id,
             'tanggal' => $request->tanggal,
             'kendaraan_id' => $request->plat_nomor,

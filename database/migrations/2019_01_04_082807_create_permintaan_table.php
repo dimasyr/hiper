@@ -16,12 +16,13 @@ class CreatePermintaanTable extends Migration
         Schema::create('permintaan', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('tanggal');
+            $table->string('teknisi_luar')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             $table->integer('supir_id')->unsigned();
             $table->foreign('supir_id')->references('id')->on('users');
-            $table->integer('teknisi_id')->unsigned();
+            $table->integer('teknisi_id')->unsigned()->nullable();
             $table->foreign('teknisi_id')->references('id')->on('users');
             $table->integer('operator_id')->unsigned();
             $table->foreign('operator_id')->references('id')->on('users');

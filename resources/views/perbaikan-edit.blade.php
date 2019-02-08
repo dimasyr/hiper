@@ -48,13 +48,14 @@
                             <div class="row form-group">
                                 <div class="col col-md-2"><label class=" form-control-label">Teknisi</label></div>
                                 <div class="col-3 col-md-3">
-                                    <select name="teknisi_id" id="teknisi_id" class="form-control">
+                                    <select name="teknisi_id" id="form_teknisi_dalam" class="form-control">
                                         @foreach($teknisis as $teknisi)
                                             <option value="{{ $teknisi->id}}"
                                                     @if($teknisi->id == $permintaan->teknisi_id))
                                                     selected @endif>{{ $teknisi->nama}}</option>
                                         @endforeach
                                     </select>
+                                    <input id="form_teknisi_luar" type="text" name="teknisi_luar" class="form-control">
                                 </div>
                                 <div class="col col-md-1"></div>
                                 <div class="col col-md-2"><label class=" form-control-label">Supir</label></div>
@@ -69,6 +70,14 @@
                                     </select>
                                 </div>
                                 <input type="hidden" name="operator_id" value="{{ Auth::user()->id }}">
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-2">
+                                    <filedset id="radio_teknisi_luar">
+                                        <input type="radio" name="radio_teknisi_luar" value="dalam"> Dalam
+                                        <input type="radio" name="radio_teknisi_luar" value="luar"> Luar
+                                    </filedset>
+                                </div>
                             </div>
                             <div class="col-lg-12">
                                 <div class="card"
@@ -305,6 +314,8 @@
             var postURL = "<?php echo url('proses.perbaikan'); ?>";
             var i = 1;
 
+            $('#form_teknisi_luar').hide();
+
             /*
             menambah field input onderdil
              */
@@ -321,6 +332,17 @@
             $(document).on('click', '.btn_remove', function () {
                 var button_id = $(this).attr("id");
                 $('#row' + button_id + '').remove();
+            });
+
+            //radiobutton event
+            $('input[type=radio][name=radio_teknisi_luar]').change(function () {
+                if ($(this).val() == 'dalam') {
+                    $('#form_teknisi_dalam').show();
+                    $('#form_teknisi_luar').hide();
+                } else if ($(this).val() == 'luar') {
+                    $('#form_teknisi_dalam').hide();
+                    $('#form_teknisi_luar').show();
+                }
             });
 
         });
