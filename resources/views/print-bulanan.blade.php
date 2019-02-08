@@ -15,14 +15,11 @@
             border: 1px solid black;
         }
 
-        .head {
-            font-size: 10px;
+        th {
+            font-size: 9pt;
+            vertical-align: middle;
         }
 
-        .table {
-            border-collapse: collapse;
-            border: 1px solid black;
-        }
 
         .subhead td {
             font-size: 16px;
@@ -90,15 +87,6 @@
             text-align: center
         }
 
-        .tablemk {
-            border: 1px solid #000;
-            border-collapse: collapse
-        }
-
-        .tablenilai {
-            border-collapse: collapse;
-        }
-
         .small td {
             font-size: 9pt;
         }
@@ -115,13 +103,6 @@
             padding: 0px 10px 0px 10px
         }
 
-        #title {
-            font-weight: bold;
-            font-size: 15pt;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
         .ttd tr td {
             padding: 0 30px;
             font-size: 14px;
@@ -132,14 +113,6 @@
             vertical-align: top;
             font-size: 14px;
             font-family: MyriadPro-Regular;
-        }
-
-        .abu {
-            background-color: #cccccc
-        }
-
-        .z {
-            padding: 0px 5px 0px 5px
         }
 
         body {
@@ -183,16 +156,16 @@
                     </td>
                 </tr>
                 <tr class="bordered" id="font2" style="height: 29px;">
-                    <td style="height: 29px; text-align: center;">No</td>
-                    <td style="width: 60px; height: 29px; text-align: center;">Tanggal</td>
-                    <td style="width: 87px; height: 29px; text-align: center;">Plat Nomor</td>
-                    <td style="width: 70px; height: 29px; text-align: center;">Onderdil</td>
-                    <td style="width: 87px; height: 29px; text-align: center;">Nomor Seri</td>
-                    <td style="width: 90px; height: 29px; text-align: center;">Merk</td>
-                    <td style="height: 29px; text-align: center;">Masa Berlaku</td>
-                    <td style="width: 90px; height: 29px; text-align: center;">Tempat Beli</td>
-                    <td style="height: 29px; text-align: center;">Banyak</td>
-                    <td style="width: 90px; height: 29px; text-align: center;">Harga</td>
+                    <th style="height: 29px; text-align: center; padding: auto">No</th>
+                    <th style="width: 60px; height: 29px; text-align: center;">Tanggal</th>
+                    <th style="width: 87px; height: 29px; text-align: center;">Plat Nomor</th>
+                    <th style="width: 70px; height: 29px; text-align: center;">Onderdil</th>
+                    <th style="width: 87px; height: 29px; text-align: center;">Nomor Seri</th>
+                    <th style="width: 90px; height: 29px; text-align: center;">Merk</th>
+                    <th style="height: 29px; text-align: center;">Masa Berlaku (bln)</th>
+                    <th style="width: 90px; height: 29px; text-align: center;">Tempat Beli</th>
+                    <th style="height: 29px; text-align: center;">Banyak</th>
+                    <th style="width: 90px; height: 29px; text-align: center;">Harga</th>
                 </tr>
                 @foreach($permintaans as $permintaan)
                 <tr class="bordered" id="font1">
@@ -237,8 +210,8 @@
                 </tr>
                 @endforeach
                 <tr class="bordered" style="height: 29px;">
-                    <td colspan="9" style="width: 70px; height: 29px; text-align: center;">Total</td>
-                    <td style="padding-right: 7px; width: 90px; height: 29px; text-align: right; font-size: 8pt;">
+                    <td colspan="9" style="width: 70px; height: 29px; text-align: center; font-weight: bold;">Total</td>
+                    <td style="padding-right: 7px; width: 90px; height: 29px; text-align: right; font-weight: bold; font-size: 8pt;">
                         {{ number_format($total,2,',','.') }}
                     </td>
                 </tr>
