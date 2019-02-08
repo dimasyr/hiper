@@ -22,6 +22,8 @@ class PermintaanController extends Controller
         $permintaans = new Permintaan();
         $bulanSelected = false;
 
+        $kendaraan = Kendaraan::all();
+
         if(request()->has('tanggal')){
             $permintaans = $permintaans->where('tanggal', request('tanggal'));
         }
@@ -31,6 +33,10 @@ class PermintaanController extends Controller
             $bulanSelected = true;
         }
 
+        if(request()->has('plat_nomor')){
+            $permintaans = $permintaans->where('kendaraan_id', request('plat_nomor'));
+        }
+
         if(request()->has('sort')){
             $permintaans = $permintaans->orderBy('tanggal', request('sort'));
         }
@@ -38,15 +44,24 @@ class PermintaanController extends Controller
             $permintaans = $permintaans->orderBy('tanggal');
         }
 
+        if(request()->has('sort2')){
+            $permintaans = $permintaans->orderBy('id', request('sort2'));
+        }
+        else{
+            $permintaans = $permintaans->orderBy('id');
+        }
+
         $permintaans = $permintaans->paginate(5)->appends([
             'tanggal' => request('tanggal'),
             'sort' => request('sort'),
             'bulan' => request('bulan'),
+            'plat_nomor' => request('plat_nomor')
         ]);
 
         return view('perbaikan-all', [
             'permintaans' => $permintaans,
-            'bulanSelected' => $bulanSelected
+            'bulanSelected' => $bulanSelected,
+            'kendaraan' => $kendaraan
         ]);
     }
 

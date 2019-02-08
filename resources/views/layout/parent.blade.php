@@ -83,9 +83,9 @@
     <header id="header" class="header">
         <div class="top-left">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ route('dashboard')}}"><img src="{{asset('images/logo1.jpg')}}"
+                <a class="navbar-brand" href="{{ route('permintaan.index')}}"><img src="{{asset('images/logo1.jpg')}}"
                                                                             alt="Logo"></a>
-                <a class="navbar-brand hidden" href="{{ route('dashboard')}}"><img src="{{asset('images/logo1.jpg')}}"
+                <a class="navbar-brand hidden" href="{{ route('permintaan.index')}}"><img src="{{asset('images/logo1.jpg')}}"
                                                                                    alt="Logo"></a>
                 @if(Route::currentRouteName() != 'perbaikan' && Route::currentRouteName() != 'perbaiki.sekarang' && Route::currentRouteName() != 'permintaan.edit')
                     <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
