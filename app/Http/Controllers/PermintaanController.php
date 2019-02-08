@@ -158,9 +158,16 @@ class PermintaanController extends Controller
                 ->withErrors($validator)->with('jumlah', $jum);
         }
 
+        $teknisi_luar = "";
+
+        if($request->radio_teknisi_luar == 'luar'){
+            $teknisi_luar = $request->teknisi_luar;
+        }
+
         Permintaan::find($id)->update([
             'supir_id' => $request->supir_id,
             'teknisi_id' => $request->teknisi_id,
+            'teknisi_luar' => $teknisi_luar,
             'operator_id' => $request->operator_id,
             'tanggal' => $request->tanggal,
             'kendaraan_id' => $request->plat_nomor,

@@ -6,10 +6,11 @@
     <!-- Content -->
     <div class="content" style="margin-left: -280px; margin-top: -15px; width: auto;">
     @include('layouts.alert')
-        <!-- Animated -->
+    <!-- Animated -->
         <div class="animated fadeIn">
             <div class="col-lg-12">
-                <form action="{{ route('onderdilkendaraan.store') }}" method="post" name="form_perbaikan" id="form_perbaikan"
+                <form action="{{ route('onderdilkendaraan.store') }}" method="post" name="form_perbaikan"
+                      id="form_perbaikan"
                       class="form-horizontal">
                     @csrf
                     <div class="card">
@@ -32,22 +33,28 @@
                                 <div class="col col-md-1"></div>
                                 <div class="col col-md-2"><label class=" form-control-label">Tanggal</label>
                                 </div>
-                                <div class="col-3 col-md-3"><input type="text" autocomplete="off" value="{{ old('tanggal') }}"
-                                                                   name="tanggal" class="form-control tanggal"><small class="form-text text-muted alert-danger">
-                                    @if($errors->has('tanggal'))
-                                        {{ $errors->first('tanggal') }}
-                                    @endif
+                                <div class="col-3 col-md-3"><input type="text" autocomplete="off"
+                                                                   value="{{ old('tanggal') }}"
+                                                                   name="tanggal" class="form-control tanggal">
+                                    <small class="form-text text-muted alert-danger">
+                                        @if($errors->has('tanggal'))
+                                            {{ $errors->first('tanggal') }}
+                                        @endif
                                     </small>
                                 </div>
                             </div>
                             <div class="row form-group">
-                                <div class="col col-md-2"><label class=" form-control-label">Teknisi</label></div>
+                                <div class="col col-md-2">
+                                    <label class=" form-control-label">Teknisi</label>
+                                </div>
                                 <div class="col-3 col-md-3">
-                                    <select name="teknisi_id" id="teknisi_id" class="form-control">
+                                    <select name="teknisi_id" id="form_teknisi_dalam" class="form-control">
                                         @foreach($teknisis as $teknisi)
-                                            <option value="{{ $teknisi->id}}" @if($teknisi->id == old('teknisi_id')) selected @endif>{{ $teknisi->nama}}</option>
+                                            <option value="{{ $teknisi->id}}"
+                                                    @if($teknisi->id == old('teknisi_id')) selected @endif>{{ $teknisi->nama}}</option>
                                         @endforeach
                                     </select>
+                                    <input id="form_teknisi_luar" type="text" name="teknisi_luar" class="form-control">
                                 </div>
                                 <div class="col col-md-1"></div>
                                 <div class="col col-md-2"><label class=" form-control-label">Supir</label></div>
@@ -63,8 +70,17 @@
                                 </div>
                                 <input type="hidden" name="operator_id" value="{{ Auth::user()->id }}">
                             </div>
+                            <div class="row form-group">
+                                <div class="col-md-2">
+                                    <filedset id="radio_teknisi_luar">
+                                        <input type="radio" name="radio_teknisi_luar" value="dalam"> Dalam
+                                        <input type="radio" name="radio_teknisi_luar" value="luar"> Luar
+                                    </filedset>
+                                </div>
+                            </div>
                             <div class="col-lg-12">
-                                <div class="card" style="margin-left: -30px; margin-right: -30px; margin-bottom: -10px;">
+                                <div class="card"
+                                     style="margin-left: -30px; margin-right: -30px; margin-bottom: -10px;">
                                     <div class="card-body">
                                         <table class="table">
                                             <thead>
@@ -105,7 +121,8 @@
                                                     </small>
                                                 </td>
                                                 <td>
-                                                    <input style="width: 80px;" class="form-control" type="text" name="ukuran[]"
+                                                    <input style="width: 80px;" class="form-control" type="text"
+                                                           name="ukuran[]"
                                                            value="{{ old('ukuran.0') }}">
                                                     <small class="form-text text-muted alert-danger">
                                                         @if($errors->has('ukuran.0'))
@@ -123,7 +140,8 @@
                                                     </small>
                                                 </td>
                                                 <td style="width: 70px;">
-                                                    <input style="text-align: right;" class="form-control" type="text" name="masa_berlaku[]"
+                                                    <input style="text-align: right;" class="form-control" type="text"
+                                                           name="masa_berlaku[]"
                                                            value="{{ old('masa_berlaku.0') }}">
                                                     <small class="form-text text-muted alert-danger">
                                                         @if($errors->has('masa_berlaku.0'))
@@ -141,7 +159,8 @@
                                                     </small>
                                                 </td>
                                                 <td style="width: 70px;">
-                                                    <input style="text-align: right;" class="form-control" type="text" name="jumlah[]"
+                                                    <input style="text-align: right;" class="form-control" type="text"
+                                                           name="jumlah[]"
                                                            value="{{ old('jumlah.0') }}">
                                                     <small class="form-text text-muted alert-danger">
                                                         @if($errors->has('jumlah.0'))
@@ -150,7 +169,8 @@
                                                     </small>
                                                 </td>
                                                 <td>
-                                                    <input style="text-align: right;" class="form-control" type="text" name="harga[]"
+                                                    <input style="text-align: right;" class="form-control" type="text"
+                                                           name="harga[]"
                                                            value="{{ old('harga.0') }}">
                                                     <small class="form-text text-muted alert-danger">
                                                         @if($errors->has('harga.0'))
@@ -181,7 +201,8 @@
                                                             </small>
                                                         </td>
                                                         <td>
-                                                            <input style="width: 80px;" class="form-control" type="text" name="ukuran[]"
+                                                            <input style="width: 80px;" class="form-control" type="text"
+                                                                   name="ukuran[]"
                                                                    value="{{ old('ukuran.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
                                                                 @if($errors->has('ukuran.'.$i))
@@ -199,7 +220,8 @@
                                                             </small>
                                                         </td>
                                                         <td>
-                                                            <input style="text-align: right;" class="form-control" type="text"
+                                                            <input style="text-align: right;" class="form-control"
+                                                                   type="text"
                                                                    name="masa_berlaku[]"
                                                                    value="{{ old('masa_berlaku.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
@@ -219,7 +241,8 @@
                                                             </small>
                                                         </td>
                                                         <td>
-                                                            <input style="text-align: right;" class="form-control" type="text"
+                                                            <input style="text-align: right;" class="form-control"
+                                                                   type="text"
                                                                    name="jumlah[]"
                                                                    value="{{ old('jumlah.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
@@ -229,7 +252,8 @@
                                                             </small>
                                                         </td>
                                                         <td>
-                                                            <input style="text-align: right;" class="form-control" type="text"
+                                                            <input style="text-align: right;" class="form-control"
+                                                                   type="text"
                                                                    name="harga[]"
                                                                    value="{{ old('harga.'.$i) }}">
                                                             <small class="form-text text-muted alert-danger">
@@ -273,6 +297,8 @@
             var postURL = "<?php echo url('proses.perbaikan'); ?>";
             var i = 1;
 
+            $('#form_teknisi_luar').hide();
+
             /*
             menambah field input onderdil
              */
@@ -291,42 +317,17 @@
                 $('#row' + button_id + '').remove();
             });
 
-            // $.ajaxSetup({
-            //     headers: {
-            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            //     }
-            // });
+            //radiobutton event
+            $('input[type=radio][name=radio_teknisi_luar]').change(function () {
+                if ($(this).val() == 'dalam') {
+                    $('#form_teknisi_dalam').show();
+                    $('#form_teknisi_luar').hide();
+                } else if ($(this).val() == 'luar') {
+                    $('#form_teknisi_dalam').hide();
+                    $('#form_teknisi_luar').show();
+                }
+            });
 
-            // $('#submit').click(function () {
-            //     $.ajax({
-            //         url: postURL,
-            //         method: "POST",
-            //         data: $('#form_perbaikan').serialize(),
-            //         type: 'json',
-            //         success: function (data) {
-            //             if (data.error) {
-            //                 printErrorMsg(data.error);
-            //             } else {
-            //                 i = 1;
-            //                 $('.dynamic-added').remove();
-            //                 $('#form_perbaikan')[0].reset();
-            //                 $(".print-success-msg").find("ul").html('');
-            //                 $(".print-success-msg").css('display', 'block');
-            //                 $(".print-error-msg").css('display', 'none');
-            //                 $(".print-success-msg").find("ul").append('<li>Record Inserted Successfully.</li>');
-            //             }
-            //         }
-            //     });
-            // });
-
-            function printErrorMsg(msg) {
-                $(".print-error-msg").find("ul").html('');
-                $(".print-error-msg").css('display', 'block');
-                $(".print-success-msg").css('display', 'none');
-                $.each(msg, function (key, value) {
-                    $(".print-error-msg").find("ul").append('<li>' + value + '</li>');
-                });
-            }
         });
     </script>
 @endpush
