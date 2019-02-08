@@ -55,7 +55,9 @@
                                                     selected @endif>{{ $teknisi->nama}}</option>
                                         @endforeach
                                     </select>
-                                    <input id="form_teknisi_luar" type="text" name="teknisi_luar" class="form-control">
+                                    <input id="form_teknisi_luar" type="text" name="teknisi_luar" class="form-control"
+                                    @if(!empty($permintaan->teknisi_luar)) value="{{ $permintaan->teknisi_luar }}" @endif
+                                    >
                                 </div>
                                 <div class="col col-md-1"></div>
                                 <div class="col col-md-2"><label class=" form-control-label">Supir</label></div>
@@ -75,7 +77,7 @@
                                 <div class="col-md-2">
                                     <filedset id="radio_teknisi_luar">
                                         <input type="radio" name="radio_teknisi_luar" value="dalam"> Dalam
-                                        <input type="radio" name="radio_teknisi_luar" value="luar"> Luar
+                                        <input type="radio" name="radio_teknisi_luar" value="luar" @if(!empty($permintaan->teknisi_luar)) checked @endif > Luar
                                     </filedset>
                                 </div>
                             </div>
@@ -344,6 +346,11 @@
                     $('#form_teknisi_luar').show();
                 }
             });
+
+            if($('input[type=radio][name=radio_teknisi_luar]:checked').val() == 'luar') {
+                $('#form_teknisi_dalam').hide();
+                $('#form_teknisi_luar').show();
+            };
 
         });
     </script>
