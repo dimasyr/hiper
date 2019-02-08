@@ -72,6 +72,14 @@
             font-family: MyriadPro-Regular;
         }
 
+        #font12 td {
+            font-size: 9;
+        }
+
+        #font13 td {
+            font-size: 8;
+        }
+
         .headermk td {
             font-weight: bold;
             background-color: #999;
@@ -140,7 +148,7 @@
 
 <body><br>
 <div id="atas" align="center">
-    <table style="border-collapse:collapse" cellspacing="0" cellpadding="4" width="500">
+    <table style="border-collapse:collapse" cellspacing="0" cellpadding="4" width="300">
         <tbody>
         <tr>
             <td width="396" colspan="18" style="padding:0 0 0 0">
@@ -173,7 +181,7 @@
                 <br>
             </td>
         </tr>
-        <table style="border-collapse:collapse" cellspacing="0" cellpadding="4" width="700">
+        <table style="border-collapse:collapse" id="font12" cellspacing="0" cellpadding="4" width="500">
             <tr class="bordered" style="height: 29px; font-weight: bold">
                 <th style="width: 90px; height: 29px; text-align: center;">Tanggal</th>
                 <th style="width: 396px; height: 29px; text-align: center;">Item Perbaikan</th>
@@ -181,7 +189,7 @@
                 <th style="width: 191px; height: 29px; text-align: center;">Est. Biaya</th>
                 <th style="width: 192px; height: 29px; text-align: center;">Keterangan</th>
             </tr>
-            <tr class="bordered">
+            <tr class="bordered" id="fon13">
                 <td>{{ $permintaan->tanggal }}</td>
                 <td>
                     @foreach($onderdilkendaraans as $onderdilkendaraan)
@@ -206,11 +214,11 @@
             </tr>
         </table>
         <br>
-        <table style="border-collapse:collapse" cellspacing="0" cellpadding="4" width="500">
+        <table style="border-collapse:collapse" cellspacing="0" cellpadding="4" width="300">
             <tr>
                 <td colspan="3">Persetujuan :</td>
             </tr>
-            <tr class="bordered" style="height: 100px; text-decoration: underline">
+            <tr class="bordered" style="height: 80px; text-decoration: underline">
                 <td>Operator</td>
                 <td>Teknisi</td>
                 <td>Sopir</td>
