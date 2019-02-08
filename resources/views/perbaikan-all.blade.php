@@ -33,19 +33,30 @@
                     </a>
                 </div>
 
-
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <form action="{{ route('permintaan.index') }}" method="get" name="form_perbaikan"
                           id="form_perbaikan"
                           class="form-inline">
 
                         <label style="margin-right: 15px;">Pilih bulan</label>
-                        <input style="width: 90px;" type="text" autocomplete="off"
-                               name="bulan" class="form-control bulan">
+                        <input style="width: 90px;" type="text" autocomplete="off" id="bulan"
+                               name="bulan" class="form-control bulan" value="{{ request('bulan') }}">
 
                         <button type="submit" class="btn btn-info ml-1"><i class="fa fa-search"></i></button>
                     </form>
                 </div>
+                @if($bulanSelected)
+                <div class="col-md-3">
+                    <form action="{{ route('print.bulanan') }}" method="get" name="form_perbaikan"
+                          id="form_print"
+                          class="form-inline" target="_blank">
+
+                        <input id="bulan2" type="hidden" autocomplete="off" name="bulan2">
+
+                        <button id="btn_print" type="button" class="btn btn-info"><i class="fa fa-print"></i> Print/bulan</button>
+                    </form>
+                </div>
+                @endif
             </div>
 
 
@@ -85,9 +96,9 @@
                                                 <td>{{  $permintaan->getSupir(false)->nama }}</td>
                                                 <td style="width: 181px;">
 
-                                                    <a href="{{ route('detailTruck', [
-                                                'plat_nomor' => $permintaan->id
-                                                ]) }}">
+                                                    <a href="{{ route('print.perbaikan', [
+                                                'id' => $permintaan->id
+                                                ]) }}" target="_blank">
                                                         <button type="button" class="btn btn-outline-primary btn-sm"><i
                                                                     class="fa fa-print"></i>
                                                         </button>
@@ -131,3 +142,13 @@
     <div class="clearfix"></div>
 
 @endsection
+@push('js')
+    <script>
+        $(document).ready(function(){
+            $('#btn_print').click(function () {
+                $('#bulan2').val($('#bulan').val());
+                $('#form_print').submit();
+            });
+        });
+    </script>
+@endpush

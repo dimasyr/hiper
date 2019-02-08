@@ -64,6 +64,16 @@ Route::group(['prefix' => 'operator', 'middleware' => 'role:1|2'], function () {
         'as' => 'ganti.role'
     ]);
 
+    Route::get('/print_perbaikan/{id}', [
+        'uses' => 'PermintaanController@printPermintaan',
+        'as' => 'print.perbaikan'
+    ]);
+
+    Route::get('/print_bulanan/', [
+        'uses' => 'PermintaanController@printBulanan',
+        'as' => 'print.bulanan'
+    ]);
+
     Route::resources([
         'user' => 'UserController',
         'kendaraan' => 'KendaraanController',

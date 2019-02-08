@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Perbaikan Kendaraan</title>
+    <title>Riwayat Perbaikan/bulan</title>
     <style>
         .garis {
             border-bottom-style: dashed;
@@ -60,8 +60,8 @@
         #head-big {
             font-family: MyriadPro-Cond;
             font-weight: bold;
-            font-size: 22pt;
-            padding-top: 30;
+            font-size: 16pt;
+            padding-top: 30px;
         }
 
         #container td {
@@ -164,15 +164,15 @@
                                 <tr>
                                     <td style="padding-right:10px"></td>
                                     <td style="padding:0px 10px 0px 10px;">
-                                        <div align="center" id="head-big">RIWAYAT PERBAIKAN (PLAT NOMOR)</div>
+                                        <div align="center" id="head-big">RIWAYAT PERBAIKAN</div>
                                     </td>
-                                    <td valign="bottom">
+                                    <td valign="bottom" >
                                         <table class="identitas" cellspacing="2" cellpadding="2">
                                             <tbody>
                                                 <tr>
                                                     <td>Bulan/Tahun</td>
                                                     <td>:</td>
-                                                    <td>placeholder</td>
+                                                    <td>{{ $bulan }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -184,7 +184,7 @@
                 </tr>
                 <tr class="bordered" id="font2" style="height: 29px;">
                     <td style="height: 29px; text-align: center;">No</td>
-                    <td style="width: 60px height: 29px; text-align: center;">Tanggal</td>
+                    <td style="width: 60px; height: 29px; text-align: center;">Tanggal</td>
                     <td style="width: 87px; height: 29px; text-align: center;">Plat Nomor</td>
                     <td style="width: 70px; height: 29px; text-align: center;">Onderdil</td>
                     <td style="width: 87px; height: 29px; text-align: center;">Nomor Seri</td>
@@ -194,21 +194,53 @@
                     <td style="height: 29px; text-align: center;">Banyak</td>
                     <td style="width: 90px; height: 29px; text-align: center;">Harga</td>
                 </tr>
+                @foreach($permintaans as $permintaan)
                 <tr class="bordered" id="font1">
-                    <td style="text-align: center;">1</td>
-                    <td style="width: 60px; text-align: center;">10-04-2019</td>
-                    <td style="width: 87px; text-align: center;">L 1234 L</td>
-                    <td style="width: 90px; text-align: center;">Oli</td>
-                    <td style="width: 90px; text-align: center;">123</td>
-                    <td style="width: 90px; text-align: center;">Sakura</td>
-                    <td style="text-align: center;">1</td>
-                    <td style="width: 90px; text-align: center;">Joyo</td>
-                    <td style="text-align: center;">1</td>
-                    <td style="width: 90px; text-align: center;">10000</td>
+                    <td style="text-align: center;">{{ $loop->iteration }}</td>
+                    <td style="width: 60px; text-align: center;">{{ $permintaan->tanggal }}</td>
+                    <td style="width: 87px; text-align: center;">{{ $permintaan->kendaraan_id }}</td>
+                    <td style="width: 90px;">
+                        @foreach($permintaan->getOnderdilKendaraan(false) as $onderdilkendaraan)
+                            {{ $onderdilkendaraan->getOnderdil(false)->nama }} <br>
+                        @endforeach
+                    </td>
+                    <td style="width: 90px; text-align: center;">
+                        @foreach($permintaan->getOnderdilKendaraan(false) as $onderdilkendaraan)
+                            {{ $onderdilkendaraan->nomor_seri}} <br>
+                        @endforeach
+                    </td>
+                    <td style="width: 90px; text-align: center;">
+                        @foreach($permintaan->getOnderdilKendaraan(false) as $onderdilkendaraan)
+                            {{ $onderdilkendaraan->merk }} <br>
+                        @endforeach
+                    </td>
+                    <td style="text-align: center;">
+                        @foreach($permintaan->getOnderdilKendaraan(false) as $onderdilkendaraan)
+                            {{ $onderdilkendaraan->masa_berlaku }} <br>
+                        @endforeach
+                    </td>
+                    <td style="width: 90px; text-align: center;">
+                        @foreach($permintaan->getOnderdilKendaraan(false) as $onderdilkendaraan)
+                            {{ $onderdilkendaraan->tempat_pembelian }} <br>
+                        @endforeach
+                    </td>
+                    <td style="text-align: center;">
+                        @foreach($permintaan->getOnderdilKendaraan(false) as $onderdilkendaraan)
+                            {{ $onderdilkendaraan->jumlah }} <br>
+                        @endforeach
+                    </td>
+                    <td style="width: 90px; text-align: right;">
+                        @foreach($permintaan->getOnderdilKendaraan(false) as $onderdilkendaraan)
+                            {{ number_format(($onderdilkendaraan->harga*$onderdilkendaraan->jumlah),2,',','.') }} <br>
+                        @endforeach
+                    </td>
                 </tr>
+                @endforeach
                 <tr class="bordered" style="height: 29px;">
                     <td colspan="9" style="width: 70px; height: 29px; text-align: center;">Total</td>
-                    <td style="width: 90px; height: 29px; text-align: center;"></td>
+                    <td style="padding-right: 7px; width: 90px; height: 29px; text-align: right; font-size: 8pt;">
+                        {{ number_format($total,2,',','.') }}
+                    </td>
                 </tr>
             </tbody>
         </table>

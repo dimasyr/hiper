@@ -137,79 +137,98 @@
 
 <body><br>
 
-    <div id="atas" align="center">
-        <table style="border-collapse:collapse" cellspacing="0" cellpadding="4" width="700">
-            <tbody>
-                <tr>
-                    <td width="396" colspan="18" style="padding:0 0 0 0">
-                        <table style="border-bottom:4px solid black; margin-bottom:5px; border-left: 1px" cellspacing="0"
-                            cellpadding="0" width="100%">
-                            <tbody>
+<div id="atas" align="center">
+    <table style="border-collapse:collapse" cellspacing="0" cellpadding="4" width="700">
+        <tbody>
+        <tr>
+            <td width="396" colspan="18" style="padding:0 0 0 0">
+                <table style="border-bottom:4px solid black; margin-bottom:5px; border-left: 1px" cellspacing="0"
+                       cellpadding="0" width="100%">
+                    <tbody>
+                    <tr>
+                        <td style="padding-right:10px"></td>
+                        <td style="padding:0px 10px 0px 10px;">
+                            <div align="center" id="head-big">FORM PERBAIKAN KENDARAAN</div>
+                        </td>
+                        <td valign="top">
+                            <table class="identitas" cellspacing="2" cellpadding="2">
+                                <tbody>
                                 <tr>
-                                    <td style="padding-right:10px"></td>
-                                    <td style="padding:0px 10px 0px 10px;">
-                                        <div align="center" id="head-big">FORM PERBAIKAN KENDARAAN</div>
-                                    </td>
-                                    <td valign="top">
-                                        <table class="identitas" cellspacing="2" cellpadding="2">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Tanggal</td>
-                                                    <td>:</td>
-                                                    <td>placeholder</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Nopol</td>
-                                                    <td>:</td>
-                                                    <td>placeholder</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sopir</td>
-                                                    <td>:</td>
-                                                    <td>placeholder</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Teknisi</td>
-                                                    <td>:</td>
-                                                    <td>placeholder</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </td>
+                                    <td>Nopol</td>
+                                    <td>:</td>
+                                    <td>{{ $permintaan->kendaraan_id }}</td>
                                 </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
+                                <tr>
+                                    <td>Sopir</td>
+                                    <td>:</td>
+                                    <td>{{ $permintaan->getSupir(false)->nama }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Teknisi</td>
+                                    <td>:</td>
+                                    <td>{{ $permintaan->getTeknisi(false)->nama }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
 
-                <tr class="bordered" style="height: 29px;">
-                    <td style="width: 90px; height: 29px; text-align: center;">Tanggal</td>
-                    <td style="width: 396px; height: 29px; text-align: center;">Item Perbaikan</td>
-                    <td style="width: 87px; height: 29px; text-align: center;">Jumlah Item</td>
-                    <td rowspan="1" style="width: 191px; height: 29px; text-align: center;">Biaya</td>
-                    <td rowspan="4" style="width: 192px; height: 29px; text-align: center;">Keterangan</td>
-                </tr>
-                <tr class="bordered" style="height: 175px;">
-                    <td style="width: 90px; height: 175px;">&nbsp;</td>
-                    <td style="width: 396px; height: 175px;">&nbsp;</td>
-                    <td style="width: 87px; height: 175px;">&nbsp;</td>
-                </tr>
-                <tr class="bordered" style="height: 10px;">
-                    <td colspan="3" style="width: 90px; height: 10px;">Persetujuan :</td>
-                </tr>
-                <tr class="bordered" style="height: 79px;">
-                    <td style="width: 90px; height: 79px; padding-left: 30">Operator</td>
-                    <td style="width: 396px; height: 79px; text-align: center;">Teknisi</td>
-                    <td style="width: 87px; height: 79px; padding-right: 30">Sopir</td>
-                </tr>
-                <tr class="bordered" style="height: 20px;">
-                    <td colspan="3" style="width: 90px; height: 20px; text-align: center; padding-top: 10">Total :</td>
-                    <td style="width: 191px; height: 20px;">&nbsp;</td>
-                    <td style="width: 191px; height: 20px;">&nbsp;</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+        <tr class="bordered" style="height: 29px;">
+            <td style="width: 90px; height: 29px; text-align: center;">Tanggal</td>
+            <td style="width: 396px; height: 29px; text-align: center;">Item Perbaikan</td>
+            <td style="height: 29px; text-align: center;">Jumlah Item</td>
+            <td rowspan="1" style="width: 191px; height: 29px; text-align: center;">Biaya</td>
+            <td rowspan="4" style="width: 192px; height: 29px; text-align: center;">Keterangan
+                <hr style="border-top: 1px solid black; margin-top: 20px;">
+            </td>
+        </tr>
+        <tr class="bordered" style="height: 175px;">
+            <td style="width: 90px; height: 175px; text-align: center">{{ $permintaan->tanggal }}&nbsp;</td>
+            <td style="width: 396px; height: 175px;">
+                @foreach($onderdilkendaraans as $onderdilkendaraan)
+                    {{ $onderdilkendaraan->getOnderdil(false)->nama }} <br>
+                @endforeach
+            </td>
+            <td style="width: 87px; height: 175px; text-align: center;">
+                @foreach($onderdilkendaraans as $onderdilkendaraan)
+                    {{ $onderdilkendaraan->jumlah }} <br>
+                @endforeach
+            </td>
+            <td style="width: 87px; height: 175px; text-align: right; border: none;">
+                @foreach($onderdilkendaraans as $onderdilkendaraan)
+                    {{ number_format(($onderdilkendaraan->harga * $onderdilkendaraan->jumlah),2,",",".") }} <br>
+                @endforeach
+            </td>
+        </tr>
+        <tr class="bordered" style="height: 10px;">
+            <td colspan="3" style="width: 90px; height: 10px;">Persetujuan :</td>
+        </tr>
+        <tr class="bordered" style="height: 79px;">
+            <td style="width: 90px; height: 79px; text-align: center;">
+                Operator<br><br><br>
+            {{ $permintaan->getOperator(false)->nama }}
+            </td>
+            <td style="width: 396px; height: 79px; text-align: center;">
+                Teknisi<br><br><br>
+                {{ $permintaan->getTeknisi(false)->nama }}
+            </td>
+            <td style="width: 87px; height: 79px; text-align: center;">
+                Supir<br><br><br>
+                {{ $permintaan->getSupir(false)->nama }}
+            </td>
+        </tr>
+        <tr class="bordered" style="height: 20px;">
+            <td colspan="3" style="width: 90px; height: 20px; text-align: center; padding-top: 10px;">Total :</td>
+            <td style="width: 191px; height: 20px; text-align: right">Rp. {{ number_format($total,2,",",".") }}</td>
+            <td style="width: 191px; height: 20px;">&nbsp;</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 
 </html>

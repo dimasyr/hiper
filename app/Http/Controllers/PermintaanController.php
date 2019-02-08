@@ -20,6 +20,7 @@ class PermintaanController extends Controller
     public function index()
     {
         $permintaans = new Permintaan();
+        $bulanSelected = false;
 
         if(request()->has('tanggal')){
             $permintaans = $permintaans->where('tanggal', request('tanggal'));
@@ -27,6 +28,7 @@ class PermintaanController extends Controller
 
         if(request()->has('bulan') && (request('bulan') != null)){
             $permintaans = $permintaans->where('tanggal', 'like', '%'.request('bulan').'%');
+            $bulanSelected = true;
         }
 
         if(request()->has('sort')){
@@ -39,11 +41,12 @@ class PermintaanController extends Controller
         $permintaans = $permintaans->paginate(5)->appends([
             'tanggal' => request('tanggal'),
             'sort' => request('sort'),
-            'bulan' => request('bulan')
+            'bulan' => request('bulan'),
         ]);
 
         return view('perbaikan-all', [
-            'permintaans' => $permintaans
+            'permintaans' => $permintaans,
+            'bulanSelected' => $bulanSelected
         ]);
     }
 
@@ -210,5 +213,45 @@ class PermintaanController extends Controller
         Permintaan::find($id)->delete();
 
         return redirect()->route('permintaan.index')->with('deleted', 'Data berhasil dihapus');
+    }
+
+
+    public function printPermintaan($id){
+        $permintaan = Permintaan::find($id);
+        $onderdilkendaraans = OnderdilKendaraan::where('permintaan_id', $id)->get();
+
+        $total = 0;
+
+        foreach ($onderdilkendaraans as $ok){
+            $total += $ok->harga * $ok->jumlah;
+        }
+
+        return view('print-permintaan', [
+            'permintaan' => $permintaan,
+            'onderdilkendaraans' => $onderdilkendaraans,
+            'total' => $total
+        ]);
+    }
+
+    public function printBulanan(){
+        $bulan = request('bulan2');
+
+        $permintaans = Permintaan::where('tanggal', 'like', '%'.$bulan.'%')->get();
+
+        $bulan = date('m/Y', strtotime($bulan));
+        
+        $total=0;
+
+        foreach ($permintaans as $permintaan) {
+            foreach ($permintaan->getOnderdilKendaraan(false) as $onderdilkendaraan){
+                $total += $onderdilkendaraan->jumlah * $onderdilkendaraan->harga;
+            }
+        }
+
+        return view('print-bulanan', [
+            'permintaans' => $permintaans,
+            'bulan' => $bulan,
+            'total' => $total
+        ]);
     }
 }
