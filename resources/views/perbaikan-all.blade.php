@@ -127,9 +127,22 @@
                                         </thead>
                                         <tbody>
 
+                                        @if(request()->has('tanggal'))
+                                            <?php $total = 0 ?>
+                                            @foreach($permintaans as $permintaan)
+                                                <?php $total++ ?>
+                                            @endforeach
+                                        @endif
+
                                         @foreach($permintaans as $permintaan)
                                             <tr>
-                                                <td class="serial">{{ $loop->iteration }}</td>
+                                                <td class="serial">
+                                                    @if(request()->has('tanggal') && (request('sort2') == 'desc'))
+                                                        {{ $total-- }}
+                                                    @else
+                                                        {{ $loop->iteration }}
+                                                    @endif
+                                                </td>
                                                 <td>{{ formatDate(\Carbon\Carbon::parse($permintaan->tanggal),false,false) }}</td>
                                                 <td>{{ $permintaan->kendaraan_id }}</td>
                                                 <td>{{  $permintaan->getSupir(false)->nama }}</td>

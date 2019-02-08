@@ -54,6 +54,7 @@ class PermintaanController extends Controller
         $permintaans = $permintaans->paginate(5)->appends([
             'tanggal' => request('tanggal'),
             'sort' => request('sort'),
+            'sort2' => request('sort2'),
             'bulan' => request('bulan'),
             'plat_nomor' => request('plat_nomor')
         ]);
