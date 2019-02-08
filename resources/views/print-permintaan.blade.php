@@ -167,7 +167,13 @@
                     </tr>
                     <tr>
                         <td>Teknisi</td>
-                        <td>: {{ $permintaan->getTeknisi(false)->nama }}</td>
+                        <td>:
+                            @if(empty($permintaan->teknisi_luar))
+                                {{ $permintaan->getTeknisi(false)->nama }}
+                            @else
+                                {{ $permintaan->teknisi_luar }}
+                            @endif
+                        </td>
                     </tr>
                 </table>
                 <br>
@@ -210,10 +216,29 @@
             <tr>
                 <td colspan="3">Persetujuan :</td>
             </tr>
-            <tr class="bordered" style="height: 100px; text-decoration: underline">
-                <td>Operator</td>
-                <td>Teknisi</td>
-                <td>Sopir</td>
+            <tr class="bordered" style="height: 100px; text-align: center">
+                <td>
+                    <span style="text-decoration: underline;">Operator</span> <br><br><br><br>
+                    <span style="text-decoration: none;">
+                        {{ $permintaan->getOperator(false)->nama }}
+                    </span>
+                </td>
+                <td>
+                    <span style="text-decoration: underline;">Teknisi</span> <br><br><br><br>
+                    <span style="text-decoration: none;">
+                    @if(empty($permintaan->teknisi_luar))
+                        {{ $permintaan->getTeknisi(false)->nama }}
+                    @else
+                        {{ $permintaan->teknisi_luar }}
+                    @endif
+                    </span>
+                </td>
+                <td>
+                    <span style="text-decoration: underline;">Sopir</span> <br><br><br><br>
+                    <span style="text-decoration: none;">
+                        {{ $permintaan->getSupir(false)->nama }}
+                    </span>
+                </td>
             </tr>
         </table>
         </tbody>
